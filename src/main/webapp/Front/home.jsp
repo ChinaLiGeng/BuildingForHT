@@ -402,14 +402,14 @@
 					<div class="shadow-gradient"></div>
 				</div>
 
-				<div class="white-section section-block">
+				<!-- <div class="white-section section-block" style="display:none">
 					<div class="container">
 						<div class="row">
 							<div class="col-md-offset-2 col-md-8 text-center section-title-wrapper">
 								<h2 class="section-title style-1">Recent News</h2>
 								<p>Nunc in ornare urna. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac<br>turpis egestas. Curabitur rhoncus volutpat eros, vestibulum dapibus.</p>
 							</div>
-						</div> <!-- /.row -->
+						</div> /.row
 						<div class="row">
 							<div class="blog-masonry wow fadeIn" data-wow-duration="0.8s" data-wow-delay="0.6s">
 								<div class="col-md-4 col-xs-12 post-masonry">
@@ -432,7 +432,7 @@
 											<a href="blog-single.html">Continue Reading</a>
 										</div>
 									</article>
-								</div> <!-- /.col-md-4 -->
+								</div> /.col-md-4
 								<div class="col-md-4 col-xs-12 post-masonry">
 									<article class="grid post-entry">
 										<div class="post-image">
@@ -453,7 +453,7 @@
 											<a href="blog-single.html">Continue Reading</a>
 										</div>
 									</article>
-								</div> <!-- /.col-md-4 -->
+								</div> /.col-md-4
 								<div class="col-md-4 col-xs-12 post-masonry">
 									<article class="grid post-entry">
 										<div class="post-image">
@@ -474,12 +474,12 @@
 											<a href="blog-single.html">Continue Reading</a>
 										</div>
 									</article>
-								</div> <!-- /.col-md-4 -->
+								</div> /.col-md-4
 							</div>
-						</div> <!-- /.row -->
+						</div> /.row
 						<div class="small-space"></div>
-					</div> <!-- /.container -->
-				</div> <!-- /.white-section -->
+					</div> /.container
+				</div> --> <!-- /.white-section -->
 
 				<footer class="site-footer">
 					<div class="widgetized-area">
