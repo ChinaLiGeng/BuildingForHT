@@ -6,7 +6,7 @@ public class Assembly {
 	private int typeId;
 	private String assemblyJson;
 	private String number;
-	private int state;    //0表示删除；1表示存在
+	private int state;    //0表示删除；1表示存在说的话
 	private double width;
 	private double heigth;
 	private double weight;
