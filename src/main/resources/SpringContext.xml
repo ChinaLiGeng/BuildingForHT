@@ -17,12 +17,11 @@ http://www.springframework.org/schema/tx/spring-tx.xsd">
     <!-- 搜索spring控件 -->
     <mvc:annotation-driven />
     <mvc:default-servlet-handler/>
-    <context:component-scan base-package="com.HT_building.controller"></context:component-scan>
-    <context:component-scan base-package="com.HT_building.dao"></context:component-scan>
-    <context:component-scan base-package="com.HT_building.daoImpl"></context:component-scan>
-    <context:component-scan base-package="com.HT_building.entity"></context:component-scan>
-    <context:component-scan base-package="com.HT_building.service"></context:component-scan>
-    <context:component-scan base-package="com.HT_building.serviceImpl"></context:component-scan>
+    <context:component-scan base-package="com.BuildingForHT.controller"></context:component-scan>
+    <context:component-scan base-package="com.BuildingForHT.dao"></context:component-scan>
+    <context:component-scan base-package="com.BuildingForHT.daoImpl"></context:component-scan>
+    <context:component-scan base-package="com.BuildingForHT.service"></context:component-scan>
+    <context:component-scan base-package="com.BuildingForHT.serviceImpl"></context:component-scan>
     <context:component-scan base-package="AdminTest"></context:component-scan>
     <context:component-scan base-package="FrontTest"></context:component-scan>
     
@@ -64,7 +63,7 @@ http://www.springframework.org/schema/tx/spring-tx.xsd">
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">  
         <property name="driverClassName" value="com.mysql.jdbc.Driver"></property>  
         <property name="password" value="123456"></property>  
-        <property name="url" value="jdbc:mysql://10.26.230.144:3306/ht_building">
+        <property name="url" value="jdbc:mysql://10.26.230.144:3306/buildingforht">
         </property>  
         <property name="username" value="root"></property>  
      </bean>  
