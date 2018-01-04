@@ -16,7 +16,12 @@ public class ModelServiceImplFront implements ModelServiceFront{
 	@Override
 	public Model getModelDetail(int modelId) {
 		
-//		Model model = modelInstance.
-		return null;
+		Model model = modelInstance.getModelEntity(modelId);
+		
+		if( model != null ) {
+			model.setEffectPic(modelInstance.getEffectPics(modelId));
+			model.setHouseLayout(modelInstance.getHousePics(modelId));
+		}
+		return model;
 	}
 }

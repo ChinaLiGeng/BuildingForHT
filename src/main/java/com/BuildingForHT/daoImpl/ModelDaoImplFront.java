@@ -26,6 +26,7 @@ public class ModelDaoImplFront implements ModelDaoFront{
 		Model model = null;
 		String sql = "select * from model where modelId = ?";
 		Object []params = {modelId};
+		
 		try {
 			model = jdbcTemplate.queryForObject(sql, params, new BeanPropertyRowMapper<Model>(Model.class));
 		}catch (Exception e) {
@@ -37,13 +38,33 @@ public class ModelDaoImplFront implements ModelDaoFront{
 
 	@Override
 	public List<EffectPic> getEffectPics(int modelId) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		List<EffectPic> pics = null;
+		String sql = "select * from effectpic where modelId = ? and state = ?";
+		Object []params = {modelId,1};
+		
+		try {
+			pics = jdbcTemplate.query(sql, params, new BeanPropertyRowMapper(EffectPic.class));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			return pics;
+		}
 	}
 
 	@Override
 	public List<HouseLayout> getHousePics(int modelId) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		List<HouseLayout> pics = null;
+		String sql = "select * from houselayout where modelId = ? and state = ? order by floor";
+		Object []params = {modelId,1};
+		
+		try {
+			pics = jdbcTemplate.query(sql, params, new BeanPropertyRowMapper(HouseLayout.class));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			return pics;
+		}
 	}
 }
