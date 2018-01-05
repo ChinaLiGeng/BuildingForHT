@@ -48,8 +48,8 @@
 					<div class="container">
 						<div class="row">
 							<div class="col-sm-12">
-								<h2>Blog Single</h2>
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+								<h2>一个人，一座城</h2>
+								<p>时间不等人 人心不留人</p>
 							</div>
 						</div>
 					</div>
@@ -64,60 +64,96 @@
 									<div class="post-image">
 										<img width="1100" height="630" src="assets/images/blog-l5.jpg" alt="">
 									</div>
-									<div class="post-content">
-										<h4 class="post-title">Life After the Handover – Interview with Hans Kristian</h4>
-										<div class="post-meta">
-											<span><i class="icon-user"></i> By <a href="blog-single.html">Esmet</a></span>
-											<span><a href="blog-single.html"><i class="icon-speech"></i> 3 Comments</a></span>
+									<div class="post-content" style="background: #f7f7f7;height:60px;margin-bottom:25px;">
+										<ul class="clearfix" style="font-size: 18px;">
+					                        <li class="title-item plan fl active" style="float:left;line-height: 60px;background: rgba(62,130,247,.1);padding-right: 20px;padding-left: 20px">
+					                            <a href="#board-plan" style="color:#3e82f7">设计师</a>
+					                        </li>
+				                            <li class="title-item same-cell fl" style="float:left;margin-left:20px;line-height: 60px;padding-right: 20px;padding-left: 20px">
+				                                <a href="#board-same-cell" style="color:#666">立面图</a>
+				                            </li>
+				                            <li class="title-item same-cell fl" style="float:left;margin-left:20px;line-height: 60px;padding-right: 20px;padding-left: 20px">
+				                                <a href="#board-same-cell" style="color:#666">轴测图</a>
+				                            </li>
+				                            <li class="title-item evaluation fl" style="float:left;margin-left:20px;line-height: 60px;padding-right: 20px;padding-left: 20px">
+					                            <a href="#board-evaluation" style="color:#666">户型图</a>
+					                        </li>
+					                        <li class="title-item evaluation fl" style="float:left;margin-left:20px;line-height: 60px;padding-right: 20px;padding-left: 20px">
+					                            <a href="#board-evaluation" style="color:#666">3d模型</a>
+					                        </li>
+					                        <li class="title-item evaluation fl" style="float:left;margin-left:20px;line-height: 60px;padding-right: 20px;padding-left: 20px">
+					                            <a href="#board-evaluation" style="color:#666">用户评价</a>
+					                        </li>
+					                    </ul>
+									</div>
+									<div class="author-description">
+										<div class="author-avatar">
+											<img src="assets/images/profile-1.jpg" alt="" height="150" width="250">
 										</div>
-										<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Typi non habent claritatem insitam; est usus legentis in iis qui facit eorum claritatem. Investigationes demonstraverunt lectores legere me lius quod ii legunt saepius. Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum. Mirum est notare quam littera</p>
-										<blockquote>
-											Rudiandae nihil ipsum modi explicabo, officiis quas ex natus nostrum dolorum, minus blanditiis at! Adipisci, reprehenderit, sit.
-										</blockquote>
-										<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Typi non habent claritatem insitam; est usus legentis in iis qui facit eorum claritatem. Investigationes demonstraverunt lectores legere me lius quod ii legunt saepius. Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum. Mirum est notare quam littera</p>
-										<div class="tags">
-											Tags:
-											<a href="#" class="tag">interior</a>
-											<a href="#" class="tag">wood</a>
-											<a href="#" class="tag">construction</a>
-											<a href="#" class="tag">house</a>
+										<div class="author-description-text">
+											<h4>James Ford</h4>
+											<span>Architect</span>
+											<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod obcaecati fugit ea quos, id vel ratione similique dolorum neque nam soluta quisquam vero, ab, aut doloremque.</p>
+											<div class="social">
+												<a href="#" class="fa fa-facebook"></a>
+												<a href="#" class="fa fa-twitter"></a>
+												<a href="#" class="fa fa-linkedin"></a>
+											</div>
+										</div>
+									</div>
+									<div class="post-content"  style="margin-bottom:30px;margin-top:30px">
+										<h4 class="post-title" style="margin-bottom:30px;">相关立面图</h4>
+										<div class="post-image" style="width:48%;float: left">
+											<img width="1100px" height="430" src="assets/images/blog-l5.jpg" alt="">
+										</div>
+										<div class="post-image" style="width:48%;float: left;margin-left:25px">
+											<img width="1100px" height="430" src="assets/images/blog-l5.jpg" alt="">
+										</div>
+										<div class="post-image" style="width:48%;float: left">
+											<img width="1100px" height="430" src="assets/images/blog-l5.jpg" alt="">
+										</div>
+										<div class="post-image" style="width:48%;float: left;margin-left:25px">
+											<img width="1100px" height="430" src="assets/images/blog-l5.jpg" alt="">
+										</div>
+									</div>
+									<div class="post-content">
+										<h4 class="post-title" style="margin-bottom:30px">相关轴测图</h4>
+										<div class="post-image" style="width:48%;float: left">
+											<img width="1100px" height="430" src="assets/images/blog-l5.jpg" alt="">
+										</div>
+										<div class="post-image" style="width:48%;float: left;margin-left:25px">
+											<img width="1100px" height="430" src="assets/images/blog-l5.jpg" alt="">
+										</div>
+										<div class="post-image" style="width:48%;float: left">
+											<img width="1100px" height="430" src="assets/images/blog-l5.jpg" alt="">
+										</div>
+										<div class="post-image" style="width:48%;float: left;margin-left:25px">
+											<img width="1100px" height="430" src="assets/images/blog-l5.jpg" alt="">
+										</div>
+									</div>
+									<div class="post-content">
+										<h4 class="post-title" style="margin-bottom:30px">相关户型图</h4>
+										<div class="post-image" style="width:48%;float: left">
+											<img width="1100px" height="430" src="assets/images/blog-l5.jpg" alt="">
+										</div>
+										<div class="post-image" style="width:48%;float: left;margin-left:25px">
+											<img width="1100px" height="430" src="assets/images/blog-l5.jpg" alt="">
+										</div>
+										<div class="post-image" style="width:48%;float: left">
+											<img width="1100px" height="430" src="assets/images/blog-l5.jpg" alt="">
+										</div>
+										<div class="post-image" style="width:48%;float: left;margin-left:25px">
+											<img width="1100px" height="430" src="assets/images/blog-l5.jpg" alt="">
 										</div>
 									</div>
 								</article>
 								<!-- post-entry -->
-								<div class="author-description">
-									<div class="author-avatar">
-										<img src="assets/images/profile-1.jpg" alt="" height="150" width="250">
-									</div>
-									<div class="author-description-text">
-										<h4>James Ford</h4>
-										<span>Architect</span>
-										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod obcaecati fugit ea quos, id vel ratione similique dolorum neque nam soluta quisquam vero, ab, aut doloremque.</p>
-										<div class="social">
-											<a href="#" class="fa fa-facebook"></a>
-											<a href="#" class="fa fa-twitter"></a>
-											<a href="#" class="fa fa-linkedin"></a>
-										</div>
-									</div>
-								</div>
+								
 								<!-- author description -->
-								<div class="blog-single-navigation clearfix">
-									<div class="prev-post">
-										<a href="#">
-											<span class="icon-arrow-left"></span>
-											<h5>Previous Post</h5>
-										</a>
-									</div>
-									<div class="next-post">
-										<a href="#">
-											<h5>Next Post</h5>
-											<span class="icon-arrow-right"></span>
-										</a>
-									</div>
-								</div>
+								
 								<!-- blog-single-navigation -->
 								<div class="comments-wrapper">
-									<h4 class="comment-title">4 Comments</h4>
+									<h4 class="comment-title">4 条评论</h4>
 									<ul class="comment-list">
 										<li>
 											<div class="comment clearfix">
@@ -132,37 +168,7 @@
 												</div>
 											</div>
 
-											<ul class="children">
-												<li>
-													<div class="comment clearfix">
-														<div class="comment-avatar">
-															<img src="assets/images/profile-2.jpg" alt="">
-														</div>
-														<div class="comment-content">
-															<h5>Gregory Brand</h5>
-															<span class="comment-time">July 19, 2016 at 1:54 pm</span>
-															<p>Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit.</p>
-															<a href="#" class="reply"><span class="fa fa-reply"></span> Reply</a>
-														</div>
-													</div>
-												</li>
-
-												<ul class="children">
-													<li>
-														<div class="comment clearfix">
-															<div class="comment-avatar">
-																<img src="assets/images/profile-2.jpg" alt="">
-															</div>
-															<div class="comment-content">
-																<h5>Gregory Brand</h5>
-																<span class="comment-time">July 19, 2016 at 1:54 pm</span>
-																<p>Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit.</p>
-																<a href="#" class="reply"><span class="fa fa-reply"></span> Reply</a>
-															</div>
-														</div>
-													</li>
-												</ul>
-											</ul>
+											
 
 											<li>
 												<div class="comment clearfix">
@@ -181,9 +187,23 @@
 										</li>
 									</ul>
 								</div>
+								<div class="row">
+									<div class="col-sm-12">
+										<div class="blog-pagination">
+											<ul>
+												<li><a href="#"><span class="fa fa-angle-left"></span></a></li>
+												<li class="active"><a href="#">1</a></li>
+												<li><a href="#">2</a></li>
+												<li><a href="#">3</a></li>
+												<li><a href="#">4</a></li>
+												<li><a href="#"><span class="fa fa-angle-right"></span></a></li>
+											</ul>
+										</div>
+									</div>
+								</div>
 								<!-- comments-wrapper -->
-								<div class="comment-form">
-									<h4 class="comment-title">Leave a comment</h4>
+								<div class="comment-form" style="margin-top:30px">
+									<h4 class="comment-title">快来评论吧</h4>
 									<form action="#" class="comment-form">
 										<div class="row">
 											<div class="col-sm-12">
@@ -200,7 +220,7 @@
 											</div>
 										</div>
 										<button type="submit" name="send" class="button default">
-											<span class="pre-submit">Comment</span>
+											<span class="pre-submit">评论</span>
 										</button>
 									</form>
 								</div>
@@ -209,26 +229,51 @@
 							<!-- Sidebar -->
 							<div class="col-md-4 col-sm-12">
 								<div class="blog-sidebar">
-									<div class="widget search-form">
+									<!-- <div class="widget search-form">
 										<h4 class="widget-title">Search</h4>
 										<form method="get" id="searchform" action="">
 											<input type="text" class="form-control" placeholder="Search" name="s" id="s">
 											<input type="submit" id="searchsubmit" value="U">
 										</form>
-									</div>
+									</div> -->
 									<!-- widget -->
 									<div class="widget latest-posts">
-										<h4 class="widget-title">Latest Posts</h4>
-										<ul>
+										<h4 class="widget-title">一个人，一座城</h4>
+										
+										<table style="margin-left:-20px">
+										<tbody>
+										  <tr>
+										    <td>建筑面积</td>
+										    <td>1170.0平方米</td>
+										  </tr>
+										  <tr>
+										  	<td>用地面积</td>
+										  	<td>2000.0平方米</td>
+										  </tr>
+										  <tr>
+										  	<td>楼层</td>
+										  	<td>3层</td>
+										  </tr>
+										  <tr>
+										  	<td>设计费</td>
+										  	<td>600¥</td>
+										  </tr>
+										  <tr>
+										  	<td>创建时间</td>
+										  	<td>2017-05-04</td>
+										  </tr>
+									  </tbody>
+									</table>
+									<!-- <ul>
 											<li><a href="#">Top 14 Most Common Mistakes</a><span>14 December, 2015</span></li>
 											<li><a href="#">Life After the Handover</a><span>14 December, 2015</span></li>
 											<li><a href="#">This is a Blog Post Quote</a><span>14 December, 2015</span></li>
 											<li><a href="#">Interview with Hans Kristian</a><span>14 December, 2015</span></li>
-										</ul>
+										</ul> -->
 									</div>
 									<!-- widget -->
 									<div class="widget">
-										<h4 class="widget-title">Projects</h4>
+										<h4 class="widget-title">相似案例</h4>
 										<div class="small-projects clearfix">
 											<a href="project-single.html" class="thumb">
 												<img src="assets/images/small-1.jpg" alt="">
@@ -251,7 +296,7 @@
 										</div>
 									</div>
 									<!-- widget -->
-									<div class="widget">
+									<!-- <div class="widget">
 										<h4 class="widget-title">Categories</h4>
 										<ul>
 											<li><a href="#">Decoration</a></li>
@@ -262,7 +307,7 @@
 											<li><a href="#">Wood Working</a></li>
 										</ul>
 									</div>
-									<!-- widget -->
+									widget
 									<div class="widget">
 										<h4 class="widget-title">Archives</h4>
 										<ul>
@@ -274,7 +319,7 @@
 											<li><a href="#">April 2016</a></li>
 											<li><a href="#">March 2016</a></li>
 										</ul>
-									</div>
+									</div> -->
 								</div>
 							</div>
 						</div>
