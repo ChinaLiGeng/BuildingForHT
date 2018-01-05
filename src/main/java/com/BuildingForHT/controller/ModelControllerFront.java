@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.BuildingForHT.entity.Model;
 import com.BuildingForHT.entity.ModelComment;
@@ -32,19 +33,19 @@ public class ModelControllerFront {
 	 */
 	@RequestMapping(value = "/det.final" , method = RequestMethod.GET)
 	@ResponseBody
-	public Response getModelDetail(int modelId) {
+	public ModelAndView getModelDetail(int modelId) {
 		
-		Response response = new Response();
+		ModelAndView mav = new ModelAndView();
 		Model model = null;
 		
 		try {
 			model = modelInstance.getModelDetail(modelId);
-			response.success(model);
+			mav.addObject(model);
+			mav.setViewName("forward:../../Front/ModelDetail/ModelDetail.jsp");
 		}catch (Exception e) {
-			response.failure("·þÎñÆ÷´íÎó");
 			e.printStackTrace();
 		}finally {
-			return response;
+			return mav;
 		}
 	}
 	

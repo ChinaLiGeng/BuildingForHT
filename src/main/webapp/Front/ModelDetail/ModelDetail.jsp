@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
 <%
     String path = request.getContextPath();
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()+path+ "/";
@@ -48,8 +49,8 @@
 					<div class="container">
 						<div class="row">
 							<div class="col-sm-12">
-								<h2>一个人，一座城</h2>
-								<p>时间不等人 人心不留人</p>
+								<h2>${model.name}</h2>
+								<p>${model.introduction}</p>
 							</div>
 						</div>
 					</div>
@@ -62,16 +63,13 @@
 							<div class="col-md-8 col-sm-12">
 								<article class="post-entry">
 									<div class="post-image">
-										<img width="1100" height="630" src="assets/images/blog-l5.jpg" alt="">
+										<img width="1100" height="630" src="../Pic/Main/${model.mainPic}" alt="">
 									</div>
 									<div class="post-content" style="background: #f7f7f7;height:60px;margin-bottom:25px;">
 										<ul class="clearfix" style="font-size: 18px;">
 					                        <li class="title-item plan fl active" style="float:left;line-height: 60px;background: rgba(62,130,247,.1);padding-right: 20px;padding-left: 20px">
 					                            <a href="#board-plan" style="color:#3e82f7">设计师</a>
 					                        </li>
-				                            <li class="title-item same-cell fl" style="float:left;margin-left:20px;line-height: 60px;padding-right: 20px;padding-left: 20px">
-				                                <a href="#board-same-cell" style="color:#666">立面图</a>
-				                            </li>
 				                            <li class="title-item same-cell fl" style="float:left;margin-left:20px;line-height: 60px;padding-right: 20px;padding-left: 20px">
 				                                <a href="#board-same-cell" style="color:#666">轴测图</a>
 				                            </li>
@@ -88,12 +86,12 @@
 									</div>
 									<div class="author-description">
 										<div class="author-avatar">
-											<img src="assets/images/profile-1.jpg" alt="" height="150" width="250">
+											<img src="../Pic/User/${model.user.userPic}" alt="" height="150" width="250">
 										</div>
 										<div class="author-description-text">
-											<h4>James Ford</h4>
+											<h4>${model.user.userName}</h4>
 											<span>Architect</span>
-											<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod obcaecati fugit ea quos, id vel ratione similique dolorum neque nam soluta quisquam vero, ab, aut doloremque.</p>
+											<p>${model.user.info}</p>
 											<div class="social">
 												<a href="#" class="fa fa-facebook"></a>
 												<a href="#" class="fa fa-twitter"></a>
@@ -101,50 +99,46 @@
 											</div>
 										</div>
 									</div>
-									<div class="post-content"  style="margin-bottom:30px;margin-top:30px">
-										<h4 class="post-title" style="margin-bottom:30px;">相关立面图</h4>
-										<div class="post-image" style="width:48%;float: left">
-											<img width="1100px" height="430" src="assets/images/blog-l5.jpg" alt="">
-										</div>
-										<div class="post-image" style="width:48%;float: left;margin-left:25px">
-											<img width="1100px" height="430" src="assets/images/blog-l5.jpg" alt="">
-										</div>
-										<div class="post-image" style="width:48%;float: left">
-											<img width="1100px" height="430" src="assets/images/blog-l5.jpg" alt="">
-										</div>
-										<div class="post-image" style="width:48%;float: left;margin-left:25px">
-											<img width="1100px" height="430" src="assets/images/blog-l5.jpg" alt="">
-										</div>
-									</div>
 									<div class="post-content">
 										<h4 class="post-title" style="margin-bottom:30px">相关轴测图</h4>
-										<div class="post-image" style="width:48%;float: left">
-											<img width="1100px" height="430" src="assets/images/blog-l5.jpg" alt="">
-										</div>
-										<div class="post-image" style="width:48%;float: left;margin-left:25px">
-											<img width="1100px" height="430" src="assets/images/blog-l5.jpg" alt="">
-										</div>
-										<div class="post-image" style="width:48%;float: left">
-											<img width="1100px" height="430" src="assets/images/blog-l5.jpg" alt="">
-										</div>
-										<div class="post-image" style="width:48%;float: left;margin-left:25px">
-											<img width="1100px" height="430" src="assets/images/blog-l5.jpg" alt="">
-										</div>
+										
+										<c:forEach items="${model.effectPic}" var="ele">
+											<%-- <div class="post-image" style="width:49.7%;float: left;padding-left:15px;padding-right:15px">
+												<img width="1100px" height="430" src="../Pic/Side/${ele.pic}" alt="">
+											</div> --%>
+											<div class="col-md-6">
+												<div class="image-holder" style="width:100%;float: left;padding-left:15px;padding-right:15px;margin-bottom:20px">
+													<a href="../Pic/Side/${ele.pic}" class="lightbox"  data-lightbox-gallery="gallery1">
+														<img src="../Pic/Side/${ele.pic}" alt="">
+														<div class="project-overlay">
+															<span class="link-holder">
+																<i class="icon-eye"></i>
+															</span>
+														</div>
+													</a>
+												</div>
+											</div>
+										</c:forEach>
 									</div>
 									<div class="post-content">
 										<h4 class="post-title" style="margin-bottom:30px">相关户型图</h4>
-										<div class="post-image" style="width:48%;float: left">
-											<img width="1100px" height="430" src="assets/images/blog-l5.jpg" alt="">
-										</div>
-										<div class="post-image" style="width:48%;float: left;margin-left:25px">
-											<img width="1100px" height="430" src="assets/images/blog-l5.jpg" alt="">
-										</div>
-										<div class="post-image" style="width:48%;float: left">
-											<img width="1100px" height="430" src="assets/images/blog-l5.jpg" alt="">
-										</div>
-										<div class="post-image" style="width:48%;float: left;margin-left:25px">
-											<img width="1100px" height="430" src="assets/images/blog-l5.jpg" alt="">
-										</div>
+										<c:forEach items="${model.houseLayout}" var="ele">
+											<%-- <div class="post-image" style="width:49.7%;float: left;padding-left:15px;padding-right:15px">
+												<img width="1100px" height="430" src="../Pic/Layout/${ele.pic}" alt="">
+											</div> --%>
+											<div class="col-md-6">
+												<div class="image-holder" style="width:100%;float: left;padding-left:15px;padding-right:15px;margin-bottom:20px">
+													<a href="../Pic/Layout/${ele.pic}" class="lightbox"  data-lightbox-gallery="gallery1">
+														<img src="../Pic/Layout/${ele.pic}" alt="">
+														<div class="project-overlay">
+															<span class="link-holder">
+																<i class="icon-eye"></i>
+															</span>
+														</div>
+													</a>
+												</div>
+											</div>
+										</c:forEach>
 									</div>
 								</article>
 								<!-- post-entry -->
@@ -152,7 +146,7 @@
 								<!-- author description -->
 								
 								<!-- blog-single-navigation -->
-								<div class="comments-wrapper">
+								<div class="comments-wrapper" style="clear: both;">
 									<h4 class="comment-title">4 条评论</h4>
 									<ul class="comment-list">
 										<li>
@@ -167,9 +161,6 @@
 													<a href="#" class="reply"><span class="fa fa-reply"></span> Reply</a>
 												</div>
 											</div>
-
-											
-
 											<li>
 												<div class="comment clearfix">
 												<div class="comment-avatar">
@@ -238,29 +229,29 @@
 									</div> -->
 									<!-- widget -->
 									<div class="widget latest-posts">
-										<h4 class="widget-title">一个人，一座城</h4>
+										<h4 class="widget-title">${model.name}</h4>
 										
 										<table style="margin-left:-20px">
 										<tbody>
 										  <tr>
 										    <td>建筑面积</td>
-										    <td>1170.0平方米</td>
+										    <td>${model.buildingArea}平方米</td>
 										  </tr>
 										  <tr>
 										  	<td>用地面积</td>
-										  	<td>2000.0平方米</td>
+										  	<td>${model.landArea}平方米</td>
 										  </tr>
 										  <tr>
 										  	<td>楼层</td>
-										  	<td>3层</td>
+										  	<td>${model.floorNumber}层</td>
 										  </tr>
 										  <tr>
 										  	<td>设计费</td>
-										  	<td>600¥</td>
+										  	<td>${model.designFee}¥</td>
 										  </tr>
 										  <tr>
 										  	<td>创建时间</td>
-										  	<td>2017-05-04</td>
+										  	<td>${model.createTime}</td>
 										  </tr>
 									  </tbody>
 									</table>
@@ -331,6 +322,7 @@
 			</div> <!-- /.main-wrapper -->
 			
 		</div> <!-- /.site-wrapper -->
+		
 
 		<script src="assets/js/jquery.min.js"></script>
 		<script src="assets/js/joinable/animsition.min.js"></script>

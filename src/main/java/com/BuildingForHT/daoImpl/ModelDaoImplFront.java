@@ -45,8 +45,8 @@ public class ModelDaoImplFront implements ModelDaoFront{
 	public List<EffectPic> getEffectPics(int modelId) {
 		
 		List<EffectPic> pics = null;
-		String sql = "select * from effectpic where modelId = ? and state = ?";
-		Object []params = {modelId,1};
+		String sql = "select * from effectpic where modelId = ? and state = ? and type = ?";
+		Object []params = {modelId,1,2};
 		
 		try {
 			pics = jdbcTemplate.query(sql, params, new BeanPropertyRowMapper(EffectPic.class));
