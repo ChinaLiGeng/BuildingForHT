@@ -1,6 +1,8 @@
 package com.BuildingForHT.daoImpl;
 
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +14,8 @@ import com.BuildingForHT.dao.ModelDaoFront;
 import com.BuildingForHT.entity.EffectPic;
 import com.BuildingForHT.entity.HouseLayout;
 import com.BuildingForHT.entity.Model;
+import com.BuildingForHT.entity.ModelComment;
+import com.BuildingForHT.entity.User;
 
 @Repository
 @SuppressWarnings("finally")
@@ -41,8 +45,8 @@ public class ModelDaoImplFront implements ModelDaoFront{
 	public List<EffectPic> getEffectPics(int modelId) {
 		
 		List<EffectPic> pics = null;
-		String sql = "select * from effectpic where modelId = ? and state = ?";
-		Object []params = {modelId,1};
+		String sql = "select * from effectpic where modelId = ? and state = ? and type = ?";
+		Object []params = {modelId,1,2};
 		
 		try {
 			pics = jdbcTemplate.query(sql, params, new BeanPropertyRowMapper(EffectPic.class));
@@ -107,6 +111,77 @@ public class ModelDaoImplFront implements ModelDaoFront{
 		  
 		   System.out.println(sql);
 		   result = jdbcTemplate.queryForObject(sql,Integer.class);
+		return result;
+	}
+
+	@Override
+	public User user(int userId) {
+		
+		User user = null;
+		String sql = "select * from User where userId = ?";
+		Object []params = {userId};
+		
+		try {
+			user = jdbcTemplate.queryForObject(sql, params, new BeanPropertyRowMapper<User>(User.class));
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			return user;
+		}
+	}
+
+	@Override
+	public List<ModelComment> getCommentsByModel(int modelId) {
+		
+		List<ModelComment> comments = null;
+		String sql = "select model_comment.*,userName,userPic from model_comment,user where model_comment.userId = user.userId and  modelId = ? and state = ?";
+		Object []params = {modelId,1};
+		
+		try {
+			comments = jdbcTemplate.query(sql, params, new BeanPropertyRowMapper(ModelComment.class));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			return comments;
+		}
+	}
+
+	@Override
+	public int createComment(ModelComment comment) {
+		
+		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		String time = df.format(new Date());
+		
+		String sql = "insert into model_comment(modelId,userId,state,context,createTime) values(?,?,?,?,?)";
+		Object []params = {comment.getModelId(),comment.getUserId(),1,comment.getContext(),time};
+		
+		return jdbcTemplate.update(sql,params);
+	}
+
+	@Override
+	public List<Model> findSimilarModel(int floor, double area) {
+		
+		List<Model> models = null;
+		String sql = "select * from model where floorNumber = ? and state = ? and ( (buildingArea<=?+50) and (buildingArea>=?-50) )";
+		Object []params = {floor,1,area,area};
+		
+		try {
+			models = jdbcTemplate.query(sql, params, new BeanPropertyRowMapper(Model.class));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			return models;
+		}
+	}
+
+	@Override
+	public int getCommentNumbers(int modelId) {
+		
+		int  result = 0;
+		String sql = "select count(*) from model_comment,user where model_comment.userId = user.userId and  modelId = ? and state = ?";
+		Object []params = {modelId,1};
+	  
+		result = jdbcTemplate.queryForObject(sql,params,Integer.class);
 		return result;
 	}
 	
