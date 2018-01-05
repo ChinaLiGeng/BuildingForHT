@@ -22,8 +22,10 @@ public class Model {
 	private List<EffectPic> effectPic;
 	private List<HouseLayout> houseLayout;
 	private List<ModelAssembly> modelAss;
+	private User user;
 	private String name;
 	private String introduction;
+	
 	public String getName() {
 		return name;
 	}
@@ -183,6 +185,14 @@ public class Model {
 	public void setModelAss(List<ModelAssembly> modelAss) {
 		this.modelAss = modelAss;
 	}
+	
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
 
 	@Override
 	public String toString() {
@@ -191,8 +201,7 @@ public class Model {
 				+ ", createTime=" + createTime + ", objPath=" + objPath + ", mtlPath=" + mtlPath + ", quoteModel="
 				+ quoteModel + ", suggestion=" + suggestion + ", designFee=" + designFee + ", mainPic=" + mainPic
 				+ ", designState=" + designState + ", effectPic=" + effectPic + ", houseLayout=" + houseLayout
-				+ ", modelAss=" + modelAss + ", name=" + name + ", introduction=" + introduction + "]";
+				+ ", modelAss=" + modelAss + ", user=" + user + ", name=" + name + ", introduction=" + introduction
+				+ "]";
 	}
-
-	
 }

@@ -19,6 +19,8 @@ public class User {
 	private String userSex;  //ÄÐ/Å®
 	private String userPic;
 	private String address;
+	private String info;
+	private String userName;
 	
 	public String updateSql() {
 		StringBuffer strb = new StringBuffer();
@@ -110,12 +112,28 @@ public class User {
 	public void setAddress(String address) {
 		this.address = address;
 	}
+	
+	public String getInfo() {
+		return info;
+	}
+
+	public void setInfo(String info) {
+		this.info = info;
+	}
+	
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
 
 	@Override
 	public String toString() {
 		return "User [userId=" + userId + ", userAccount=" + userAccount + ", userPassword=" + userPassword
 				+ ", userEmail=" + userEmail + ", userPhone=" + userPhone + ", userState=" + userState + ", idCard="
-				+ idCard + ", userSex=" + userSex + ", userPic=" + userPic + ", address=" + address + "]";
+				+ idCard + ", userSex=" + userSex + ", userPic=" + userPic + ", address=" + address + ", info=" + info
+				+ ", userName=" + userName + "]";
 	}
-
 }

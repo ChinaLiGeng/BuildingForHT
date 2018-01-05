@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.BuildingForHT.entity.Model;
+import com.BuildingForHT.entity.ModelComment;
 import com.BuildingForHT.jsonFormat.Response;
 import com.BuildingForHT.service.ModelServiceFront;
 
@@ -46,6 +47,7 @@ public class ModelControllerFront {
 			return response;
 		}
 	}
+	
 	/**
 	 * 
 	* @Title: getModList 
@@ -93,5 +95,90 @@ public class ModelControllerFront {
 			   e.printStackTrace();
 		     }
 		return response;
+	}
+
+	/**
+	 * 
+	 * @Method：getModelComment
+	 * @Description：find a model's comments
+	 * @author：Snail
+	 * @date：2018年1月5日 下午3:59:24
+	 * @return：Response
+	 */
+	@RequestMapping(value = "/comm.final" , method = RequestMethod.GET)
+	@ResponseBody
+	public Response getModelComment(int modelId) {
+		
+		Response response = new Response();
+		List<ModelComment> comments = null;
+		int number = 0;
+		
+		try {
+			comments = modelInstance.getCommentsByModel(modelId);
+			number = modelInstance.getCommentNumbers(modelId);
+			response.success(comments,number);
+		}catch (Exception e) {
+			response.failure("服务器错误");
+			e.printStackTrace();
+		}finally {
+			return response;
+		}
+	}
+	
+	/**
+	 * 
+	 * @Method：getSimilarModel
+	 * @Description：get similar models
+	 * @author：Snail
+	 * @date：2018年1月5日 下午4:45:44
+	 * @return：Response
+	 */
+	@RequestMapping(value = "/simi.final" , method = RequestMethod.GET)
+	@ResponseBody
+	public Response getSimilarModel(int floor,double area) {
+		
+		Response response = new Response();
+		List<Model> models = null;
+		
+		try {
+			models = modelInstance.findSimilarModel(floor, area);
+			response.success(models);
+		}catch (Exception e) {
+			response.failure("服务器错误");
+			e.printStackTrace();
+		}finally {
+			return response;
+		}
+	}
+	
+	/**
+	 * 
+	 * @Method：createModelComment
+	 * @Description：create model comment
+	 * @author：Snail
+	 * @date：2018年1月5日 下午4:48:28
+	 * @return：Response
+	 */
+	@RequestMapping(value = "/creaComm.final" , method = RequestMethod.POST)
+	@ResponseBody
+	public Response createModelComment(ModelComment comment) {
+		
+		Response response = new Response();
+		boolean result = false;
+		
+		try {
+			result = modelInstance.createComment(comment);
+			
+			if( result == true) {
+				response.success();
+			}else {
+				response.failure();
+			}
+		}catch (Exception e) {
+			response.failure("服务器错误");
+			e.printStackTrace();
+		}finally {
+			return response;
+		}
 	}
 }
