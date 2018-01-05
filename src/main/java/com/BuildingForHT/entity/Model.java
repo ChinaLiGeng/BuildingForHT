@@ -22,7 +22,24 @@ public class Model {
 	private List<EffectPic> effectPic;
 	private List<HouseLayout> houseLayout;
 	private List<ModelAssembly> modelAss;
-	
+	private String name;
+	private String introduction;
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getIntroduction() {
+		return introduction;
+	}
+
+	public void setIntroduction(String introduction) {
+		this.introduction = introduction;
+	}
+
 	public int getModelId() {
 		return modelId;
 	}
@@ -174,6 +191,8 @@ public class Model {
 				+ ", createTime=" + createTime + ", objPath=" + objPath + ", mtlPath=" + mtlPath + ", quoteModel="
 				+ quoteModel + ", suggestion=" + suggestion + ", designFee=" + designFee + ", mainPic=" + mainPic
 				+ ", designState=" + designState + ", effectPic=" + effectPic + ", houseLayout=" + houseLayout
-				+ ", modelAss=" + modelAss + "]";
+				+ ", modelAss=" + modelAss + ", name=" + name + ", introduction=" + introduction + "]";
 	}
+
+	
 }

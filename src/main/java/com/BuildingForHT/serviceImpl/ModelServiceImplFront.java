@@ -1,5 +1,8 @@
 package com.BuildingForHT.serviceImpl;
 
+import java.sql.SQLException;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,4 +27,23 @@ public class ModelServiceImplFront implements ModelServiceFront{
 		}
 		return model;
 	}
+	@Override
+    public List<Model> getModList() throws SQLException{
+    	List<Model> models= null;
+    	    models =  modelInstance.getModList();
+    	return models;
+    }
+    @Override
+    public List<Model> getModAllList(int page, int area, int floor) throws SQLException{
+    	List<Model> models= null;
+	         models =  modelInstance.getModAllList(page, area, floor);
+	    return models;
+    	
+    }
+   @Override
+    public int getModNum(int area, int floor) throws SQLException{
+    	int result = 0;
+    	      result = modelInstance.getModNum(area, floor);
+    	return result;
+    }
 }

@@ -291,7 +291,43 @@
 						<div class="mid-space"></div>
 					</div> <!-- /.container -->
 				</div> <!-- /.grey-section -->
-
+                
+                <!-- 列表 -->
+          <div class="page-content">
+                <div class="container">
+					<div class="row">
+						<div class="col-sm-12 text-center">
+							<ul class="projects-filter">
+								<li><strong>最新模型</strong></li>
+							</ul>
+						</div>
+					</div>
+					<div class="mid-space"></div>
+                
+                    <div class="row projects-grid" id="modelList">
+						<!-- <div class="col-sm-6 col-md-3 project-item nature">
+								<article class="project-entry-1 wow fadeInCdb" data-wow-duration="0.7s" data-wow-delay="0.6s">
+									<div class="image-holder">
+										<a href="project-single.html">
+											<img width="800" height="500" src="assets/images/project-3.jpg" alt="">
+											<h2 class="project-title">Best Constructed</h2>
+											<span class="project-overlay"></span>
+											<span class="overlay-triangle"></span>
+										</a>
+									</div>
+								</article>
+							</div> -->
+							
+			        </div>
+						
+					<div class="row"><div class="col-sm-12 text-center"><a href="#" class="button big default">更多....</a> </div>
+				     </div>
+						
+					<div class="mid-space"></div>
+			  </div>	
+            </div>
+                <!--列表结束  -->
+                
 				<div class="white-section section-block">
 					<div class="container">
 						<div class="row">
@@ -506,11 +542,11 @@
 				
 			</div> <!-- /.main-wrapper -->
 			
-		</div> <!-- /.site-wrapper -->
+		  </div> <!-- /.site-wrapper -->
 		</div>
 
-		
-		 <script src="assets/js/jquery.min.js"></script>
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="js/home.js"></script>
 		<script src="assets/js/joinable/animsition.min.js"></script>
 		<script src="assets/js/joinable/autogrow.min.js"></script>
 		<script src="assets/js/joinable/hoverIntent.js"></script>

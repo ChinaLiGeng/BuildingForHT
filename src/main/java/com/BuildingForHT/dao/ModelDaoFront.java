@@ -1,5 +1,6 @@
 package com.BuildingForHT.dao;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import com.BuildingForHT.entity.EffectPic;
@@ -37,4 +38,34 @@ public interface ModelDaoFront {
 	 * @return：List<HouseLayout>
 	 */
 	List<HouseLayout> getHousePics(int modelId);
+	/**
+	 * 
+	* @Title: getModList 
+	* @Description: TODO
+	* @date 2018年1月5日 下午12:55:41 
+	* @return List<Model> 
+	* @author Ligeng    
+	* @throws
+	 */
+	List<Model> getModList() throws SQLException;
+	/**
+	 * 
+	* @Title: getModAllList 
+	* @Description: TODO
+	* @date 2018年1月5日 下午12:55:48 
+	* @return List<Model> 
+	* @author Ligeng    
+	* @throws
+	 */
+	List<Model> getModAllList(int page, int area, int floor) throws SQLException;
+	/**
+	 * 
+	* @Title: getModNum 
+	* @Description: TODO
+	* @date 2018年1月5日 下午1:10:19 
+	* @return int 
+	* @author Ligeng    
+	* @throws
+	 */
+	int getModNum(int area, int floor) throws SQLException;
 }
