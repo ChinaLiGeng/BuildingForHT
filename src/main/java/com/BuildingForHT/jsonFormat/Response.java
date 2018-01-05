@@ -12,12 +12,12 @@ package com.BuildingForHT.jsonFormat;
 	}
  *
  */
+
 public class Response {
 	
 	private Meta meta;  
 	private Object data;  
-	private int number;  
-	
+	private int number;
     public Response success() {  
         this.meta = new Meta(true);  
         return this;  
@@ -53,10 +53,22 @@ public class Response {
     public Object getData() {  
         return data;  
     }
+    
+	public int getNumber() {
+		return number;
+	}
+
+	public void setNumber(int number) {
+		this.number = number;
+	}
 
 	@Override
 	public String toString() {
-		return "Response [meta=" + meta + ", data=" + data + "]";
-	} 
+		return "Response [meta=" + meta + ", data=" + data + ", number=" + number + "]";
+	}
+
+	
+
+	
 }
 

@@ -4,7 +4,6 @@ public class Meta {
 
 	private boolean isSuccess;         //成功标志
 	private String message;            //错误信息
-	
 	Meta( boolean isSuccess ){                   //成功
 		this.isSuccess = isSuccess;
 	}
@@ -13,7 +12,7 @@ public class Meta {
 		this.isSuccess = isSuccess;
 		this.message = message;
 	}
-
+	
 	public boolean isSuccess() {
 		return isSuccess;
 	}

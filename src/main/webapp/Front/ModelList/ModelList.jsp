@@ -6,6 +6,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<base href = "<%=basePath%>Front/">
@@ -60,10 +61,10 @@
 						<div class="col-sm-12" style="float: left">
 							<ul class="projects-filter">
 								<li>面积</li>
-								 <li><a href="#" data-filter="*" class="active">全部</a></li>   
-								<li><a href="#" data-filter=".building">100平方</a></li>
-								<li><a href="#" data-filter=".furniture">100-150平方</a></li>
-								<li><a href="#" data-filter=".nature">150-200平方</a></li>
+								 <li><a href="#" data-filter="*" class="active" onclick="getArea(0)">全部</a></li>   
+								<li><a href="#" data-filter=".building" onclick="getArea(75)">50-100平方</a></li>
+								<li><a href="#" data-filter=".furniture" onclick="getArea(125)">100-150平方</a></li>
+								<li><a href="#" data-filter=".nature" onclick="getArea(175)">150-200平方</a></li>
 							</ul>
 						</div>
 					</div>
@@ -71,28 +72,17 @@
 						<div class="col-sm-12" style="float: left">
 							<ul class="projects-filter">
 								<li>楼层</li>
-								 <li><a href="#" data-filter="*" class="active">全部</a></li>   
-								<li><a href="#" data-filter=".building">2层</a></li>
-								<li><a href="#" data-filter=".furniture">3层</a></li>
-								<li><a href="#" data-filter=".nature">4层</a></li>
-								<li><a href="#" data-filter=".nature">4层以上</a></li>
+								 <li><a href="#" data-filter="*" class="active" onclick="getNumber(0)">全部</a></li>   
+								<li><a href="#" data-filter=".building" onclick="getNumber(2)">2层</a></li>
+								<li><a href="#" cursor="pointer" data-filter=".furniture" onclick="getNumber(3)">3层</a></li>
+								<li><a href="#" data-filter=".nature" onclick="getNumber(4)">4层</a></li>
+								<li><a href="#" data-filter=".nature" onclick="getNumber(5)">5层</a></li>
 							</ul>
 						</div>
 					</div>
 					<div class="mid-space"></div>
-						<div class="row projects-grid">
-							<div class="col-sm-6 col-md-3 project-item building">
-								<article class="project-entry-1 wow fadeInCdb" data-wow-duration="0.7s" data-wow-delay="0.3s">
-									<div class="image-holder">
-										<a href="project-single.html">
-											<img width="800" height="500" src="assets/images/project-1.jpg" alt="">
-											<h2 class="project-title">Opera House</h2>
-											<span class="project-overlay"></span>
-											<span class="overlay-triangle"></span>
-										</a>
-									</div>
-								</article>
-							</div>
+						<div class="row projects-grid" id="list">
+							
 							
 						</div>
 					<div class="small-space"></div>
@@ -101,13 +91,13 @@
 							<div class="eow">
 								<div class="col-sm-12">
 									<div class="blog-pagination">
-										<ul>
-											<li><a href="#"><span class="fa fa-angle-left"></span></a></li>
+										<ul id="page">
+											<!-- <li><a href="#"><span class="fa fa-angle-left"></span></a></li>
 											<li class="active"><a href="#">1</a></li>
 											<li><a href="#">2</a></li>
 											<li><a href="#">3</a></li>
 											<li><a href="#">4</a></li>
-											<li><a href="#"><span class="fa fa-angle-right"></span></a></li>
+											<li><a href="#"><span class="fa fa-angle-right"></span></a></li> -->
 										</ul>
 									</div>
 								</div>

@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -82,12 +83,14 @@ public class ModelControllerFront {
 	@ResponseBody
 	public Response getModAllList(int page, int area, int floor){
 		Response response = new Response();
+		System.out.println(page);
 		    List<Model> models = null;
 		    try {
 			   models =  modelInstance.getModAllList(page, area, floor);
 			   System.out.println(models);
 			   int number = modelInstance.getModNum(area, floor);
 			   response.success(models,number);
+			   System.out.println(response);
 		      } catch (SQLException e) {
 			// TODO Auto-generated catch block
 			   e.printStackTrace();
