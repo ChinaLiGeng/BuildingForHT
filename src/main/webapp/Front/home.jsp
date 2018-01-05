@@ -305,18 +305,7 @@
 					<div class="mid-space"></div>
                 
                     <div class="row projects-grid" id="modelList">
-						<!-- <div class="col-sm-6 col-md-3 project-item nature">
-								<article class="project-entry-1 wow fadeInCdb" data-wow-duration="0.7s" data-wow-delay="0.6s">
-									<div class="image-holder">
-										<a href="project-single.html">
-											<img width="800" height="500" src="assets/images/project-3.jpg" alt="">
-											<h2 class="project-title">Best Constructed</h2>
-											<span class="project-overlay"></span>
-											<span class="overlay-triangle"></span>
-										</a>
-									</div>
-								</article>
-							</div> -->
+						
 							
 			        </div>
 						
