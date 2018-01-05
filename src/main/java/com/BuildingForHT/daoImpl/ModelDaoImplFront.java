@@ -84,7 +84,6 @@ public class ModelDaoImplFront implements ModelDaoFront{
     
 	@Override
 	public List<Model> getModAllList(int page, int area, int floor) throws SQLException{
-		
 		List<Model> models = null;
 		   int staPage = (page - 1)*15;
 		   String sql = "select * from model where state = 1 ";

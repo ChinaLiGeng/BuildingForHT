@@ -82,7 +82,7 @@ public class ModelControllerFront {
 	 */
 	@RequestMapping(value = "/modelAllList", method = RequestMethod.POST)
 	@ResponseBody
-	public Response getModAllList(int page, int area, int floor,int style){
+	public Response getModAllList(int page, int area, int floor){
 		Response response = new Response();
 		    List<Model> models = null;
 		    try {
