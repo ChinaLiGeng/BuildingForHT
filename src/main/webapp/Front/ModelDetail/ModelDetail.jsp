@@ -337,6 +337,9 @@
 		<script src="assets/js/joinable/superfish.js"></script>
 		<script src="assets/js/joinable/wow.min.js"></script>
 		<script src="assets/js/main.js"></script>
-		 
+		<script src="ModelDetail/model_detail.js"></script>
+		<script type="text/javascript">
+			var modelId = ${model.modelId};
+		</script>
 	</body>
 </html>
