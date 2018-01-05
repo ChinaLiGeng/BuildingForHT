@@ -85,7 +85,7 @@ public class ModelDaoImplFront implements ModelDaoFront{
 	@Override
 	public List<Model> getModAllList(int page, int area, int floor) throws SQLException{
 		List<Model> models = null;
-		   int staPage = (page - 1)*15;
+		   int staPage = (page - 1)*12;
 		   String sql = "select * from model where state = 1 ";
 		   if(area != 0){
 			   sql += "and landArea > "+(area-25)+" and landArea <= "+(area+25)+" ";
@@ -93,7 +93,7 @@ public class ModelDaoImplFront implements ModelDaoFront{
 		   if( floor !=0 ){
 			   sql += "and floorNumber = "+floor+" ";
 		   }
-		   sql += "order by modelId desc limit "+staPage+" , "+15 ;
+		   sql += "order by modelId desc limit "+staPage+" , "+12 ;
 		   System.out.println(sql);
 		   models = jdbcTemplate.query(sql,new BeanPropertyRowMapper(Model.class));
 		return models;
