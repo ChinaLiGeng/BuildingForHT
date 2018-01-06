@@ -237,12 +237,7 @@
 										  </tr>
 									  </tbody>
 									</table>
-									<!-- <ul>
-											<li><a href="#">Top 14 Most Common Mistakes</a><span>14 December, 2015</span></li>
-											<li><a href="#">Life After the Handover</a><span>14 December, 2015</span></li>
-											<li><a href="#">This is a Blog Post Quote</a><span>14 December, 2015</span></li>
-											<li><a href="#">Interview with Hans Kristian</a><span>14 December, 2015</span></li>
-										</ul> -->
+									<a href="#" class="button default big" style="width:100%;text-align: center;background-color: red;font-weight: bolder;margin-left: -10px;" >去设计</a>
 									</div>
 									<!-- widget -->
 									<div class="widget">
