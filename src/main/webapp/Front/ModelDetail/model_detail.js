@@ -1,45 +1,15 @@
 $(document).ready(function(){
 	
-	  
-
 	getComments(1);
-	getPages();
+	getSimilarModels();
 })
 
-var page = 1;
-var area = 0;
-var number = 0;
-var pageALL;
-function getArea(a){
-	area = a;
-	getList()
-}
-function getNumber(n){
-	number = n;
-	getList()
-}
-function getPage(p){
-	if(p == -1 && page !=1 ){
-		alert(1)
-	   page--;
-	   getList();
-	}else if(p == 0 && page != pageALL){
-		alert(2)
-		page++;
-		getList();
-	}else if(p>0){
-		page = p;
-		getList();
-	}
-}
-
+var pageNow = 1;
+var pageAll = 0;
+var tag = 0;
 
 //get comments
 function getComments(page){
-	
-	$.ajaxSetup({  
-	    async : false  
-	});  
 
 	$.get("../F/Model/comm.final",{
 		"modelId":modelId,
@@ -52,7 +22,7 @@ function getComments(page){
 	    	$(".comment-list").empty();
 	
 	    	var json =data.data;
-	    	pageALL = Math.ceil(Number(data.number)/4);
+	    	pageAll = Math.ceil(Number(data.number)/4);
 	   
 	    	for(var i=0;i<json.length;i++){
 	    		$(".comment-list").append(
@@ -71,28 +41,76 @@ function getComments(page){
 					'</li>'
 	    		)
 	    	}
+	    	
+	    	if( tag == 0 ){
+	    		getPages();
+	    		tag = 1;
+	    	}
     })
 }
 
 //get comments pages
 function getPages(){
 	
-	$(".pages_ul").empty();
+	$("#pages_ul").empty();
 	if( pageAll == 0 ){
 		return;
 	}
 	
-	$(".pages_ul").append(
-		'<li><a href="#"><span class="fa fa-angle-left"></span></a></li>'+
-		'<li class="active"><a href="#">1</a></li>'
+	$("#pages_ul").append(
+		'<li><a style="cursor:pointer" onclick="toLeft()"><span class="fa fa-angle-left"></span></a></li>'+
+		'<li class="active"><a style="cursor:pointer" onclick="toPages(1)">1</a></li>'
 	)
 	for(var i=1; i<pageAll; i++){
 		
-		$(".pages_ul").append(
-			'<li><a href="#">'+(i+1)+'</a></li>'
+		$("#pages_ul").append(
+			'<li><a style="cursor:pointer" onclick="toPages('+(i+1)+')">'+(i+1)+'</a></li>'
 		)
 	}
-	$(".pages_ul").append(
-		'<li><a href="#"><span class="fa fa-angle-right"></span></a></li>'
+	$("#pages_ul").append(
+		'<li><a style="cursor:pointer" onclick="toRight()"><span class="fa fa-angle-right"></span></a></li>'
 	)
+}
+
+//jump pages
+function toPages(page){
+	getComments(page)
+	pageNow = page;
+}
+
+//jump left
+function toLeft(){
+	if( pageNow <= 1 ){
+		return;
+	}
+	getComments( --pageNow )
+}
+
+//jump right
+function toRight(){
+	if( pageNow >= pageAll ){
+		return;
+	}
+	getComments( ++pageNow )
+}
+
+//get similar models
+function getSimilarModels(){
+
+	$.get("../F/Model/simi.final",{
+		"floor":floorNumber,
+		"area":area
+    },function(data){
+    	
+	    	$("#simi_model").empty();
+	    	var json =data.data;
+	   
+	    	for(var i=0;i<json.length;i++){
+	    		$("#simi_model").append(
+	    			'<a href="../F/Model/det.final?modelId='+json[i].modelId+'" class="thumb">'+
+					'<img src="../Pic/Main/'+json[i].mainPic+'" alt="">'+
+				'</a>'
+	    		)
+	    	}
+    })
 }

@@ -247,11 +247,9 @@
 									<!-- widget -->
 									<div class="widget">
 										<h4 class="widget-title">相似案例</h4>
-										<div class="small-projects clearfix">
-											<a href="project-single.html" class="thumb">
-												<img src="assets/images/small-1.jpg" alt="">
-											</a>
-											<a href="project-single.html" class="thumb">
+										<div class="small-projects clearfix" id="simi_model">
+											
+											<!-- <a href="project-single.html" class="thumb">
 												<img src="assets/images/small-2.jpg" alt="">
 											</a>
 											<a href="project-single.html" class="thumb">
@@ -265,7 +263,7 @@
 											</a>
 											<a href="project-single.html" class="thumb">
 												<img src="assets/images/small-6.jpg" alt="">
-											</a>
+											</a> -->
 										</div>
 									</div>
 									<!-- widget -->
@@ -322,6 +320,8 @@
 		<script src="ModelDetail/model_detail.js"></script>
 		<script type="text/javascript">
 			var modelId = ${model.modelId};
+			var floorNumber = ${model.floorNumber};
+			var area = ${model.buildingArea};
 		</script>
 	</body>
 </html>

@@ -162,7 +162,7 @@ public class ModelDaoImplFront implements ModelDaoFront{
 	public List<Model> findSimilarModel(int floor, double area) {
 		
 		List<Model> models = null;
-		String sql = "select * from model where floorNumber = ? and state = ? and ( (buildingArea<=?+50) and (buildingArea>=?-50) )";
+		String sql = "select * from model where floorNumber = ? and state = ? and ( (buildingArea<=?+50) and (buildingArea>=?-50) ) limit 0,6";
 		Object []params = {floor,1,area,area};
 		
 		try {
