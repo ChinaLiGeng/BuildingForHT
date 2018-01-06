@@ -25,7 +25,7 @@
 								<div class="main-menu">
 									<nav class="main-nav">
 										<ul class="sf-menu">
-											<li class="current-menu-item"><a href="home.jsp">首页</a>
+											<li class="current-menu-item"><a href="home.jsp"><font font-family="Georgia">首页</font></a>
 												
 											</li>
 											<li><a href="ModelList/ModelList.jsp">模板商城</a>

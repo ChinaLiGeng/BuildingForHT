@@ -147,9 +147,10 @@
 								
 								<!-- blog-single-navigation -->
 								<div class="comments-wrapper" style="clear: both;">
-									<h4 class="comment-title">4 条评论</h4>
+									<h4 class="comment-title" id="comm_number">4 条评论</h4>
 									<ul class="comment-list">
-										<li>
+										
+										<!-- <li>
 											<div class="comment clearfix">
 												<div class="comment-avatar">
 													<img src="assets/images/profile-2.jpg" alt="">
@@ -161,33 +162,14 @@
 													<a href="#" class="reply"><span class="fa fa-reply"></span> Reply</a>
 												</div>
 											</div>
-											<li>
-												<div class="comment clearfix">
-												<div class="comment-avatar">
-													<img src="assets/images/profile-2.jpg" alt="">
-												</div>
-												<div class="comment-content">
-													<h5>Gregory Brand</h5>
-													<span class="comment-time">July 19, 2016 at 1:54 pm</span>
-													<p>Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit.</p>
-													<a href="#" class="reply"><span class="fa fa-reply"></span> Reply</a>
-												</div>
-											</div>
-											</li>
-
-										</li>
+										</li> -->
 									</ul>
 								</div>
 								<div class="row">
 									<div class="col-sm-12">
 										<div class="blog-pagination">
-											<ul>
-												<li><a href="#"><span class="fa fa-angle-left"></span></a></li>
-												<li class="active"><a href="#">1</a></li>
-												<li><a href="#">2</a></li>
-												<li><a href="#">3</a></li>
-												<li><a href="#">4</a></li>
-												<li><a href="#"><span class="fa fa-angle-right"></span></a></li>
+											<ul id="pages_ul">
+											
 											</ul>
 										</div>
 									</div>

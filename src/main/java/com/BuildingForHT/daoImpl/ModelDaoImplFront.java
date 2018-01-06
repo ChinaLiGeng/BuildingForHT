@@ -131,11 +131,11 @@ public class ModelDaoImplFront implements ModelDaoFront{
 	}
 
 	@Override
-	public List<ModelComment> getCommentsByModel(int modelId) {
+	public List<ModelComment> getCommentsByModel(int modelId,int page) {
 		
 		List<ModelComment> comments = null;
-		String sql = "select model_comment.*,userName,userPic from model_comment,user where model_comment.userId = user.userId and  modelId = ? and state = ?";
-		Object []params = {modelId,1};
+		String sql = "select model_comment.*,userName,userPic from model_comment,user where model_comment.userId = user.userId and  modelId = ? and state = ? limit ?,?";
+		Object []params = {modelId,1,(page-1)*4,4};
 		
 		try {
 			comments = jdbcTemplate.query(sql, params, new BeanPropertyRowMapper(ModelComment.class));

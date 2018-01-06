@@ -60,7 +60,7 @@ public interface ModelServiceFront {
 	 * @date：2018年1月5日 下午3:37:05
 	 * @return：List<ModelComment>
 	 */
-	List<ModelComment> getCommentsByModel(int modelId);
+	List<ModelComment> getCommentsByModel(int modelId,int page);
 	
 	/**
 	 * 

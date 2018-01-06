@@ -15,6 +15,7 @@ import org.springframework.test.context.web.WebAppConfiguration;
 import com.BuildingForHT.dao.ModelDaoFront;
 import com.BuildingForHT.entity.HouseLayout;
 import com.BuildingForHT.entity.Model;
+import com.BuildingForHT.entity.ModelComment;
 import com.BuildingForHT.service.ModelServiceFront;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -55,6 +56,12 @@ public class ModelTest {
 		Object []params = {1,1,1,"sds",time};
 		
 		System.err.println(jdbcTemplate.update(sql,params));
+	}
+	
+	@Test
+	public void test4() {
+		List<ModelComment> result = serviceInstance.getCommentsByModel(1,2);
+		System.out.println(result);
 	}
 
 }

@@ -1,27 +1,96 @@
 $(document).ready(function(){
 	
-	alert(modelId)
+	$.ajaxSetup({  
+	    async : false  
+	});    
+
+	getComments(1);
+	getPages();
 })
 
-function getModelComment(){
-	$.post("../F/Model/comm.final",function(data){
-		var json = data.data;
-		$("#modelList").empty();
-		for(var i=0;i<json.length;i++){
-			$("#modelList").append(
-					'<div class="col-sm-6 col-md-3 project-item building">'+
-					'<article class="project-entry-1 wow fadeInCdb" data-wow-duration="0.7s" data-wow-delay="0.3s" style="visibility: visible; animation-duration: 0.7s; animation-delay: 0.3s; animation-name: fadeInCdb;">'+
-						'<div class="image-holder" >'+
-							'<a href="../F/Model/det.final?modelId='+json[i].modelId+'">'+
-								'<img width="100%" height="100%" src="../Pic/Main/'+json[i].mainPic+'" alt="">'+
-								'<h2 class="project-title">'+json[i].name+'</h2>'+
-								'<span class="project-overlay"></span>'+
-								'<span class="overlay-triangle"></span>'+
-							'</a>'+
+var page = 1;
+var area = 0;
+var number = 0;
+var pageALL;
+function getArea(a){
+	area = a;
+	getList()
+}
+function getNumber(n){
+	number = n;
+	getList()
+}
+function getPage(p){
+	if(p == -1 && page !=1 ){
+		alert(1)
+	   page--;
+	   getList();
+	}else if(p == 0 && page != pageALL){
+		alert(2)
+		page++;
+		getList();
+	}else if(p>0){
+		page = p;
+		getList();
+	}
+}
+
+
+//get comments
+function getComments(page){
+
+	$.get("../F/Model/comm.final",{
+		"modelId":modelId,
+		"page":page
+    },function(data){
+    	
+	    	$("#comm_number").html(
+	    			'<h4 class="comment-title">'+data.number+' 条评论</h4>'
+	    	)
+	    	$(".comment-list").empty();
+	
+	    	var json =data.data;
+	    	pageALL = Math.ceil(Number(data.number)/4);
+	   
+	    	for(var i=0;i<json.length;i++){
+	    		$(".comment-list").append(
+	    				'<li>'+
+						'<div class="comment clearfix">'+
+							'<div class="comment-avatar">'+
+								'<img src="../Pic/User/'+json[i].userPic+'" alt="">'+
+							'</div>'+
+							'<div class="comment-content">'+
+								'<h5>'+json[i].userName+'</h5>'+
+								'<span class="comment-time">'+json[i].createTime+'</span>'+
+								'<p>'+json[i].context+'</p>'+
+								'<a href="#" class="reply"><span class="fa fa-reply"></span> Reply</a>'+
+							'</div>'+
 						'</div>'+
-					'</article>'+
-				'</div>'
-					)	
-		}
-	})
+					'</li>'
+	    		)
+	    	}
+    })
+}
+
+//get comments pages
+function getPages(){
+	
+	$(".pages_ul").empty();
+	if( pageAll == 0 ){
+		return;
+	}
+	
+	$(".pages_ul").append(
+		'<li><a href="#"><span class="fa fa-angle-left"></span></a></li>'+
+		'<li class="active"><a href="#">1</a></li>'
+	)
+	for(var i=1; i<pageAll; i++){
+		
+		$(".pages_ul").append(
+			'<li><a href="#">'+(i+1)+'</a></li>'
+		)
+	}
+	$(".pages_ul").append(
+		'<li><a href="#"><span class="fa fa-angle-right"></span></a></li>'
+	)
 }

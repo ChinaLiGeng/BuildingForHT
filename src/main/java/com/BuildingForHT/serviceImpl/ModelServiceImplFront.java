@@ -54,9 +54,9 @@ public class ModelServiceImplFront implements ModelServiceFront{
     }
 
 	@Override
-	public List<ModelComment> getCommentsByModel(int modelId) {
+	public List<ModelComment> getCommentsByModel(int modelId,int page) {
 		
-		List<ModelComment> result = modelInstance.getCommentsByModel(modelId);
+		List<ModelComment> result = modelInstance.getCommentsByModel(modelId,page);
 		return result;
 	}
 	
