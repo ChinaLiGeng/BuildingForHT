@@ -12,7 +12,7 @@ function getModel(){
 					'<article class="project-entry-1 wow fadeInCdb" data-wow-duration="0.7s" data-wow-delay="0.3s" style="visibility: visible; animation-duration: 0.7s; animation-delay: 0.3s; animation-name: fadeInCdb;">'+
 						'<div class="image-holder">'+
 							'<a href="../F/Model/det.final?modelId='+json[i].modelId+'">'+
-								'<img width="800" height="500" src="../Pic/Main/'+json[i].mainPic+'" alt="">'+
+								'<img style="width:800px;height:250px;" src="../Pic/Main/'+json[i].mainPic+'" alt="">'+
 								'<h2 class="project-title">'+json[i].name+'</h2>'+
 								'<span class="project-overlay"></span>'+
 								'<span class="overlay-triangle"></span>'+
