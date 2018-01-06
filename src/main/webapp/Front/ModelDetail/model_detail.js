@@ -1,8 +1,6 @@
 $(document).ready(function(){
 	
-	$.ajaxSetup({  
-	    async : false  
-	});    
+	  
 
 	getComments(1);
 	getPages();
@@ -38,6 +36,10 @@ function getPage(p){
 
 //get comments
 function getComments(page){
+	
+	$.ajaxSetup({  
+	    async : false  
+	});  
 
 	$.get("../F/Model/comm.final",{
 		"modelId":modelId,
