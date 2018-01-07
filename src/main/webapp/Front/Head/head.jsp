@@ -1,7 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="utf-8"%>
+<%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
+<%-- <%
+    String path = request.getContextPath();
+    String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()+path+ "/";
+%> --%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+
+	<%-- <base href = "<%=basePath%>"> --%>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!-- Revolution Slider -->
@@ -9,7 +17,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-
    <header class="header-type-1 hidden-sm hidden-xs">
 				<div class="container">
 					<div class="row">
@@ -45,10 +52,19 @@
 								</div>
 
 								<div class="header-right">
-									<div class="social">
-										<a href="#">登录</a>
-										<a href="#">注册</a>
-									</div>
+								<c:choose>
+								   <c:when test="${empty sessionScope.front_user}">  
+								         <div class="social">
+											<a href="Login/login.html">登录</a>
+											<a href="#">注册</a>
+										</div>      
+								   </c:when>
+								   <c:otherwise> 
+									    <div class="social">
+											<a href="#">注销</a>
+										</div>
+								   </c:otherwise>
+								</c:choose>
 								</div>
 
 							</div>
