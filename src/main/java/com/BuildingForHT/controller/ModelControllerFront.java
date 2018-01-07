@@ -204,6 +204,10 @@ public class ModelControllerFront {
 		Response response = new Response();
 		boolean result = false;
 		User uu = (User) session.getAttribute("front_user");
+		if(uu == null){
+			response.failure("ÇëÏÈµÇÂ¼£¡");
+			return response;
+		}
 		if(modelInstance.updateModel(id, sugg,uu.getUserId()) == 1){
 			result = true;
 		}

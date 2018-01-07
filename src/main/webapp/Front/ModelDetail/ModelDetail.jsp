@@ -240,7 +240,7 @@
 									
 										<div class="col-sm-12" style="display:none" id="sugg">
 													<textarea id="suggestion" name="message" class="form-control" placeholder="Message" rows="5" style="overflow: hidden; resize: none; height: 126px;"></textarea>
-										           <a href="#" onclick="design()" class="button default big" style="width:100%;text-align: center;background-color: red;font-weight: bolder" >提交</a>
+										           <a cursor:pointer" onclick="design()" class="button default big" style="width:100%;text-align: center;background-color: red;font-weight: bolder" >提交</a>
 										</div>
 										
 										<a onclick="showDiv()" id="hideA" class="button default big" style="width:100%;text-align: center;background-color: red;font-weight: bolder;cursor:pointer" >去设计</a>

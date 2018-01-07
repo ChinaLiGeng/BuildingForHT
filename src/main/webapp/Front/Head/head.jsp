@@ -38,7 +38,7 @@
 											<li><a href="ModelList/ModelList.jsp">模板商城</a>
 												
 											</li>
-											<li><a href="#">新闻 </a>
+											<li><a href="News/news.jsp">新闻摘要</a>
 												
 											</li>
 											<li><a href="#">我的收藏</a>
