@@ -61,7 +61,8 @@
 								   </c:when>
 								   <c:otherwise> 
 									    <div class="social">
-											<a href="#">注销</a>
+									    		<a href="User/Order/MyOrder.jsp">个人中心</a>
+											<a href="#" style="margin-left:15px">注销</a>
 										</div>
 								   </c:otherwise>
 								</c:choose>

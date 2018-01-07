@@ -23,8 +23,9 @@ public class Model {
 	private List<HouseLayout> houseLayout;
 	private List<ModelAssembly> modelAss;
 	private User user;
-	private String name;
+	private String name;            //模型名称
 	private String introduction;
+	private String userName;        //审核团队名称
 	
 	public String getName() {
 		return name;
@@ -193,6 +194,14 @@ public class Model {
 	public void setUser(User user) {
 		this.user = user;
 	}
+	
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
 
 	@Override
 	public String toString() {
@@ -202,6 +211,6 @@ public class Model {
 				+ quoteModel + ", suggestion=" + suggestion + ", designFee=" + designFee + ", mainPic=" + mainPic
 				+ ", designState=" + designState + ", effectPic=" + effectPic + ", houseLayout=" + houseLayout
 				+ ", modelAss=" + modelAss + ", user=" + user + ", name=" + name + ", introduction=" + introduction
-				+ "]";
+				+ ", userName=" + userName + "]";
 	}
 }
