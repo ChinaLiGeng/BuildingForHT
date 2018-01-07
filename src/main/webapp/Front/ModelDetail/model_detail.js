@@ -58,17 +58,17 @@ function getPages(){
 	}
 	
 	$("#pages_ul").append(
-		'<li><a style="cursor:pointer" onclick="toLeft()"><span class="fa fa-angle-left"></span></a></li>'+
-		'<li class="active"><a style="cursor:pointer" onclick="toPages(1)">1</a></li>'
+		'<li><a style="cursor:pointer; text-align:center;" onclick="toLeft()" class="fa fa-angle-left" </a></li>'+
+		'<li class="active"><a style="cursor:pointer;text-align:center;" onclick="toPages(1)">1</a></li>'
 	)
 	for(var i=1; i<pageAll; i++){
 		
 		$("#pages_ul").append(
-			'<li><a style="cursor:pointer" onclick="toPages('+(i+1)+')">'+(i+1)+'</a></li>'
+			'<li><a style="cursor:pointer;text-align:center;" onclick="toPages('+(i+1)+')">'+(i+1)+'</a></li>'
 		)
 	}
 	$("#pages_ul").append(
-		'<li><a style="cursor:pointer" onclick="toRight()"><span class="fa fa-angle-right"></span></a></li>'
+		'<li><a style="cursor:pointer;text-align:center;" onclick="toRight()" class="fa fa-angle-right" </a></li>'
 	)
 }
 
@@ -113,4 +113,31 @@ function getSimilarModels(){
 	    		)
 	    	}
     })
+}
+
+function design(){
+	var suggestion = $("#suggestion").val();
+	if(suggestion == null){
+		return 
+	}
+	$.post("../F/Model/updateModel",{
+		"id":modelId,
+		"sugg":suggestion
+	},function(data){
+		if(data.meta.success == false){
+			alert(data.meta.message)
+		}else{
+			alert("提交成功！")
+		}
+	})
+}
+function showDiv(){
+	
+	$("#hideA").fadeOut();
+	setTimeout("show()",600) 
+	
+}
+
+function show(){
+	$("#sugg").fadeIn();
 }

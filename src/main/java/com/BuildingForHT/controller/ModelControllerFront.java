@@ -216,4 +216,43 @@ public class ModelControllerFront {
 			return response;
 		}
 	}
+	/**
+	 * 
+	* @Title: updateModel 
+	* @Description: TODO
+	* @date 2018年1月7日 下午3:28:33 
+	* @return Response 
+	* @author Ligeng    
+	* @throws
+	 */
+	@RequestMapping(value = "/updateModel" , method = RequestMethod.POST)
+	@ResponseBody
+	public Response updateModel(int id,String sugg,HttpSession session) {
+		
+		Response response = new Response();
+		boolean result = false;
+		User uu = (User) session.getAttribute("front_user");
+		if(uu == null){
+			response.failure("请先登录！");
+			return response;
+		}
+		if(modelInstance.updateModel(id, sugg,uu.getUserId()) == 1){
+			result = true;
+		}
+		try {
+			//result = modelInstance.createComment(comment);
+			
+			if( result == true) {
+				response.success();
+			}else {
+				response.failure();
+			}
+		}catch (Exception e) {
+			response.failure("服务器错误");
+			e.printStackTrace();
+		}finally {
+			return response;
+		}
+	}
+	
 }

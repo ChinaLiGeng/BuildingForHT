@@ -18,7 +18,7 @@
 		<link rel="stylesheet" href="assets/revolution/css/layers.css">
 		<link rel="stylesheet" href="assets/revolution/css/navigation.css">
 
-    <link href="https://fonts.googleapis.com/css?family=Karla:400,400i,700,700i" rel="stylesheet">
+  
     <link rel="stylesheet" href="assets/css/bootstrap.css">
     <link rel="stylesheet" href="assets/css/font-awesome.css">
     <link rel="stylesheet" href="assets/css/simple-line-icons.css">
@@ -167,7 +167,7 @@
 								</div>
 								<div class="row">
 									<div class="col-sm-12">
-										<div class="blog-pagination">
+										<div class="blog-pagination" >
 											<ul id="pages_ul">
 											
 											</ul>
@@ -210,7 +210,7 @@
 										</form>
 									</div> -->
 									<!-- widget -->
-									<div class="widget latest-posts">
+									<div class="widget latest-posts" style="height:auto">
 										<h4 class="widget-title">${model.name}</h4>
 										
 										<table style="margin-left:-20px">
@@ -237,7 +237,13 @@
 										  </tr>
 									  </tbody>
 									</table>
-									<a href="#" class="button default big" style="width:100%;text-align: center;background-color: red;font-weight: bolder;margin-left: -10px;" >去设计</a>
+									
+										<div class="widget-title" style="display:none" id="sugg">
+													<textarea id="suggestion" name="message" class="form-control" placeholder="Message" rows="5" style="overflow: hidden; resize: none; height: 126px;"></textarea>
+										           <a cursor:pointer" onclick="design()" class="button default big" style="width:100%;text-align: center;background-color: red;font-weight: bolder" >提交</a>
+										</div>
+										
+										<a onclick="showDiv()" id="hideA" class="button default big" style="width:100%;text-align: center;background-color: red;font-weight: bolder;cursor:pointer" >去设计</a>
 									</div>
 									<!-- widget -->
 									<div class="widget">
