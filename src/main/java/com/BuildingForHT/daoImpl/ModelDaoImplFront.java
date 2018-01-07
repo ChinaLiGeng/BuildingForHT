@@ -82,7 +82,7 @@ public class ModelDaoImplFront implements ModelDaoFront{
 		
 		List<Model> models = null;
 		   String sql = "select modelId,name,designFee,floorNumber,buildingArea,landArea,mainPic,introduction from model "
-		   		+ "where state = 1 and betype = 1 order by modelId desc limit 0 , 8";
+		   		+ "where state = 1 and betype = 1  order by modelId desc limit 0 , 8";
 		   models = jdbcTemplate.query(sql,new BeanPropertyRowMapper(Model.class));
 		return models;
 	}
@@ -91,7 +91,7 @@ public class ModelDaoImplFront implements ModelDaoFront{
 	public List<Model> getModAllList(int page, int area, int floor) throws SQLException{
 		List<Model> models = null;
 		   int staPage = (page - 1)*12;
-		   String sql = "select * from model where state = 1 ";
+		   String sql = "select * from model where state = 1 and betype = 1 ";
 		   if(area != 0){
 			   sql += "and landArea > "+(area-25)+" and landArea <= "+(area+25)+" ";
 		   }
@@ -106,7 +106,7 @@ public class ModelDaoImplFront implements ModelDaoFront{
 	@Override
 	public int getModNum(int area, int floor) throws SQLException{
 		int  result = 0;
-		   String sql = "select count(*) from model where state = 1 ";
+		   String sql = "select count(*) from model where state = 1 and betype = 1 ";
 		   if(area != 0){
 			   sql += "and landArea > "+(area-25)+" and landArea <= "+(area+25)+" ";
 		   }
@@ -208,7 +208,7 @@ public class ModelDaoImplFront implements ModelDaoFront{
 						.getConnection().prepareStatement(sql,new String[]{ "userId", "suggestion","beType","designState","designFee", "floorNumber","buildingArea","landArea","objPath","mtlPath","quoteModel","mainPic","state","name","introduction"});
 				ps.setInt(1,model.getUserId());
 				ps.setString(2, model.getSuggestion());
-				ps.setInt(3, model.getBeType());
+				ps.setInt(3, 2);
 				ps.setInt(4, 1);
 				ps.setInt(5, model.getDesignFee());
 				ps.setInt(6, model.getFloorNumber());

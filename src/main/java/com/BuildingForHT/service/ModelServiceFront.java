@@ -100,6 +100,6 @@ public interface ModelServiceFront {
     * @author Ligeng    
     * @throws
      */
-	int updateModel(int id, String sugg);
+	int updateModel(int id, String sugg, int userId);
 	
 }

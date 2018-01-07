@@ -3,6 +3,8 @@ package com.BuildingForHT.controller;
 import java.sql.SQLException;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -13,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.BuildingForHT.entity.Model;
 import com.BuildingForHT.entity.ModelComment;
+import com.BuildingForHT.entity.User;
 import com.BuildingForHT.jsonFormat.Response;
 import com.BuildingForHT.service.ModelServiceFront;
 
@@ -196,11 +199,12 @@ public class ModelControllerFront {
 	 */
 	@RequestMapping(value = "/updateModel" , method = RequestMethod.POST)
 	@ResponseBody
-	public Response updateModel(int id,String sugg) {
+	public Response updateModel(int id,String sugg,HttpSession session) {
 		
 		Response response = new Response();
 		boolean result = false;
-		if(modelInstance.updateModel(id, sugg) == 1){
+		User uu = (User) session.getAttribute("front_user");
+		if(modelInstance.updateModel(id, sugg,uu.getUserId()) == 1){
 			result = true;
 		}
 		try {

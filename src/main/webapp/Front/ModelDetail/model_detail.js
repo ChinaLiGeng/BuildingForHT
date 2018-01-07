@@ -114,3 +114,17 @@ function getSimilarModels(){
 	    	}
     })
 }
+
+function design(){
+	$.post("../F/Model/")
+}
+function showDiv(){
+	
+	$("#hideA").fadeOut();
+	setTimeout("show()",600) 
+	
+}
+
+function show(){
+	$("#sugg").fadeIn();
+}

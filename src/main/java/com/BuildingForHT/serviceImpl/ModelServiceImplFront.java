@@ -3,6 +3,8 @@ package com.BuildingForHT.serviceImpl;
 import java.sql.SQLException;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -87,11 +89,11 @@ public class ModelServiceImplFront implements ModelServiceFront{
 		return result;
 	}
 	@Override
-    public int updateModel(int id,String sugg){
+    public int updateModel(int id,String sugg,int userId){
     	int result = 0;
     	   Model m = modelInstance.getModelEntity(id);
     	   m.setSuggestion(sugg);
-    	   m.setUserId(111);
+    	   m.setUserId(userId);
     	   int i = modelInstance.updateModel(m);
     	   if(modelInstance.getAuditor() == 0){
     		   modelInstance.createMEP(i, 1, 5);
