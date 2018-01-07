@@ -1,5 +1,7 @@
 package com.BuildingForHT.daoImpl;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -8,6 +10,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.PreparedStatementCreator;
+import org.springframework.jdbc.support.GeneratedKeyHolder;
+import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 
 import com.BuildingForHT.dao.ModelDaoFront;
@@ -184,5 +189,70 @@ public class ModelDaoImplFront implements ModelDaoFront{
 		result = jdbcTemplate.queryForObject(sql,params,Integer.class);
 		return result;
 	}
-	
+	@Override
+	public int updateModel(Model model) {
+		//Date date = new Date();
+		KeyHolder keyHolder = new GeneratedKeyHolder();  
+		
+		//SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");  
+		//String dateNowStr = sdf.format(date);  
+		
+		String sql = "insert into model(userId,suggestion,beType,designState,designFee,floorNumber,buildingArea,landArea,objPath,mtlPath,quoteModel,mainPic,state,name,introduction)"
+				+" values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+		
+		jdbcTemplate.update( new PreparedStatementCreator() {  
+			
+			@Override
+			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
+				PreparedStatement ps = jdbcTemplate.getDataSource()
+						.getConnection().prepareStatement(sql,new String[]{ "userId", "suggestion","beType","designState","designFee", "floorNumber","buildingArea","landArea","objPath","mtlPath","quoteModel","mainPic","state","name","introduction"});
+				ps.setInt(1,model.getUserId());
+				ps.setString(2, model.getSuggestion());
+				ps.setInt(3, model.getBeType());
+				ps.setInt(4, 1);
+				ps.setInt(5, model.getDesignFee());
+				ps.setInt(6, model.getFloorNumber());
+				ps.setDouble(7, model.getBuildingArea());
+				ps.setDouble(8, model.getLandArea());
+				ps.setString(9, model.getObjPath());
+				ps.setString(10, model.getMtlPath());
+				ps.setInt(11, model.getModelId());
+				ps.setString(12, model.getMainPic());
+				ps.setInt(13, 1);
+				ps.setString(14, model.getName());
+				ps.setString(15, model.getIntroduction());
+				return ps;  
+			}  
+        }, keyHolder);
+		return  keyHolder.getKey().intValue();
+	}
+	@Override
+	public int getModifier(){
+		try {
+			String sql = "select modifier from model_examine_peo order by merId desc  LIMIT 1";
+			return jdbcTemplate.queryForObject(sql,Integer.class);		 
+		} catch (Exception e) {
+			e.printStackTrace();
+			return 0;
+		}
+	}
+	@Override
+	public int getAuditor(){
+		try {
+			String sql = "select auditor from model_examine_peo order by merId desc  LIMIT 1";
+			return jdbcTemplate.queryForObject(sql,Integer.class);		 
+		} catch (Exception e) {
+			e.printStackTrace();
+			return 0;
+		}
+	}
+	@Override
+	public int createMEP(int id,int modifier,int auditor){
+		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		String time = df.format(new Date());
+		String sql = "insert into model_examine_peo(modelId,modifier,auditor,modifierDate,auditorDate,state) values(?,?,?,?,?,?)";
+		Object []params = {id,modifier,auditor,time,time,1};
+		return jdbcTemplate.update(sql,params);
+	}
+
 }

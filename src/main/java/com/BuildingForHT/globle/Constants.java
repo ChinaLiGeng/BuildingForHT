@@ -22,5 +22,14 @@ public class Constants {
 	 */
 	public static final String LOGIN_ERROR = "err_msg";
 	
+	/**
+	 * 专业团队人数
+	 */
+	public static final int MODIFIER = 3;
+	
+	/**
+	 * 审核人数
+	 */
+	public static final int AUDITOR = 7;
 }
 

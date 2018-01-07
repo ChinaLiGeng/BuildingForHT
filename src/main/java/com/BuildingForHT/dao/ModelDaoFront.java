@@ -120,4 +120,48 @@ public interface ModelDaoFront {
 	 * @return：List<Model>
 	 */
 	List<Model> findSimilarModel(int floor,double area);
+	
+    /**
+     * 
+    * @Title: updateModel 
+    * @Description: TODO
+    * @date 2018年1月7日 下午4:08:56 
+    * @return int 
+    * @author Ligeng    
+    * @throws
+     */
+	int updateModel(Model model);
+	
+    /**
+     * 
+    * @Title: getModifier 
+    * @Description: TODO
+    * @date 2018年1月7日 下午4:44:39 
+    * @return int 
+    * @author Ligeng    
+    * @throws
+     */
+	
+	int getModifier();
+	
+    /**
+     * 
+    * @Title: getAuditor 
+    * @Description: TODO
+    * @date 2018年1月7日 下午4:44:49 
+    * @return int 
+    * @author Ligeng    
+    * @throws
+     */
+	int getAuditor();
+    /**
+     * 
+    * @Title: createMEP 
+    * @Description: TODO
+    * @date 2018年1月7日 下午4:55:36 
+    * @return int 
+    * @author Ligeng    
+    * @throws
+     */
+	int createMEP(int id, int modifier, int auditor);
 }

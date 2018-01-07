@@ -91,5 +91,15 @@ public interface ModelServiceFront {
 	 * @return：List<Model>
 	 */
 	List<Model> findSimilarModel(int floor,double area);
+    /**
+     * 
+    * @Title: updateModel 
+    * @Description: TODO
+    * @date 2018年1月7日 下午5:06:32 
+    * @return int 
+    * @author Ligeng    
+    * @throws
+     */
+	int updateModel(int id, String sugg);
 	
 }

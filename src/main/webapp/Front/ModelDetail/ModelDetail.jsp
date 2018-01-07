@@ -18,7 +18,7 @@
 		<link rel="stylesheet" href="assets/revolution/css/layers.css">
 		<link rel="stylesheet" href="assets/revolution/css/navigation.css">
 
-    <link href="https://fonts.googleapis.com/css?family=Karla:400,400i,700,700i" rel="stylesheet">
+  
     <link rel="stylesheet" href="assets/css/bootstrap.css">
     <link rel="stylesheet" href="assets/css/font-awesome.css">
     <link rel="stylesheet" href="assets/css/simple-line-icons.css">

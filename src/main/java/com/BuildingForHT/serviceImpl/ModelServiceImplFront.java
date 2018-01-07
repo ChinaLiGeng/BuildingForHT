@@ -10,6 +10,7 @@ import com.BuildingForHT.dao.ModelDaoFront;
 import com.BuildingForHT.entity.Model;
 import com.BuildingForHT.entity.ModelComment;
 import com.BuildingForHT.entity.User;
+import com.BuildingForHT.globle.Constants;
 import com.BuildingForHT.service.ModelServiceFront;
 
 @Service
@@ -85,5 +86,34 @@ public class ModelServiceImplFront implements ModelServiceFront{
 		List<Model> result = modelInstance.findSimilarModel(floor, area);
 		return result;
 	}
-   
+	@Override
+    public int updateModel(int id,String sugg){
+    	int result = 0;
+    	   Model m = modelInstance.getModelEntity(id);
+    	   m.setSuggestion(sugg);
+    	   m.setUserId(111);
+    	   int i = modelInstance.updateModel(m);
+    	   if(modelInstance.getAuditor() == 0){
+    		   modelInstance.createMEP(i, 1, 5);
+    		   result = 1;
+    	   }else{
+    		   int modifier = modelInstance.getModifier();
+    		   int auditor = modelInstance.getAuditor();
+    		   System.out.println(modifier);
+    		   System.out.println(auditor);
+    		   if(modifier == Constants.MODIFIER){
+    			   modifier = 1;
+    		   }else{
+    			   modifier++;
+    		   }
+    		   if(auditor == Constants.AUDITOR){
+    			   auditor = 5;
+    		   }else{
+    			   auditor++;
+    		   }
+    		   modelInstance.createMEP(i, modifier, auditor);
+    		   result = 1;
+    	   }
+    	return result;
+    }
 }

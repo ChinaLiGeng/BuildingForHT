@@ -1,5 +1,6 @@
 package FrontTest;
 
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -56,5 +57,11 @@ public class ModelTest {
 		
 		System.err.println(jdbcTemplate.update(sql,params));
 	}
-
+    @Test
+    public void test4() throws SQLException{
+    	String s = "¹Ù·½";
+    	int i= 1;
+    	serviceInstance.updateModel(i, s);
+    }
+   
 }
