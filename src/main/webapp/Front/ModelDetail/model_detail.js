@@ -58,17 +58,17 @@ function getPages(){
 	}
 	
 	$("#pages_ul").append(
-		'<li><a style="cursor:pointer" onclick="toLeft()"><span class="fa fa-angle-left"></span></a></li>'+
-		'<li class="active"><a style="cursor:pointer" onclick="toPages(1)">1</a></li>'
+		'<li><a style="cursor:pointer; text-align:center;" onclick="toLeft()" class="fa fa-angle-left" </a></li>'+
+		'<li class="active"><a style="cursor:pointer;text-align:center;" onclick="toPages(1)">1</a></li>'
 	)
 	for(var i=1; i<pageAll; i++){
 		
 		$("#pages_ul").append(
-			'<li><a style="cursor:pointer" onclick="toPages('+(i+1)+')">'+(i+1)+'</a></li>'
+			'<li><a style="cursor:pointer;text-align:center;" onclick="toPages('+(i+1)+')">'+(i+1)+'</a></li>'
 		)
 	}
 	$("#pages_ul").append(
-		'<li><a style="cursor:pointer" onclick="toRight()"><span class="fa fa-angle-right"></span></a></li>'
+		'<li><a style="cursor:pointer;text-align:center;" onclick="toRight()" class="fa fa-angle-right" </a></li>'
 	)
 }
 

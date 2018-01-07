@@ -50,7 +50,7 @@ function getList(){
 					'<article class="project-entry-1 wow fadeInCdb" data-wow-duration="0.7s" data-wow-delay="0.3s">'+
 						'<div class="image-holder">'+
 							'<a href="project-single.html">'+
-								'<img width="800" height="500" src="assets/images/'+json[i].mainPic+'" alt="">'+
+								'<img style="width:800px; height:175px;" src="assets/images/'+json[i].mainPic+'" alt="">'+
 								'<h2 class="project-title">'+json[i].name+'</h2>'+
 								'<span class="project-overlay"></span>'+
 								'<span class="overlay-triangle"></span>'+
@@ -62,7 +62,7 @@ function getList(){
     	};
     	$("#page").empty();
     	$("#page").append(
-    			'<li><a cursor="pointer" onclick="getPage(-1)"><span class="fa fa-angle-left"></span></a></li>'+
+    			'<li><a cursor="pointer" onclick="getPage(-1)" class="fa fa-angle-left" </a></li>'+
     			'<li class="active"><a cursor="pointer" onclick="getPage(1)">1</a></li>'
     			)
     	for(var x=2;x < pageALL;x++){
@@ -71,7 +71,7 @@ function getList(){
     				)
     	}
     	$("#page").append(
-    			'<li><a cursor="pointer" onclick="getPage(0)"><span class="fa fa-angle-right"></span></a></li>')
+    			'<li><a cursor="pointer" onclick="getPage(0)" class="fa fa-angle-right" </a></li>')
     })
 	
 }
