@@ -111,14 +111,14 @@ public class ModelControllerFront {
 	 */
 	@RequestMapping(value = "/comm.final" , method = RequestMethod.GET)
 	@ResponseBody
-	public Response getModelComment(int modelId) {
+	public Response getModelComment(int modelId,int page) {
 		
 		Response response = new Response();
 		List<ModelComment> comments = null;
 		int number = 0;
 		
 		try {
-			comments = modelInstance.getCommentsByModel(modelId);
+			comments = modelInstance.getCommentsByModel(modelId,page);
 			number = modelInstance.getCommentNumbers(modelId);
 			response.success(comments,number);
 		}catch (Exception e) {

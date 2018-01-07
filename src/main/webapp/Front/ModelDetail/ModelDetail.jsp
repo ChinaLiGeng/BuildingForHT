@@ -147,9 +147,10 @@
 								
 								<!-- blog-single-navigation -->
 								<div class="comments-wrapper" style="clear: both;">
-									<h4 class="comment-title">4 条评论</h4>
+									<h4 class="comment-title" id="comm_number">4 条评论</h4>
 									<ul class="comment-list">
-										<li>
+										
+										<!-- <li>
 											<div class="comment clearfix">
 												<div class="comment-avatar">
 													<img src="assets/images/profile-2.jpg" alt="">
@@ -161,33 +162,14 @@
 													<a href="#" class="reply"><span class="fa fa-reply"></span> Reply</a>
 												</div>
 											</div>
-											<li>
-												<div class="comment clearfix">
-												<div class="comment-avatar">
-													<img src="assets/images/profile-2.jpg" alt="">
-												</div>
-												<div class="comment-content">
-													<h5>Gregory Brand</h5>
-													<span class="comment-time">July 19, 2016 at 1:54 pm</span>
-													<p>Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit.</p>
-													<a href="#" class="reply"><span class="fa fa-reply"></span> Reply</a>
-												</div>
-											</div>
-											</li>
-
-										</li>
+										</li> -->
 									</ul>
 								</div>
 								<div class="row">
 									<div class="col-sm-12">
 										<div class="blog-pagination">
-											<ul>
-												<li><a href="#"><span class="fa fa-angle-left"></span></a></li>
-												<li class="active"><a href="#">1</a></li>
-												<li><a href="#">2</a></li>
-												<li><a href="#">3</a></li>
-												<li><a href="#">4</a></li>
-												<li><a href="#"><span class="fa fa-angle-right"></span></a></li>
+											<ul id="pages_ul">
+											
 											</ul>
 										</div>
 									</div>
@@ -255,21 +237,14 @@
 										  </tr>
 									  </tbody>
 									</table>
-									<!-- <ul>
-											<li><a href="#">Top 14 Most Common Mistakes</a><span>14 December, 2015</span></li>
-											<li><a href="#">Life After the Handover</a><span>14 December, 2015</span></li>
-											<li><a href="#">This is a Blog Post Quote</a><span>14 December, 2015</span></li>
-											<li><a href="#">Interview with Hans Kristian</a><span>14 December, 2015</span></li>
-										</ul> -->
+									<a href="#" class="button default big" style="width:100%;text-align: center;background-color: red;font-weight: bolder;margin-left: -10px;" >去设计</a>
 									</div>
 									<!-- widget -->
 									<div class="widget">
 										<h4 class="widget-title">相似案例</h4>
-										<div class="small-projects clearfix">
-											<a href="project-single.html" class="thumb">
-												<img src="assets/images/small-1.jpg" alt="">
-											</a>
-											<a href="project-single.html" class="thumb">
+										<div class="small-projects clearfix" id="simi_model">
+											
+											<!-- <a href="project-single.html" class="thumb">
 												<img src="assets/images/small-2.jpg" alt="">
 											</a>
 											<a href="project-single.html" class="thumb">
@@ -283,7 +258,7 @@
 											</a>
 											<a href="project-single.html" class="thumb">
 												<img src="assets/images/small-6.jpg" alt="">
-											</a>
+											</a> -->
 										</div>
 									</div>
 									<!-- widget -->
@@ -337,6 +312,11 @@
 		<script src="assets/js/joinable/superfish.js"></script>
 		<script src="assets/js/joinable/wow.min.js"></script>
 		<script src="assets/js/main.js"></script>
-		 
+		<script src="ModelDetail/model_detail.js"></script>
+		<script type="text/javascript">
+			var modelId = ${model.modelId};
+			var floorNumber = ${model.floorNumber};
+			var area = ${model.buildingArea};
+		</script>
 	</body>
 </html>
