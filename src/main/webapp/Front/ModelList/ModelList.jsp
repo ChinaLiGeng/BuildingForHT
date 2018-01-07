@@ -92,12 +92,12 @@
 								<div class="col-sm-12">
 									<div class="blog-pagination">
 										<ul id="page">
-											<!-- <li><a href="#"><span class="fa fa-angle-left"></span></a></li>
+											<!-- <li><a href="#"> class="fa fa-angle-left"</a></li> 
 											<li class="active"><a href="#">1</a></li>
 											<li><a href="#">2</a></li>
 											<li><a href="#">3</a></li>
 											<li><a href="#">4</a></li>
-											<li><a href="#"><span class="fa fa-angle-right"></span></a></li> -->
+											<li><a href="#"> class="fa fa-angle-right"</a></li>  -->
 										</ul>
 									</div>
 								</div>
