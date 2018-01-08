@@ -121,6 +121,26 @@ public interface ModelDaoFront {
 	 */
 	List<Model> findSimilarModel(int floor,double area);
 	
+	/**
+	 * 
+	 * @Method：getMyDesign
+	 * @Description：get my design
+	 * @author：Snail
+	 * @date：2018年1月7日 下午9:26:37
+	 * @return：List<Model>
+	 */
+	List<Model> getMyDesign(int userId ,int page ,int state);
+	
+	/**
+	 * 
+	 * @Method：getMyDesignNumbers
+	 * @Description：get my design numbers
+	 * @author：Snail
+	 * @date：2018年1月7日 下午9:27:40
+	 * @return：int
+	 */
+	int getMyDesignNumbers(int userId,int state);
+	
     /**
      * 
     * @Title: updateModel 

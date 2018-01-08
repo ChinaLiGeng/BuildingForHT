@@ -81,7 +81,7 @@
 											<h4 class="post-title"><a href="http://www.sohu.com/a/76063594_243901">1分钟看懂：建筑工业化百年历史！</a></h4>
 											<div class="post-meta">
 												<span><i class="icon-user"></i> By 搜狐网</span>
-												<span<i class="icon-speech"></i> 6条评论</a></span>
+												<span><i class="icon-speech"></i> 6条评论</span>
 											</div>
 											<p class="description">
 												修建与制造的区别何在？修建是一个设计与建造分离的过程；而制造如同在工厂生产标准化模数化配件，现场组装，精准而严格。最早的装配式建筑应该追溯到17世纪向美洲移民时期所用的木构架拼装房屋，最早的装配式公寓的想法和实现过程则由英国利物浦的工程师John Alexander Brodie在20世纪初提出，这位大叔甚至发明了足球场的球门网，然而Brodie的想法并没有在英国被广泛接受，反而在东欧流行起来...
