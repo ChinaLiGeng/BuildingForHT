@@ -51,7 +51,7 @@ public class OrderController {
 	* @author Ligeng    
 	* @throws
 	 */
-	@RequestMapping(value = "/orderNumber" , method = RequestMethod.GET)
+	@RequestMapping(value = "/orderNumber" , method = RequestMethod.POST)
 	@ResponseBody
 	public Response getOrdeNumber(){
 		Response response = new Response();

@@ -75,6 +75,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                          <table class="table table-striped table-bordered table-hover dataTables-example" >
                              <thead id="thead">
                             	<tr class="text-c">
+                            		<th><input type="checkbox"></th>
         							<th style="width:300px;">模型封面图</th>
         							<th>订单价格</th>
         							<th>订单ID</th>
@@ -89,8 +90,24 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                              <tbody id="tbody" >
                                
                              </tbody>
-                         </table>                       
-                         <div class="admin-table-page">
+                         </table>
+                         
+					<div class="row">
+						<div class="col-sm-6">
+							<div class="dataTables_info" id="DataTables_Table_0_info"
+								role="alert" aria-live="polite" aria-relevant="all" id="ordernumber"></div>
+						</div>
+						<div class="col-sm-6">
+							<div class="dataTables_paginate paging_simple_numbers"
+								id="DataTables_Table_0_paginate">
+								<ul class="pagination" id="pageDiv">
+									
+								</ul>
+							</div>
+						</div>
+					</div>
+					
+					<div class="admin-table-page">
 							<div id="page" class="page"></div>
 						</div>
 					</div>
@@ -112,6 +129,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     var pageAll = 0;          //总页数
     $(document).ready(function(){
     	getOrderList(1);
+    	getPage();
     })
     	function getOrderList(m){
     	    page = m;
@@ -123,25 +141,26 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     				var json = data.data;
     				for(var i=0;i<json.length;i++){
     					var state;
-    					if(jaon[i].trackState == 1){
+    					if(json[i].trackState == 1){
     						state = "订单未分配";
-    					}else if(jaon[i].trackState == 2){
+    					}else if(json[i].trackState == 2){
     						state = "订单已分配";
     					}
-    					else if(jaon[i].trackState == 3){
+    					else if(json[i].trackState == 3){
     						state = "预约安装";
     					}
-    					else if(jaon[i].trackState == 4){
+    					else if(json[i].trackState == 4){
     						state = "安装中";
     					}
-    					else if(jaon[i].trackState == 5){
+    					else if(json[i].trackState == 5){
     						state = "安装完成";
     					}else{
     						state = "订单取消";
     					}
     					$("#tbody").append(
     						'<tr style="height:100px;">'+
-                            	 '<td> <img alt="image" class="img-responsive" src="../../Front/assets/images/'+json[i].mainPic+'></td>'+
+    						     '<td><input type="checkbox"></td>'+
+                            	 '<td> <img alt="image" class="img-responsive" src="Front/assets/images/'+json[i].mainPic+'"></td>'+
                             	 '<td>'+json[i].orderFee+'</td>'+
                             	 '<td>'+json[i].orderId+'</td>'+
                             	 '<td>'+json[i].modelId+'</td>'+
@@ -153,13 +172,33 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             '</tr>'
     							)
     				}
+    				 $("#ordernumber").empty();
+    			
+    			      $("#ordernumber").append('显示1 到'+json.length+' 项')
     			}else{
+    				alert(1)
     				alert(data.meta.message)
     			}
     			
     		})
     	}
-    
+        
+    function getPage(){
+    	$.post("./Ad/Order/orderNumber",function(data){
+			$("#pageDiv").empty();
+			
+			pageALL = Math.ceil(data.number/10);
+			alert(pageALL)
+			$("#pageDiv").append(
+					'<li class="paginate_button previous disabled" aria-controls="DataTables_Table_0" tabindex="0" id="DataTables_Table_0_previous"><a href="#">上一页</a></li>');
+		    for(var y=1;y <= pageALL;y++){
+		    	$("#pageDiv").append(
+		    		'<li class="paginate_button active" aria-controls="DataTables_Table_0" tabindex="0"><a href="#">'+y+'</a></li>');
+		    }
+		    $("#pageDiv").append(
+			'<li class="paginate_button previous disabled" aria-controls="DataTables_Table_0" tabindex="0" id="DataTables_Table_0_previous"><a href="#">下一页</a></li>');
+		})
+    }
     
     </script>
     
