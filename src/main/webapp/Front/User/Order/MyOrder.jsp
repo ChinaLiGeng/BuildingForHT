@@ -43,32 +43,8 @@
 	<link rel="stylesheet" type="text/css" href="User/Order/css/base.css">
 	<link rel="stylesheet" type="text/css" href="User/Order/css/member.css">
     <script type="text/javascript" src="User/Order/js/jquery.js"></script>
-    <script type="text/javascript" src="User/Order/js/MyOrder.js"></script>
-     <script>
-         $(function(){
-
-             $("#H-table li").each(function(i){
-                 $(this).click((function(k){
-                     var _index = k;
-                     return function(){
-                         $(this).addClass("cur").siblings().removeClass("cur");
-                         $(".H-over").hide();
-                         $(".H-over:eq(" + _index + ")").show();
-                     }
-                 })(i));
-             });
-             $("#H-table1 li").each(function(i){
-                 $(this).click((function(k){
-                     var _index = k;
-                     return function(){
-                         $(this).addClass("cur").siblings().removeClass("cur");
-                         $(".H-over1").hide();
-                         $(".H-over1:eq(" + _index + ")").show();
-                     }
-                 })(i));
-             });
-         });
-     </script>
+    
+     
 	<!-- order end -->
 
 	</head>
@@ -121,21 +97,21 @@
             </div>
             <div class="member-whole clearfix">
                 <ul id="H-table" class="H-table">
-                    <li class="cur"><a href="#">全部设计</a></li>
-                    <li><a href="#">待确认<em>(44)</em></a></li>
-                    <li><a href="#">设计完成</a></li>
-                    <li><a href="#">设计否决</a></li>
+                    <li class="cur"><a style="cursor: pointer;" onclick="getMyAllDesign()">全部设计</a></li>
+                    <li><a style="cursor: pointer;" onclick="getMyAckDesign()">待确认</a></li>
+                    <li><a style="cursor: pointer;" onclick="getFinished()">设计完成</a></li>
+                    <li><a style="cursor: pointer;" onclick="getRefused()">设计否决</a></li>
                 </ul>
             </div>
             <div class="member-border">
                <div class="member-return H-over">
                    <div class="member-cancel clearfix">
-                       <span class="be1">模型信息</span>
-                       <span class="be2">审核团队</span>
-                       <span class="be2">设计金额</span>
-                       <span class="be2">设计时间</span>
-                       <span class="be2">设计状态</span>
-                       <span class="be2">操作</span>
+                       <span class="be1" style="color:black;font-size: 15px">源模型信息</span>
+                       <span class="be2" style="color:black;font-size: 15px">审核团队</span>
+                       <span class="be2" style="color:black;font-size: 15px">设计金额</span>
+                       <span class="be2" style="color:black;font-size: 15px">建筑面积</span>
+                       <span class="be2" style="color:black;font-size: 15px">设计状态</span>
+                       <span class="be2" style="color:black;font-size: 15px">操作</span>
                    </div>
                    <div class="member-sheet clearfix">
                        <ul id="my_design_ul">
@@ -163,7 +139,7 @@
                        </ul>
                    </div>
                </div>
-               <div class="member-return H-over" style="display:none;">
+              <!--  <div class="member-return H-over" style="display:none;">
                    <div class="member-cancel clearfix">
                        <span class="be1">订单信息</span>
                        <span class="be2">收货人</span>
@@ -257,25 +233,21 @@
                            </li>
                        </ul>
                    </div>
-               </div>
-               <div class="H-over member-over" style="display:none;"><h2>待发货</h2></div>
+               </div> -->
+              <!--  <div class="H-over member-over" style="display:none;"><h2>待发货</h2></div>
                <div class="H-over member-over" style="display:none;"><h2>待收货</h2></div>
                <div class="H-over member-over" style="display:none;"><h2>交易完成</h2></div>
-               <div class="H-over member-over" style="display:none;"><h2>订单信息</h2></div>
+               <div class="H-over member-over" style="display:none;"><h2>订单信息</h2></div> -->
 
                 <div class="clearfix" style="padding:30px 20px;">
-                    <div class="fr pc-search-g pc-search-gs">
-                        <a style="display:none" class="fl " href="#">上一页</a>
-                        <a href="#" class="current">1</a>
-                        <a href="javascript:;">2</a>
-                        <a href="javascript:;">3</a>
+                    <div class="fr pc-search-g pc-search-gs" id="design_pages">
+                       <!--  <a href="javascript:;">3</a>
                         <a href="javascript:;">4</a>
                         <a href="javascript:;">5</a>
                         <a href="javascript:;">6</a>
                         <a href="javascript:;">7</a>
                         <span class="pc-search-di">…</span>
-                        <a href="javascript:;">1088</a>
-                        <a title="使用方向键右键也可翻到下一页哦！" class="" href="javascript:;">下一页</a>
+                        <a href="javascript:;">1088</a> -->
                     </div>
                 </div>
 
@@ -303,5 +275,31 @@
 		<script src="assets/js/joinable/superfish.js"></script>
 		<script src="assets/js/joinable/wow.min.js"></script>
 		<script src="assets/js/main.js"></script>
+		<script type="text/javascript" src="User/Order/js/MyOrder.js"></script>
+		<!-- <script>
+         $(function(){
+
+             $("#H-table li").each(function(i){
+                 $(this).click((function(k){
+                     var _index = k;
+                     return function(){
+                         $(this).addClass("cur").siblings().removeClass("cur");
+                         $(".H-over").hide();
+                         $(".H-over:eq(" + _index + ")").show();
+                     }
+                 })(i));
+             });
+             $("#H-table1 li").each(function(i){
+                 $(this).click((function(k){
+                     var _index = k;
+                     return function(){
+                         $(this).addClass("cur").siblings().removeClass("cur");
+                         $(".H-over1").hide();
+                         $(".H-over1:eq(" + _index + ")").show();
+                     }
+                 })(i));
+             });
+         });
+     </script> -->
 	</body>
 </html>
