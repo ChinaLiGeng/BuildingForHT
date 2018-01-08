@@ -200,8 +200,13 @@ public class ModelControllerFront {
 	@ResponseBody
 	public Response getMyDesign(HttpSession session, int page, int state) {
 		
-		User user = (User) session.getAttribute("front_user");
 		Response response = new Response();
+		User user = (User) session.getAttribute("front_user");
+		if(user == null){
+			response.failure("Î´µÇÂ¼£¡");
+			return response;
+		}
+		
 		List<Model> models = null;
 		int number = 0;
 		

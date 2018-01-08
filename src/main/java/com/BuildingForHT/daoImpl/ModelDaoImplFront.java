@@ -194,12 +194,13 @@ public class ModelDaoImplFront implements ModelDaoFront{
 		
 		List<Model> models = null;
 		StringBuffer str = new StringBuffer("select model.*,user.userName from model,model_examine_peo,user where model.userId = ? and model.state = ?"
-										+ " and model.beType = ?  and model.modelId = model_examine_peo.modelId and "
+										+ " and model.beType = ? and model.modelId = model_examine_peo.modelId and "
 										+ "model_examine_peo.modifier = user.userId ");
 		if( state != 0 ) {          						//not find all
 			str.append("and model.designState = ? ");
-			Object []params = {userId,1,2,state,(page-5)*5,5};
+			Object []params = {userId,1,2,state,(page-1)*4,4};
 			str.append("limit ?,?");
+			System.out.println(str.toString());
 			
 			try {
 				models = jdbcTemplate.query(str.toString(), params, new BeanPropertyRowMapper(Model.class));
@@ -209,8 +210,9 @@ public class ModelDaoImplFront implements ModelDaoFront{
 				return models;
 			}
 		}else {
-			Object []params = {userId,1,2,(page-5)*5,5};
+			Object []params = {userId,1,2,(page-1)*4,4};
 			str.append("limit ?,?");
+			System.out.println(str.toString());
 			
 			try {
 				models = jdbcTemplate.query(str.toString(), params, new BeanPropertyRowMapper(Model.class));
@@ -243,6 +245,7 @@ public class ModelDaoImplFront implements ModelDaoFront{
 			}
 		}else {
 			Object []params = {userId,1,2};
+			System.out.println(str.toString());
 			
 			try {
 				result = jdbcTemplate.queryForObject(str.toString(),params,Integer.class);
