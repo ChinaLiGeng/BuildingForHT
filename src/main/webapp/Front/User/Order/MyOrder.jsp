@@ -91,7 +91,7 @@
                 </dl>
             </div>
         </div>
-        <div class="member-right fr">
+        <div class="member-right fr" id="my_design_id">
             <div class="member-head">
                 <div class="member-heels fl" style="font-size: 18px">我的设计</div>
             </div>
@@ -253,6 +253,122 @@
 
             </div>
         </div>
+        
+        <!-- history begin -->
+        <div class="member-right fr" style="display: none;" id="history">
+            <div class="member-head">
+                <div class="member-heels fl" style="font-size: 18px">历史版本</div>
+                <!-- <div class="member-heels fl" style="font-size: 18px;float: right;margin-right:10px;cursor: pointer;" onclick="returnMyDesign()">返回</div> -->
+            		<div class="member-backs fr"><a style="cursor: pointer;" onclick="returnMyDesign()">返回</a></div>
+            </div>
+            <div class="member-border">
+                
+                <div class="member-entry">
+                    <div class="member-issue clearfix">
+                        <span style="font-size:16px;color:black;">版本</span>
+                        <span style="font-size:16px;color:black;">发布时间</span>
+                    </div>
+                    <ul>
+                        <li class="clearfix"><div><a onclick="showHistoryDetail()" style="cursor: pointer;">在一层加了门窗，在二层北面加了卫生间<a style="font-weight: bolder;color:red;font-size:15px">（最新版）</a></a></div><div>2015-03-31 17:23:20</div></li>
+                        <li class="clearfix"><div><a href="#">买JBL耳机送上古世纪游戏炫酷时装礼包 </a></div><div>2015-03-31 17:23:20</div></li>
+                        <li class="clearfix"><div><a href="#">日韩美妆爆品低至1折起,不做女汉字换季护肤保卫战</a></div><div>2015-03-31 17:23:20</div></li>
+                        <li class="clearfix"><div><a href="#">愚人节整蛊玩具低至19</a></div><div>2015-03-31 17:23:20</div></li>
+                        <li class="clearfix"><div><a href="#">文艺蓝牙音箱 火热众筹中 </a></div><div>2015-03-31 17:23:20</div></li>
+                        <li class="clearfix"><div><a href="#">金秋献礼，热销投影送激光笔，指定机型送安装！ </a></div><div>2015-03-31 17:23:20</div></li>
+                        <li class="clearfix"><div><a href="#">男装跨店满299减60,赶快行动吧～！～～～</a></div><div>2015-03-31 17:23:20</div></li>
+                        <li class="clearfix"><div><a href="#">愚人节整蛊玩具低至19</a></div><div>2015-03-31 17:23:20</div></li>
+                        <li class="clearfix"><div><a href="#">文艺蓝牙音箱 火热众筹中 </a></div><div>2015-03-31 17:23:20</div></li>
+                        <li class="clearfix"><div><a href="#">金秋献礼，热销投影送激光笔，指定机型送安装！ </a></div><div>2015-03-31 17:23:20</div></li>
+                        <li class="clearfix"><div><a href="#">男装跨店满299减60,赶快行动吧～！～～～</a></div><div>2015-03-31 17:23:20</div></li>
+                        <li class="clearfix"><div><a href="#">无线立式吸尘器仅￥399 ！</a></div><div>2015-03-31 17:23:20</div></li>
+                        <li class="clearfix"><div><a href="#">无线立式吸尘器仅￥399 ！</a></div><div>2015-03-31 17:23:20</div></li>
+                        <li class="clearfix"><div><a href="#">赏春盛宴 大牌春装1折起 </a></div><div>2015-03-31 17:23:20</div></li>
+                        <li class="clearfix"><div><a href="#">放价旅游 红包免费领，点到你手软！</a></div><div>2015-03-31 17:23:20</div></li>
+                        <li class="clearfix"><div><a href="#">1元加价购台湾高粱美酒热销中 ！</a></div><div>2015-03-31 17:23:20</div></li>
+                        <li class="clearfix"><div><a href="#">1元加价购台湾高粱美酒热销中</a></div><div>2015-03-31 17:23:20</div></li>
+                        <li class="clearfix"><div><a href="#">愚人节整蛊玩具低至19</a></div><div>2015-03-31 17:23:20</div></li>
+                        <li class="clearfix"><div><a href="#">文艺蓝牙音箱 火热众筹中 </a></div><div>2015-03-31 17:23:20</div></li>
+                        <li class="clearfix"><div><a href="#">金秋献礼，热销投影送激光笔，指定机型送安装！ </a></div><div>2015-03-31 17:23:20</div></li>
+                        <li class="clearfix"><div><a href="#">男装跨店满299减60,赶快行动吧～！～～～</a></div><div>2015-03-31 17:23:20</div></li>
+                        <li class="clearfix"><div><a href="#">无线立式吸尘器仅￥399 ！</a></div><div>2015-03-31 17:23:20</div></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- history end -->
+        
+        <!-- history detail begin -->
+        <div class="member-right fr" style="display: none;" id="history_detail">
+            <div class="member-head">
+                <div class="member-heels fl" style="font-size: 18px">版本详细信息</div>
+                <div class="member-backs fr"><a style="cursor: pointer;" onclick="returnHistory()">返回</a></div>
+            </div>
+            <div class="member-border">
+               <div class="member-order">
+                   <dl>
+                       <dt>修改反馈</dt>
+                       <dd class="member-seller">改了这个那个，你加不加钱啊 </dd>
+                   </dl>
+                   <dl class="member-custom clearfix ">
+                       <dt>3d模型</dt>
+                       <dd><a style="cursor: pointer;">点击查看</a></dd>
+                   </dl>
+                   <dl>
+                       <dt>构件列表</dt>
+                      <!--  <dd class="member-seller">本订单是由 “以纯甲醇旗舰店” 发货并且提高售后服务，商品在下单后会尽快给您发货。 </dd> -->
+                   </dl>
+                   <div class="member-serial">
+	                   <ul>
+	                       <li class="clearfix">
+	                           <div class="No1" style="width:10%">构件种类</div>
+	                           <div class="No3" style="width:10%">构件编号</div>
+	                           <div class="No2" style="width:70%">构件属性</div>
+	                           <div class="No4" style="width:10%">数量</div>
+	                       </li>
+	                       <li class="clearfix">
+	                      	   <div class="No1" style="width:10%">梁柱</div>
+	                           <div class="No3" style="width:10%">x5001239</div>
+	                           <div class="No2" style="width:70%">长12306；宽230；高44；配筋22</div>
+	                           <div class="No4" style="width:10%">50</div>
+	                       </li>
+	                        <li class="clearfix">
+	                      	   <div class="No1" style="width:10%">梁柱</div>
+	                           <div class="No3" style="width:10%">x5001239</div>
+	                           <div class="No2" style="width:70%">长12306；宽230；高44；配筋22</div>
+	                           <div class="No4" style="width:10%">50</div>
+	                       </li>
+	                   </ul>
+               	    </div>
+               	    <dl>
+                       <dt>费用清单</dt>
+                      <!--  <dd class="member-seller">本订单是由 “以纯甲醇旗舰店” 发货并且提高售后服务，商品在下单后会尽快给您发货。 </dd> -->
+	                </dl>
+	                <div class="member-serial">
+	                   <ul>
+	                       <li class="clearfix">
+	                           <div class="No2" style="width:70%">每一项费用详细说明</div>
+	                           <div class="No1" style="width:30%">价格</div>
+	                       </li>
+	                       <li class="clearfix">
+	                      	   <div class="No2" style="width:70%">构件费用</div>
+	                           <div class="No1" style="width:30%">¥20000</div>
+	                       </li>
+	                        <li class="clearfix">
+	                      	   <div class="No2" style="width:70%">构件费用</div>
+	                           <div class="No1" style="width:30%">¥20000</div>
+	                       </li>
+	                   </ul>
+               	    </div>
+               </div>
+            </div>
+            <div class="member-settle clearfix">
+                <div class="fr">
+                    <div class="member-line"></div>
+                    <div><span>共需支付：</span><em style="color: red;font-size: 17px">￥280.00</em></div>
+                </div>
+            </div>
+        </div>
+        <!-- history detail end -->
     </div>
 </section>
 <!-- 商城快讯 End -->
