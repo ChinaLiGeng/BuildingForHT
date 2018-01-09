@@ -39,9 +39,9 @@ function getMyDesign(page){
 	                        '</div>'+
 	                        '<div class="member-circle clearfix">'+
 	                            '<div class="ci1">'+
-	                                '<div class="ci7 clearfix" style="height:147px">'+
-	                                    '<span class="gr1" style="margin-top: 20px"><a href="../F/Model/det.final?modelId='+json[i].quoteModel+'"><img src="../Pic/Main/'+json[i].mainPic+'" width="100" height="100" title="" about=""></a></span>'+
-	                                    '<span class="gr2" style="margin-top: 20px"><a href="#">'+json[i].name+'</a></span>'+
+	                                '<div class="ci7 clearfix" style="height:149px;position:relative">'+
+	                                    '<div class="gr1" style="margin-top: 10px"><a href="../F/Model/det.final?modelId='+json[i].quoteModel+'"><img src="../Pic/Main/'+json[i].mainPic+'" style="width:180px;height:100px ;" title="" about=""></a></div>'+
+	                                    '<div class="gr2" style="margin-top: 20px;margin-left:50px;"><a href="#">'+json[i].name+'</a></div>'+
 	                                '</div>'+
 	                            '</div>'+
 	                            '<div class="ci2" >'+json[i].userName+'</div>'+
