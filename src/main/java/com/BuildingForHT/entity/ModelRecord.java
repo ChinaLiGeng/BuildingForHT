@@ -12,6 +12,10 @@ public class ModelRecord {
 	private int version;							//版本
 	private boolean isSatisfy;					//0表示不满意；1表示满意
 	private int price;							//审计算出的价格
+	private int floorNumber;
+	private double buildingArea;
+	private double landArea;
+	private String createTime; 
 	
 	public int getModiId() {
 		return modiId;
@@ -92,12 +96,45 @@ public class ModelRecord {
 	public void setPrice(int price) {
 		this.price = price;
 	}
+	
+	public int getFloorNumber() {
+		return floorNumber;
+	}
+
+	public void setFloorNumber(int floorNumber) {
+		this.floorNumber = floorNumber;
+	}
+
+	public double getBuildingArea() {
+		return buildingArea;
+	}
+
+	public void setBuildingArea(double buildingArea) {
+		this.buildingArea = buildingArea;
+	}
+
+	public double getLandArea() {
+		return landArea;
+	}
+
+	public void setLandArea(double landArea) {
+		this.landArea = landArea;
+	}
+
+	public String getCreateTime() {
+		return createTime;
+	}
+
+	public void setCreateTime(String createTime) {
+		this.createTime = createTime;
+	}
 
 	@Override
 	public String toString() {
 		return "ModelRecord [modiId=" + modiId + ", modelId=" + modelId + ", objPath=" + objPath + ", mtlPath="
 				+ mtlPath + ", suggestion=" + suggestion + ", modifyInfo=" + modifyInfo + ", state=" + state
-				+ ", version=" + version + ", isSatisfy=" + isSatisfy + ", price=" + price + "]";
+				+ ", version=" + version + ", isSatisfy=" + isSatisfy + ", price=" + price + ", floorNumber="
+				+ floorNumber + ", buildingArea=" + buildingArea + ", landArea=" + landArea + ", createTime="
+				+ createTime + "]";
 	}
-	
 }

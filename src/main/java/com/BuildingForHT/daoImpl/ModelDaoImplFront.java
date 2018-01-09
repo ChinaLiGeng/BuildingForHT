@@ -20,6 +20,7 @@ import com.BuildingForHT.entity.EffectPic;
 import com.BuildingForHT.entity.HouseLayout;
 import com.BuildingForHT.entity.Model;
 import com.BuildingForHT.entity.ModelComment;
+import com.BuildingForHT.entity.ModelRecord;
 import com.BuildingForHT.entity.User;
 
 @Repository
@@ -322,6 +323,64 @@ public class ModelDaoImplFront implements ModelDaoFront{
 		String sql = "insert into model_examine_peo(modelId,modifier,auditor,modifierDate,auditorDate,state) values(?,?,?,?,?,?)";
 		Object []params = {id,modifier,auditor,time,time,1};
 		return jdbcTemplate.update(sql,params);
+	}
+
+	@Override
+	public List<Model> getNeverModifiedModels(int modifier,int page) {
+		
+		List<Model> models = null;
+		String sql = "select m.* from model m,model_examine_peo mep where mep.modifier = ? and mep.state = ? "
+					+ "and mep.modelId = m.modelId and m.state = ? and m.designState = ? limit ?,?";
+		Object []params = {modifier,1,1,1,(page-1)*10,10};
+		
+		try {
+			models = jdbcTemplate.query(sql, params, new BeanPropertyRowMapper(Model.class));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			return models;
+		}
+	}
+
+	@Override
+	public int getNeverModifiedNumber(int modifier) {
+		
+		int  result = 0;
+		String sql = "select count(*) from model m,model_examine_peo mep where mep.modifier = ? and mep.state = ? "
+					+ "and mep.modelId = m.modelId and m.state = ? and m.designState = ?";
+		Object []params = {modifier,1,1,1};
+	  
+		result = jdbcTemplate.queryForObject(sql,params,Integer.class);
+		return result;
+	}
+
+	@Override
+	public List<ModelRecord> getContinueModifiedModels(int modifier,int page) {
+		
+		List<ModelRecord> models = null;
+		String sql = "select mr.* from model_record mr,model_examine_peo mep,model m where mep.modifier = ? and mep.state = ? "
+					+ "and mep.modelId = m.modelId and m.state = ? and m.designState = ? and m.modelId = mr.modelId and mr.state = ? and mr.modelId = (select )  limit ?,?";
+		Object []params = {modifier,1,1,6,(page-1)*10,10};
+		
+		try {
+			models = jdbcTemplate.query(sql, params, new BeanPropertyRowMapper(ModelRecord.class));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			return models;
+		}
+	}
+
+	@Override
+	public int getContinueModifiedNumber(int modifier) {
+		
+		int  result = 0;
+		String sql = "select count(*) from model m,model_examine_peo mep where mep.modifier = ? and mep.state = ? "
+					+ "and mep.modelId = m.modelId and m.state = ? and m.designState = ?";
+		Object []params = {modifier,1,1,1};
+	  
+		result = jdbcTemplate.queryForObject(sql,params,Integer.class);
+		return result;
 	}
 
 }

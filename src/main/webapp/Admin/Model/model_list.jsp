@@ -90,7 +90,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <script type="text/javascript" src="http://tajs.qq.com/stats?sId=9051096" charset="UTF-8"></script>
     <script type="text/javascript">
     	$(document).ready(function(){
-    		alert("21");
     		getAdmModList(1);
     		showPage();
     	})
