@@ -71,10 +71,10 @@
 					                            <a href="" style="color:#3e82f7">设计师</a>
 					                        </li>
 				                            <li class="title-item same-cell fl" style="float:left;margin-left:20px;line-height: 60px;padding-right: 20px;padding-left: 20px">
-				                                <a href="#axonometric-drawing" style="color:#666">轴测图</a>
+				                                <a href="javascript:void(0);" onclick="js_method()" style="color:#666">轴测图</a>
 				                            </li>
 				                            <li class="title-item evaluation fl" style="float:left;margin-left:20px;line-height: 60px;padding-right: 20px;padding-left: 20px">
-					                            <a href="#floor-plan" style="color:#666">户型图</a>
+					                            <a href="javascript:void(0);" onclick="js_method2()" style="color:#666">户型图</a>					                        
 					                        </li>
 					                        <li class="title-item evaluation fl" style="float:left;margin-left:20px;line-height: 60px;padding-right: 20px;padding-left: 20px">
 					                            <a href="HT/3d_model.html" style="color:#666;cursor:pointer;" target="_blank">3d模型</a>
@@ -99,8 +99,8 @@
 											</div>
 										</div>
 									</div>
-									<div class="post-content">
-										<h4 class="post-title" style="margin-bottom:30px" id="axonometric-drawing" >相关轴测图</h4>
+									<div class="post-content" id="axonometric-drawing" >
+										<h4 class="post-title" style="margin-bottom:30px" >相关轴测图</h4>
 										
 										<c:forEach items="${model.effectPic}" var="ele">
 											<%-- <div class="post-image" style="width:49.7%;float: left;padding-left:15px;padding-right:15px">
@@ -120,8 +120,8 @@
 											</div>
 										</c:forEach>
 									</div>
-									<div class="post-content">
-										<h4 class="post-title" style="margin-bottom:30px" id="floor-plan">相关户型图</h4>
+									<div class="post-content" id="floor-plan">
+										<h4 class="post-title" style="margin-bottom:30px" >相关户型图</h4>
 										<c:forEach items="${model.houseLayout}" var="ele">
 											<%-- <div class="post-image" style="width:49.7%;float: left;padding-left:15px;padding-right:15px">
 												<img width="1100px" height="430" src="../Pic/Layout/${ele.pic}" alt="">
@@ -323,6 +323,16 @@
 			var modelId = ${model.modelId};
 			var floorNumber = ${model.floorNumber};
 			var area = ${model.buildingArea};
+			
+			function js_method(){
+				location.href = "../F/Model/det.final?modelId="+modelId+"#axonometric-drawing";
+			}
+			
+			function js_method2(){
+				location.href = "../F/Model/det.final?modelId="+modelId+"#floor-plan";
+			}
 		</script>
+		
+		
 	</body>
 </html>
