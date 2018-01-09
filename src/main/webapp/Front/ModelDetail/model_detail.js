@@ -116,7 +116,20 @@ function getSimilarModels(){
 }
 
 function design(){
-	$.post("../F/Model/")
+	var suggestion = $("#suggestion").val();
+	if(suggestion == null){
+		return 
+	}
+	$.post("../F/Model/updateModel",{
+		"id":modelId,
+		"sugg":suggestion
+	},function(data){
+		if(data.meta.success == false){
+			alert(data.meta.message)
+		}else{
+			alert("提交成功！")
+		}
+	})
 }
 function showDiv(){
 	
@@ -127,4 +140,9 @@ function showDiv(){
 
 function show(){
 	$("#sugg").fadeIn();
+}
+
+//show 3d model
+function show3D(){
+	
 }

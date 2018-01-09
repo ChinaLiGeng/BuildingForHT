@@ -7,7 +7,6 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -188,6 +187,40 @@ public class ModelControllerFront {
 			return response;
 		}
 	}
+	
+	/**
+	 * 
+	 * @Method：getMyDesign
+	 * @Description：get my design
+	 * @author：Snail
+	 * @date：2018年1月7日 下午9:50:18
+	 * @return：Response
+	 */
+	@RequestMapping(value = "/myDesign.final" , method = RequestMethod.GET)
+	@ResponseBody
+	public Response getMyDesign(HttpSession session, int page, int state) {
+		
+		Response response = new Response();
+		User user = (User) session.getAttribute("front_user");
+		if(user == null){
+			response.failure("未登录！");
+			return response;
+		}
+		
+		List<Model> models = null;
+		int number = 0;
+		
+		try {
+			models = modelInstance.getMyDesign(user.getUserId(), page, state);
+			number = modelInstance.getMyDesignNumbers(user.getUserId(), state);
+			response.success(models,number);
+		}catch (Exception e) {
+			response.failure("服务器错误");
+			e.printStackTrace();
+		}finally {
+			return response;
+		}
+	}
 	/**
 	 * 
 	* @Title: updateModel 
@@ -204,6 +237,10 @@ public class ModelControllerFront {
 		Response response = new Response();
 		boolean result = false;
 		User uu = (User) session.getAttribute("front_user");
+		if(uu == null){
+			response.failure("请先登录！");
+			return response;
+		}
 		if(modelInstance.updateModel(id, sugg,uu.getUserId()) == 1){
 			result = true;
 		}
@@ -222,6 +259,5 @@ public class ModelControllerFront {
 			return response;
 		}
 	}
-	
 	
 }

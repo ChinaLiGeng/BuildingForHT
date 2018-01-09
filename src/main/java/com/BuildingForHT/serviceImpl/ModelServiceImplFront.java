@@ -88,6 +88,22 @@ public class ModelServiceImplFront implements ModelServiceFront{
 		List<Model> result = modelInstance.findSimilarModel(floor, area);
 		return result;
 	}
+
+	@Override
+	public List<Model> getMyDesign(int userId, int page, int state) {
+		
+		List<Model> result = modelInstance.getMyDesign(userId, page, state);
+		return result;
+	}
+
+	@Override
+	public int getMyDesignNumbers(int userId, int state) {
+		
+		int number = 0;
+		number = modelInstance.getMyDesignNumbers(userId, state);
+		return number;	
+	}
+   
 	@Override
     public int updateModel(int id,String sugg,int userId){
     	int result = 0;

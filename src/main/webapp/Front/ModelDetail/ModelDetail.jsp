@@ -77,7 +77,7 @@
 					                            <a href="#floor-plan" style="color:#666">户型图</a>
 					                        </li>
 					                        <li class="title-item evaluation fl" style="float:left;margin-left:20px;line-height: 60px;padding-right: 20px;padding-left: 20px">
-					                            <a href="" style="color:#666">3d模型</a>
+					                            <a href="HT/3d_model.html" style="color:#666;cursor:pointer;" target="_blank">3d模型</a>
 					                        </li>
 					                        <li class="title-item evaluation fl" style="float:left;margin-left:20px;line-height: 60px;padding-right: 20px;padding-left: 20px">
 					                            <a href="" style="color:#666">用户评价</a>
@@ -240,7 +240,7 @@
 									
 										<div class="widget-title" style="display:none" id="sugg">
 													<textarea id="suggestion" name="message" class="form-control" placeholder="Message" rows="5" style="overflow: hidden; resize: none; height: 126px;"></textarea>
-										           <a href="#" onclick="design()" class="button default big" style="width:100%;text-align: center;background-color: red;font-weight: bolder" >提交</a>
+										           <a cursor:pointer" onclick="design()" class="button default big" style="width:100%;text-align: center;background-color: red;font-weight: bolder" >提交</a>
 										</div>
 										
 										<a onclick="showDiv()" id="hideA" class="button default big" style="width:100%;text-align: center;background-color: red;font-weight: bolder;cursor:pointer" >去设计</a>
