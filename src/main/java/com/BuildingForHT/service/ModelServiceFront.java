@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.BuildingForHT.entity.Model;
 import com.BuildingForHT.entity.ModelComment;
+import com.BuildingForHT.entity.ModelRecord;
 import com.BuildingForHT.entity.User;
 
 public interface ModelServiceFront {
@@ -121,5 +122,45 @@ public interface ModelServiceFront {
 	 * @return：int
 	 */
 	int getMyDesignNumbers(int userId,int state);
+	
+	/**
+	 * 
+	 * @Method：getNeverModifiedModels
+	 * @Description：get never been modified models
+	 * @author：Snail
+	 * @date：2018年1月9日 下午3:14:06
+	 * @return：List<Model>
+	 */
+	List<Model> getNeverModifiedModels(int modifier,int page);
+	
+	/**
+	 * 
+	 * @Method：getNeverModifiedNumber
+	 * @Description：get never been modifierd models number
+	 * @author：Snail
+	 * @date：2018年1月9日 下午3:15:22
+	 * @return：int
+	 */
+	int getNeverModifiedNumber(int modifier);
+	
+	/**
+	 * 
+	 * @Method：getContinueModifiedModels
+	 * @Description：get continue modified models
+	 * @author：Snail
+	 * @date：2018年1月9日 下午3:16:13
+	 * @return：List<ModelRecord>
+	 */
+	List<ModelRecord> getContinueModifiedModels(int modifier,int page);
+	
+	/**
+	 * 
+	 * @Method：getcontinueModifiedNumber
+	 * @Description：get continue modified models number
+	 * @author：Snail
+	 * @date：2018年1月9日 下午3:17:00
+	 * @return：int
+	 */
+	int getContinueModifiedNumber(int modifier);
 	
 }

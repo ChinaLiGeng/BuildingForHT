@@ -1,7 +1,9 @@
 package com.BuildingForHT.controller;
 
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -14,7 +16,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.BuildingForHT.entity.Model;
 import com.BuildingForHT.entity.ModelComment;
+import com.BuildingForHT.entity.ModelRecord;
 import com.BuildingForHT.entity.User;
+import com.BuildingForHT.globle.Constants;
 import com.BuildingForHT.jsonFormat.Response;
 import com.BuildingForHT.service.ModelServiceFront;
 
@@ -252,6 +256,86 @@ public class ModelControllerFront {
 			}else {
 				response.failure();
 			}
+		}catch (Exception e) {
+			response.failure("服务器错误");
+			e.printStackTrace();
+		}finally {
+			return response;
+		}
+	}
+	
+	/**
+	 * 
+	 * @Method：getNeverModifiedModels
+	 * @Description：get never modified models
+	 * @author：Snail
+	 * @date：2018年1月9日 下午9:42:46
+	 * @return：Response
+	 */
+	@RequestMapping(value = "/neverModifiModels.final" , method = RequestMethod.GET)
+	@ResponseBody
+	public Response getNeverModifiedModels(int page,HttpSession session) {
+		
+		Response response = new Response();
+		Map userSession = (HashMap)session.getAttribute(Constants.ADMIN_USER_SESSION);
+		if( userSession == null ){
+			response.failure("用户未登录");
+			return response;
+		}
+		
+		User user = (User) userSession.get(Constants.LOGIN_MAP_USER);
+		if( user == null ){
+			response.failure("用户未登录");
+			return response;
+		}
+		
+		List<Model> models = null;
+		int number = 0;
+		
+		try {
+			models = modelInstance.getNeverModifiedModels(user.getUserId(), page);
+			number = modelInstance.getNeverModifiedNumber(user.getUserId());
+			response.success(models,number);
+		}catch (Exception e) {
+			response.failure("服务器错误");
+			e.printStackTrace();
+		}finally {
+			return response;
+		}
+	}
+	
+	/**
+	 * 
+	 * @Method：getContinueModifiedModels
+	 * @Description：get continue modified models
+	 * @author：Snail
+	 * @date：2018年1月9日 下午9:42:46
+	 * @return：Response
+	 */
+	@RequestMapping(value = "/continueModifiModels.final" , method = RequestMethod.GET)
+	@ResponseBody
+	public Response getContinueModifiedModels(int page,HttpSession session) {
+		
+		Response response = new Response();
+		Map userSession = (HashMap)session.getAttribute(Constants.ADMIN_USER_SESSION);
+		if( userSession == null ){
+			response.failure("用户未登录");
+			return response;
+		}
+		
+		User user = (User) userSession.get(Constants.LOGIN_MAP_USER);
+		if( user == null ){
+			response.failure("用户未登录");
+			return response;
+		}
+		
+		List<ModelRecord> models = null;
+		int number = 0;
+		
+		try {
+			models = modelInstance.getContinueModifiedModels(user.getUserId(), page);
+			number = modelInstance.getContinueModifiedNumber(user.getUserId());
+			response.success(models,number);
 		}catch (Exception e) {
 			response.failure("服务器错误");
 			e.printStackTrace();

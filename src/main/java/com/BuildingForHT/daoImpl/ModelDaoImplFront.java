@@ -358,9 +358,9 @@ public class ModelDaoImplFront implements ModelDaoFront{
 	public List<ModelRecord> getContinueModifiedModels(int modifier,int page) {
 		
 		List<ModelRecord> models = null;
-		String sql = "select mr.* from model_record mr,model_examine_peo mep,model m where mep.modifier = ? and mep.state = ? "
-					+ "and mep.modelId = m.modelId and m.state = ? and m.designState = ? and m.modelId = mr.modelId and mr.state = ? and mr.modelId = (select )  limit ?,?";
-		Object []params = {modifier,1,1,6,(page-1)*10,10};
+		String sql = "select mr.* from model_record mr,model_examine_peo mep,model m,(select mr.modelId,max(mr.version) as temp from model_record mr,model_examine_peo mep,model m where mep.modifier = ? and mep.state = 1 and mep.modelId = m.modelId and m.state = 1 and m.designState = 6 and m.modelId = mr.modelId and mr.state = 1 GROUP BY mr.modelId) " + 
+					"as B where mep.modifier = ? and mep.state = 1 and mep.modelId = m.modelId and m.state = 1 and m.designState = 6 and m.modelId = mr.modelId and mr.state = 1 and mr.modelId = B.modelId and mr.version = B.temp limit ?,?";
+		Object []params = {modifier,modifier,(page-1)*10,10};
 		
 		try {
 			models = jdbcTemplate.query(sql, params, new BeanPropertyRowMapper(ModelRecord.class));
@@ -375,9 +375,9 @@ public class ModelDaoImplFront implements ModelDaoFront{
 	public int getContinueModifiedNumber(int modifier) {
 		
 		int  result = 0;
-		String sql = "select count(*) from model m,model_examine_peo mep where mep.modifier = ? and mep.state = ? "
-					+ "and mep.modelId = m.modelId and m.state = ? and m.designState = ?";
-		Object []params = {modifier,1,1,1};
+		String sql = "select count(*) from model_record mr,model_examine_peo mep,model m,(select mr.modelId,max(mr.version) as temp from model_record mr,model_examine_peo mep,model m where mep.modifier = ? and mep.state = 1 and mep.modelId = m.modelId and m.state = 1 and m.designState = 6 and m.modelId = mr.modelId and mr.state = 1 GROUP BY mr.modelId) " + 
+				"as B where mep.modifier = ? and mep.state = 1 and mep.modelId = m.modelId and m.state = 1 and m.designState = 6 and m.modelId = mr.modelId and mr.state = 1 and mr.modelId = B.modelId and mr.version = B.temp";
+		Object []params = {modifier,modifier};
 	  
 		result = jdbcTemplate.queryForObject(sql,params,Integer.class);
 		return result;

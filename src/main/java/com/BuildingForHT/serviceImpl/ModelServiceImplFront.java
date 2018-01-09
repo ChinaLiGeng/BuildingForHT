@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import com.BuildingForHT.dao.ModelDaoFront;
 import com.BuildingForHT.entity.Model;
 import com.BuildingForHT.entity.ModelComment;
+import com.BuildingForHT.entity.ModelRecord;
 import com.BuildingForHT.entity.User;
 import com.BuildingForHT.globle.Constants;
 import com.BuildingForHT.service.ModelServiceFront;
@@ -134,4 +135,32 @@ public class ModelServiceImplFront implements ModelServiceFront{
     	   }
     	return result;
     }
+
+	@Override
+	public List<Model> getNeverModifiedModels(int modifier, int page) {
+		
+		List<Model> result = modelInstance.getNeverModifiedModels(modifier, page);
+		return result;
+	}
+
+	@Override
+	public int getNeverModifiedNumber(int modifier) {
+		
+		int number = modelInstance.getNeverModifiedNumber(modifier);
+		return number;
+	}
+
+	@Override
+	public List<ModelRecord> getContinueModifiedModels(int modifier, int page) {
+		
+		List<ModelRecord> result = modelInstance.getContinueModifiedModels(modifier, page);
+		return result;
+	}
+
+	@Override
+	public int getContinueModifiedNumber(int modifier) {
+		
+		int number = modelInstance.getContinueModifiedNumber(modifier);
+		return number;
+	}
 }

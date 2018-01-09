@@ -25,6 +25,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <link href="Admin/Template/css/animate.min.css" rel="stylesheet">
     <link rel="stylesheet" href="Admin/Template/js/plugins/layui/css/layui.css" media="all" />
      <link href="Admin/Template/css/style.min862f.css?v=4.1.0" rel="stylesheet">
+     
 </head>
 
 <body class="gray-bg">
@@ -59,15 +60,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						</div>
                          <table class="table table-striped table-bordered table-hover dataTables-example">
                              <thead id="thead">
-                            	<tr>
-       								<th><input type="checkbox"></th>
-        							<th>模型编号</th>
-        							<th>创建时间</th>
-        							<th>引用次数</th>
+                            		<tr>
+	       							<th><input type="checkbox"></th>
+	        							<th>模型编号</th>
+	        							<th>创建时间</th>
+	        							<th>引用次数</th>
 									<th>操作</th>
    								</tr>
 							</thead>
                              <tbody id="modelList">
+                              	<tr class="gradeX">
+                              		<th><input type="checkbox"></th>
+                                    <td>Trident</td>
+                                    <td>Internet Explorer 4.0
+                                    </td>
+                                    <td>Win 95+</td>
+                                    <td class="center">X</td>
+                                </tr>
                              </tbody>
                          </table>
                          <div class="admin-table-page">
