@@ -108,9 +108,9 @@
 .iphone {background:url("../icon/member-ip.png") no-repeat; width:52px; height:14px; margin-left:31px; text-indent:-9999px;}
 
 .member-circle .ci7 .gr1 { display:block; float:left; padding-right:15px;}
-.member-circle .ci7 .gr2 { display:block; float:left; padding-right:15px; padding-top:4px;}
+.member-circle .ci7 .gr2 { display:block; float:left; padding-right:15px; padding-top:4px; position: absolute;left: 150px;}
 .member-circle .ci7 .gr3 { display:block; float:right; padding-right:15px; padding-top:28px;}
-.member-circle .ci7 .gr1 a{ display:block; width:60px; height:60px;}
+.member-circle .ci7 .gr1 a{ display:block; width:180px; height:100px;}
 
 .member-apply .ap1 .gr1 { display:block; float:left; padding-right:15px;}
 .member-apply .ap1 .gr2 { display:block; float:left; padding-right:70px;}
