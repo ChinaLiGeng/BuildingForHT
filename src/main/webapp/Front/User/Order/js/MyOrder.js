@@ -28,7 +28,7 @@ function getMyDesign(page){
 		    	
 		    	for(var i=0;i<json.length;i++){
 		    		
-		    		var temp = designState(json[i].designState);
+		    		var temp = designState(json[i].designState,i);
 		    		
 		    		$("#my_design_ul").append(
 		    			'<li>'+
@@ -49,7 +49,20 @@ function getMyDesign(page){
 	                            '<div class="ci4"><p>'+json[i].buildingArea+' 平方米</p></div>'+
 	                            ''+temp+''+
 	                        '</div>'+
-	   			    '</li>'
+	   			    '</li>'+
+                    '<div class="member-setup clearfix" style="display:none" id="'+i+'">'+
+	                   '<ul>'+
+	                       '<li class="clearfix" style="border-bottom:none;">'+
+	                           '<div class="member-score fl"><i class="reds">*</i>修改意见：</div>'+
+	                           '<div class="member-star fl">'+
+	                               '<textarea maxlength="200"></textarea>'+
+	                           '</div>'+
+	                       '</li>'+
+	                       '<li class="clearfix" style="border-bottom:none;">'+
+	                           '<div class="ci5 ci8"> <p><a href="#" class="member-touch">提交</a> </p> </div>'+
+	                       '</li>'+
+	                   '</ul>'+
+	                '</div>'
 		    		)
 		    	}
 		    	
@@ -107,7 +120,7 @@ function toRight(){
 }
 
 //design state
-function designState(design_state){
+function designState(design_state,i){
 	
 	var operation;
 	
@@ -116,21 +129,21 @@ function designState(design_state){
 		
 	}else if(design_state == 2){           //专业团队修改完毕
 		
-		operation = '<div class="ci5"><p><a >专业团队修改完毕，等待审计人员计算</a></p> <p style="cursor:pointer">历史版本</p></div>'
+		operation = '<div class="ci5"><p><a >专业团队修改完毕，等待审计人员计算</a></p> <p style="cursor:pointer" onclick="showHistory()">历史版本</p></div>'
 		
 	}else if(design_state == 3){           //审计计算完毕
 		
-		operation = '<div class="ci5"><p><a >待确认</a></p> <p style="cursor:pointer">历史版本</p></div>'+
-				    '<div class="ci5 ci8"> <p><a href="#" class="member-touch">下单</a> </p> <p><a href="#">继续修改</a> </p><p><a href="#" class="member-touch">否决</a> </p></div>';
+		operation = '<div class="ci5"><p><a >待确认</a></p> <p style="cursor:pointer" onclick="showHistory()">历史版本</p></div>'+
+				    '<div class="ci5 ci8"> <p><a href="#" class="member-touch">下单</a> </p> <p><a style="cursor:pointer;" onclick="showSuggestion('+i+')">继续修改</a> </p><p><a href="#" class="member-touch">否决</a> </p></div>';
 	}else if(design_state == 4){           //同意下单
-		operation = '<div class="ci5"><p><a >设计完成</a></p> <p style="cursor:pointer">历史版本</p></div>' ;
+		operation = '<div class="ci5"><p><a >设计完成</a></p> <p style="cursor:pointer" onclick="showHistory()">历史版本</p></div>' ;
 		
 	}else if(design_state == 5){           //否决
 		
-		operation = '<div class="ci5"><p><a >设计否决</a></p> <p style="cursor:pointer">历史版本</p></div>' ;
+		operation = '<div class="ci5"><p><a >设计否决</a></p> <p style="cursor:pointer" onclick="showHistory()">历史版本</p></div>' ;
 	}else if(design_state == 6){           //继续修改
 		
-		operation = '<div class="ci5"><p><a>继续修改，等待审核</a></p> <p style="cursor:pointer">历史版本</p></div>';
+		operation = '<div class="ci5"><p><a>继续修改，等待审核</a></p> <p style="cursor:pointer" onclick="showHistory()">历史版本</p></div>';
 	}
 	
 	return operation;
@@ -166,4 +179,33 @@ function getMyAllDesign(){
 	state = 0;
 	tag = 0
 	getMyDesign(1)
-}        
+}    
+
+//show history
+function showHistory(){
+	$("#my_design_id").hide()
+	$("#history").show();
+}
+
+//return my design
+function returnMyDesign(){
+	$("#history").hide();
+	$("#my_design_id").show()
+}
+
+//show history detail
+function showHistoryDetail(){
+	$("#history").hide();
+	$("#history_detail").show();
+}
+
+//return history
+function returnHistory(){
+	$("#history_detail").hide();
+	$("#history").show();
+}
+
+//show suggestion
+function showSuggestion(i){
+	$("#"+i+"").show();
+}
