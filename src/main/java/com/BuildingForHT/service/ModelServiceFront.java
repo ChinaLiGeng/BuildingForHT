@@ -163,4 +163,44 @@ public interface ModelServiceFront {
 	 */
 	int getContinueModifiedNumber(int modifier);
 	
+	/**
+	 * 
+	 * @Method：getCalcModels
+	 * @Description：get calc models
+	 * @author：Snail
+	 * @date：2018年1月10日 上午1:17:49
+	 * @return：List<ModelRecord>
+	 */
+	List<ModelRecord> getCalcModels(int auditor,int page);
+	
+	/**
+	 * 
+	 * @Method：getCalcModelNumber
+	 * @Description：get cala models number
+	 * @author：Snail
+	 * @date：2018年1月10日 上午1:18:35
+	 * @return：int
+	 */
+	int getCalcModelNumber(int auditor);
+	
+	/**
+	 * 
+	 * @Method：getAdminModels
+	 * @Description：get admin manager models
+	 * @author：Snail
+	 * @date：2018年1月10日 上午2:54:11
+	 * @return：List<Model>
+	 */
+	List<Model> getAdminModels(int page);
+	
+	/**
+	 * 
+	 * @Method：getAdminModels
+	 * @Description：get admin manager madels number
+	 * @author：Snail
+	 * @date：2018年1月10日 上午2:55:26
+	 * @return：int
+	 */
+	int getAdminModelNumber();
+	
 }

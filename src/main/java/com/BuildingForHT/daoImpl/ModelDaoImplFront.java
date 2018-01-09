@@ -383,4 +383,62 @@ public class ModelDaoImplFront implements ModelDaoFront{
 		return result;
 	}
 
+	@Override
+	public List<ModelRecord> getCalcModels(int auditor, int page) {
+		
+		List<ModelRecord> models = null;
+		
+		String sql = "select mr.* from model_record mr,model_examine_peo mep,model m,(select mr.modelId,max(mr.version) as temp from model m,model_record mr,model_examine_peo mep where mep.auditor = ? and mep.state = 1 and mep.modelId = m.modelId and m.state = 1 and m.designState = 2 and m.modelId = mr.modelId and mr.state = 1 group by mr.modelId) " + 
+					"as B where mep.auditor = ? and mep.state = 1 and mep.modelId = m.modelId and m.state = 1 and m.designState = 2 and m.modelId = mr.modelId and mr.state = 1 and mr.modelId = B.modelId and mr.version = B.temp limit ?,?";
+		Object []params = {auditor,auditor,(page-1)*10,10};
+		
+		try {
+			models = jdbcTemplate.query(sql, params, new BeanPropertyRowMapper(ModelRecord.class));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			return models;
+		}
+	}
+
+	@Override
+	public int getCalcModelNumber(int auditor) {
+		
+		int  result = 0;
+		String sql = "select count(*) from model_record mr,model_examine_peo mep,model m,(select mr.modelId,max(mr.version) as temp from model m,model_record mr,model_examine_peo mep where mep.auditor = ? and mep.state = 1 and mep.modelId = m.modelId and m.state = 1 and m.designState = 2 and m.modelId = mr.modelId and mr.state = 1 group by mr.modelId) " + 
+				"as B where mep.auditor = ? and mep.state = 1 and mep.modelId = m.modelId and m.state = 1 and m.designState = 2 and m.modelId = mr.modelId and mr.state = 1 and mr.modelId = B.modelId and mr.version = B.temp";
+		Object []params = {auditor,auditor};
+	  
+		result = jdbcTemplate.queryForObject(sql,params,Integer.class);
+		return result;
+	}
+
+	@Override
+	public List<Model> getAdminModels(int page) {
+		
+		List<Model> models = null;
+		
+		String sql = "select * from model where state = ? limit ?,?";
+		Object []params = {1,(page-1)*10,10};
+		
+		try {
+			models = jdbcTemplate.query(sql, params, new BeanPropertyRowMapper(Model.class));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			return models;
+		}
+	}
+
+	@Override
+	public int getAdminModelNumber() {
+		
+		int  result = 0;
+		String sql = "select count(*) from model where state = ?";
+		Object []params = {1};
+	  
+		result = jdbcTemplate.queryForObject(sql,params,Integer.class);
+		return result;
+	}
+
 }

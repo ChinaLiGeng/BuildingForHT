@@ -54,29 +54,38 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             </a>
                         </div>
                     </div>
+                    <!-- <div class="row">
+                    		<div class="col-sm-6">
+                    			<div class="dataTables_info" id="DataTables_Table_0_info" role="alert" aria-live="polite" aria-relevant="all">显示 1 到 10 项，共 57 项</div>
+                    		</div>
+                    	</div> -->
                     <div class="ibox-content">
 						<div class="col-sm-4">
 							<a href="Admin/Model/modelCreate.jsp"><button type="button" class="layui-btn layui-btn-lg" style="margin-bottom:25px;">模型创建</button></a>
+						</div>
+						 <div class="form-group" style="margin-top: 10px；">
+							<div class="col-sm-10">
+								<select class="form-control required" name="floorNumber" onchange="changeModels()" id="model_select">
+									<option value="1">还未有任何修改</option>
+									<option value="2">有新的意见了</option>
+								<select>
+							</div>
 						</div>
                          <table class="table table-striped table-bordered table-hover dataTables-example">
                              <thead id="thead">
                             		<tr>
 	       							<th><input type="checkbox"></th>
-	        							<th>模型编号</th>
+	        							<th>层数</th>
+	        							<th>建筑面积</th>
+	        							<th>用地面积</th>
 	        							<th>创建时间</th>
-	        							<th>引用次数</th>
+	        							<th>修改建议</th>
+	        							<th>obj文件</th>
 									<th>操作</th>
    								</tr>
 							</thead>
-                             <tbody id="modelList">
-                              	<tr class="gradeX">
-                              		<th><input type="checkbox"></th>
-                                    <td>Trident</td>
-                                    <td>Internet Explorer 4.0
-                                    </td>
-                                    <td>Win 95+</td>
-                                    <td class="center">X</td>
-                                </tr>
+                             <tbody id="modelList_id">
+                              	
                              </tbody>
                          </table>
                          <div class="admin-table-page">
@@ -93,57 +102,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <script src="Admin/Template/js/content.min.js?v=1.0.0"></script>
     <script src="Admin/Template/js/plugins/layer/layer.js"></script>
     <script src="Admin/Template/js/plugins/layui/layui.js"></script>
-     <script src="Admin/Model/js/modList.js"></script>
-<!--    <script src="Admin/Template/js/plugins/dataTables/jquery.dataTables.js"></script>  -->
-<!--     <script src="Admin/Template/js/plugins/dataTables/dataTables.bootstrap.js"></script> -->
+     <script src="Admin/Model/js/ModelList.js"></script>
+   <!-- <script src="Admin/Template/js/plugins/dataTables/jquery.dataTables.js"></script> 
+    <script src="Admin/Template/js/plugins/dataTables/dataTables.bootstrap.js"></script> -->
     <script type="text/javascript" src="http://tajs.qq.com/stats?sId=9051096" charset="UTF-8"></script>
-    <script type="text/javascript">
-    	$(document).ready(function(){
-    		getAdmModList(1);
-    		showPage();
-    	})
-    	
-    	function showPage(){
- 		$.ajaxSetup({                //设置同步
- 		    async : false  
- 		}); 
- 		var pageAll = 0;
- 		
- 		$.post("./ModelAdmin/admModNum", function(json) {
-			//document.getElementById("all_data").innerHTML = json;      //总数据
- 			pageAll = Math.ceil(json.data/length);         //页数
- 		});
- 		
- 		layui.config({
- 			base: 'Admin/Template/js/plugins/layui/modules/'
- 		});
-
- 		layui.use(['icheck', 'laypage','layer'], function() {
- 			var $ = layui.jquery,
- 				laypage = layui.laypage,
- 				layer = parent.layer === undefined ? layui.layer : parent.layer;
- 			/*$('input').iCheck({
- 				checkboxClass: 'icheckbox_flat-green'
- 			});*/
-
- 			//page
- 			laypage({
- 				cont: 'page',
- 				pages: pageAll,     //总页数
- 				groups: 5,		//连续显示分页数
- 					
- 				jump: function(obj, first) {
- 					//得到了当前页，用于向服务端请求对应数据
- 					var curr = obj.curr;
- 					pageNow = curr;
- 					if(!first) {
- 						getAdmModList(curr);
- 					}
- 				}
- 			});
- 		});
- 	}
-    </script>
+   
 </body>
 
 <!-- Mirrored from www.zi-han.net/theme/hplus/empty_page.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 20 Jan 2016 14:19:52 GMT -->

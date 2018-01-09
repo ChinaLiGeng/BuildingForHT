@@ -344,4 +344,72 @@ public class ModelControllerFront {
 		}
 	}
 	
+	/**
+	 * 
+	 * @Method：getCalcModels
+	 * @Description：get calc models
+	 * @author：Snail
+	 * @date：2018年1月10日 上午2:36:29
+	 * @return：Response
+	 */
+	@RequestMapping(value = "/calcModels.final" , method = RequestMethod.GET)
+	@ResponseBody
+	public Response getCalcModels(int page,HttpSession session) {
+		
+		Response response = new Response();
+		Map userSession = (HashMap)session.getAttribute(Constants.ADMIN_USER_SESSION);
+		if( userSession == null ){
+			response.failure("用户未登录");
+			return response;
+		}
+		
+		User user = (User) userSession.get(Constants.LOGIN_MAP_USER);
+		if( user == null ){
+			response.failure("用户未登录");
+			return response;
+		}
+		
+		List<ModelRecord> models = null;
+		int number = 0;
+		
+		try {
+			models = modelInstance.getCalcModels(user.getUserId(), page);
+			number = modelInstance.getCalcModelNumber(user.getUserId());
+			response.success(models,number);
+		}catch (Exception e) {
+			response.failure("服务器错误");
+			e.printStackTrace();
+		}finally {
+			return response;
+		}
+	}
+	
+	/**
+	 * 
+	 * @Method：getAdminModels
+	 * @Description：get admin models
+	 * @author：Snail
+	 * @date：2018年1月10日 上午3:00:01
+	 * @return：Response
+	 */
+	@RequestMapping(value = "/adminModels.final" , method = RequestMethod.GET)
+	@ResponseBody
+	public Response getAdminModels(int page) {
+		
+		Response response = new Response();
+		List<Model> models = null;
+		int number = 0;
+		
+		try {
+			models = modelInstance.getAdminModels(page);
+			number = modelInstance.getAdminModelNumber();
+			response.success(models,number);
+		}catch (Exception e) {
+			response.failure("服务器错误");
+			e.printStackTrace();
+		}finally {
+			return response;
+		}
+	}
+	
 }

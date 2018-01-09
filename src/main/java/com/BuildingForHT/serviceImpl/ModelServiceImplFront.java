@@ -163,4 +163,32 @@ public class ModelServiceImplFront implements ModelServiceFront{
 		int number = modelInstance.getContinueModifiedNumber(modifier);
 		return number;
 	}
+
+	@Override
+	public List<ModelRecord> getCalcModels(int auditor, int page) {
+		
+		List<ModelRecord> result = modelInstance.getCalcModels(auditor, page);
+		return result;
+	}
+
+	@Override
+	public int getCalcModelNumber(int auditor) {
+		
+		int number = modelInstance.getCalcModelNumber(auditor);
+		return number;
+	}
+
+	@Override
+	public List<Model> getAdminModels(int page) {
+		
+		List<Model> result = modelInstance.getAdminModels(page);
+		return result;
+	}
+
+	@Override
+	public int getAdminModelNumber() {
+		
+		int number = modelInstance.getAdminModelNumber();
+		return number;
+	}
 }
