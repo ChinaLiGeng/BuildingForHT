@@ -15,6 +15,7 @@ import com.BuildingForHT.entity.Model;
 import com.BuildingForHT.entity.ModelAssembly;
 import com.BuildingForHT.entity.ModelComment;
 import com.BuildingForHT.entity.ModelRecord;
+import com.BuildingForHT.entity.OrderTable;
 import com.BuildingForHT.entity.PriceList;
 import com.BuildingForHT.entity.User;
 import com.BuildingForHT.globle.Constants;
@@ -239,9 +240,62 @@ public class ModelServiceImplFront implements ModelServiceFront{
 		
 		boolean result = false;
 		
-		if( modelInstance.createPriceList(modiId, priceList) > 0 & modelInstance.calcUpdateAllPrice(modiId, price) >0 & modelInstance.calcUpdateModel(modelId) >0) {
+		if( modelInstance.createPriceList(modiId, priceList) > 0 & modelInstance.calcUpdateAllPrice(modiId, price) >0 & modelInstance.calcUpdateModel(modelId,3) >0) {
 			result = true;
 		}
 		return result;
+	}
+
+	@Override
+	public boolean createOrder(OrderTable order, int modelId, int userId) {
+		
+		boolean result = false;
+		
+		if( modelInstance.createOrder(order, modelId, userId) > 0  & modelInstance.calcUpdateModel(modelId,4) >0) {
+			result = true;
+		}
+		return result;
+	}
+
+	@Override
+	public boolean calcUpdateModel(int modelId, int designState) {
+		
+		boolean result = false;
+		
+		if( modelInstance.calcUpdateModel(modelId,designState) >0) {
+			result = true;
+		}
+		return result;
+	}
+
+	@Override
+	public boolean continueOrder(String suddestion, int modelId) {
+		
+		boolean result = false;
+		
+		if( modelInstance.continueOrder(suddestion, modelId) > 0  & modelInstance.calcUpdateModel(modelId,6) >0) {
+			result = true;
+		}
+		return result;
+	}
+
+	@Override
+	public List<ModelRecord> getHistory(int modelId) {
+
+		List<ModelRecord> result = modelInstance.getHistory(modelId);
+		return result;
+	}
+
+	@Override
+	public ModelRecord getHistoryDetail(int modiId) {
+		
+//		ModelRecord 
+		return null;
+	}
+
+	@Override
+	public List<PriceList> getPriceLists(int modiId) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

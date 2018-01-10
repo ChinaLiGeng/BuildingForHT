@@ -9,6 +9,7 @@ import com.BuildingForHT.entity.Model;
 import com.BuildingForHT.entity.ModelAssembly;
 import com.BuildingForHT.entity.ModelComment;
 import com.BuildingForHT.entity.ModelRecord;
+import com.BuildingForHT.entity.OrderTable;
 import com.BuildingForHT.entity.PriceList;
 import com.BuildingForHT.entity.User;
 
@@ -290,5 +291,65 @@ public interface ModelServiceFront {
 	 * @return：boolean
 	 */
 	boolean calcModel(int modiId,PriceList priceList,int modelId,int price);
+	
+	/**
+	 * 
+	 * @Method：createOrder
+	 * @Description：create order
+	 * @author：Snail
+	 * @date：2018年1月10日 下午9:31:29
+	 * @return：boolean
+	 */
+	boolean createOrder(OrderTable order, int modelId ,int userId);
+	
+	/**
+	 * 
+	 * @Method：calcUpdateModel
+	 * @Description：calc update model
+	 * @author：Snail
+	 * @date：2018年1月10日 下午3:30:56
+	 * @return：boolean
+	 */
+	boolean calcUpdateModel(int modelId,int designState);
+	
+	/**
+	 * 
+	 * @Method：continueOrder
+	 * @Description：continue to modify
+	 * @author：Snail
+	 * @date：2018年1月10日 下午9:46:58
+	 * @return：boolean
+	 */
+	boolean continueOrder(String suddestion,int modelId);
+	
+	/**
+	 * 
+	 * @Method：getHistory
+	 * @Description：get history
+	 * @author：Snail
+	 * @date：2018年1月10日 下午10:52:48
+	 * @return：List<ModelRecord>
+	 */
+	List<ModelRecord> getHistory(int modelId);
+	
+	/**
+	 * 
+	 * @Method：getHistoryDetail
+	 * @Description：get history detail
+	 * @author：Snail
+	 * @date：2018年1月10日 下午11:13:17
+	 * @return：ModelRecord
+	 */
+	ModelRecord getHistoryDetail(int modiId);
+	
+	/**
+	 * 
+	 * @Method：getPriceLists
+	 * @Description：get model's price list
+	 * @author：Snail
+	 * @date：2018年1月10日 下午11:16:03
+	 * @return：List<PriceList>
+	 */
+	List<PriceList> getPriceLists(int modiId);
 	
 }
