@@ -20,6 +20,7 @@ import com.BuildingForHT.entity.EffectPic;
 import com.BuildingForHT.entity.HouseLayout;
 import com.BuildingForHT.entity.Model;
 import com.BuildingForHT.entity.ModelComment;
+import com.BuildingForHT.entity.ModelRecord;
 import com.BuildingForHT.entity.User;
 
 @Repository
@@ -323,6 +324,7 @@ public class ModelDaoImplFront implements ModelDaoFront{
 		Object []params = {id,modifier,auditor,time,time,1};
 		return jdbcTemplate.update(sql,params);
 	}
+
 	
 	@Override
 	public int createModel(Model model){
@@ -363,4 +365,123 @@ public class ModelDaoImplFront implements ModelDaoFront{
 		Object []params = {id,name,foolr,1,110,height};
 		return jdbcTemplate.update(sql,params);
     } 
+
+
+	@Override
+	public List<Model> getNeverModifiedModels(int modifier,int page) {
+		
+		List<Model> models = null;
+		String sql = "select m.* from model m,model_examine_peo mep where mep.modifier = ? and mep.state = ? "
+					+ "and mep.modelId = m.modelId and m.state = ? and m.designState = ? limit ?,?";
+		Object []params = {modifier,1,1,1,(page-1)*10,10};
+		
+		try {
+			models = jdbcTemplate.query(sql, params, new BeanPropertyRowMapper(Model.class));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			return models;
+		}
+	}
+
+	@Override
+	public int getNeverModifiedNumber(int modifier) {
+		
+		int  result = 0;
+		String sql = "select count(*) from model m,model_examine_peo mep where mep.modifier = ? and mep.state = ? "
+					+ "and mep.modelId = m.modelId and m.state = ? and m.designState = ?";
+		Object []params = {modifier,1,1,1};
+	  
+		result = jdbcTemplate.queryForObject(sql,params,Integer.class);
+		return result;
+	}
+
+	@Override
+	public List<ModelRecord> getContinueModifiedModels(int modifier,int page) {
+		
+		List<ModelRecord> models = null;
+		String sql = "select mr.* from model_record mr,model_examine_peo mep,model m,(select mr.modelId,max(mr.version) as temp from model_record mr,model_examine_peo mep,model m where mep.modifier = ? and mep.state = 1 and mep.modelId = m.modelId and m.state = 1 and m.designState = 6 and m.modelId = mr.modelId and mr.state = 1 GROUP BY mr.modelId) " + 
+					"as B where mep.modifier = ? and mep.state = 1 and mep.modelId = m.modelId and m.state = 1 and m.designState = 6 and m.modelId = mr.modelId and mr.state = 1 and mr.modelId = B.modelId and mr.version = B.temp limit ?,?";
+		Object []params = {modifier,modifier,(page-1)*10,10};
+		
+		try {
+			models = jdbcTemplate.query(sql, params, new BeanPropertyRowMapper(ModelRecord.class));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			return models;
+		}
+	}
+
+	@Override
+	public int getContinueModifiedNumber(int modifier) {
+		
+		int  result = 0;
+		String sql = "select count(*) from model_record mr,model_examine_peo mep,model m,(select mr.modelId,max(mr.version) as temp from model_record mr,model_examine_peo mep,model m where mep.modifier = ? and mep.state = 1 and mep.modelId = m.modelId and m.state = 1 and m.designState = 6 and m.modelId = mr.modelId and mr.state = 1 GROUP BY mr.modelId) " + 
+				"as B where mep.modifier = ? and mep.state = 1 and mep.modelId = m.modelId and m.state = 1 and m.designState = 6 and m.modelId = mr.modelId and mr.state = 1 and mr.modelId = B.modelId and mr.version = B.temp";
+		Object []params = {modifier,modifier};
+	  
+		result = jdbcTemplate.queryForObject(sql,params,Integer.class);
+		return result;
+	}
+
+	@Override
+	public List<ModelRecord> getCalcModels(int auditor, int page) {
+		
+		List<ModelRecord> models = null;
+		
+		String sql = "select mr.* from model_record mr,model_examine_peo mep,model m,(select mr.modelId,max(mr.version) as temp from model m,model_record mr,model_examine_peo mep where mep.auditor = ? and mep.state = 1 and mep.modelId = m.modelId and m.state = 1 and m.designState = 2 and m.modelId = mr.modelId and mr.state = 1 group by mr.modelId) " + 
+					"as B where mep.auditor = ? and mep.state = 1 and mep.modelId = m.modelId and m.state = 1 and m.designState = 2 and m.modelId = mr.modelId and mr.state = 1 and mr.modelId = B.modelId and mr.version = B.temp limit ?,?";
+		Object []params = {auditor,auditor,(page-1)*10,10};
+		
+		try {
+			models = jdbcTemplate.query(sql, params, new BeanPropertyRowMapper(ModelRecord.class));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			return models;
+		}
+	}
+
+	@Override
+	public int getCalcModelNumber(int auditor) {
+		
+		int  result = 0;
+		String sql = "select count(*) from model_record mr,model_examine_peo mep,model m,(select mr.modelId,max(mr.version) as temp from model m,model_record mr,model_examine_peo mep where mep.auditor = ? and mep.state = 1 and mep.modelId = m.modelId and m.state = 1 and m.designState = 2 and m.modelId = mr.modelId and mr.state = 1 group by mr.modelId) " + 
+				"as B where mep.auditor = ? and mep.state = 1 and mep.modelId = m.modelId and m.state = 1 and m.designState = 2 and m.modelId = mr.modelId and mr.state = 1 and mr.modelId = B.modelId and mr.version = B.temp";
+		Object []params = {auditor,auditor};
+	  
+		result = jdbcTemplate.queryForObject(sql,params,Integer.class);
+		return result;
+	}
+
+	@Override
+	public List<Model> getAdminModels(int page) {
+		
+		List<Model> models = null;
+		
+		String sql = "select * from model where state = ? limit ?,?";
+		Object []params = {1,(page-1)*10,10};
+		
+		try {
+			models = jdbcTemplate.query(sql, params, new BeanPropertyRowMapper(Model.class));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			return models;
+		}
+	}
+
+	@Override
+	public int getAdminModelNumber() {
+		
+		int  result = 0;
+		String sql = "select count(*) from model where state = ?";
+		Object []params = {1};
+	  
+		result = jdbcTemplate.queryForObject(sql,params,Integer.class);
+		return result;
+	}
+
+
 }

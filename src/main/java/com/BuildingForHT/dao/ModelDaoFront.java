@@ -7,6 +7,7 @@ import com.BuildingForHT.entity.EffectPic;
 import com.BuildingForHT.entity.HouseLayout;
 import com.BuildingForHT.entity.Model;
 import com.BuildingForHT.entity.ModelComment;
+import com.BuildingForHT.entity.ModelRecord;
 import com.BuildingForHT.entity.User;
 
 public interface ModelDaoFront {
@@ -185,6 +186,7 @@ public interface ModelDaoFront {
      */
 	int createMEP(int id, int modifier, int auditor);
 
+
 	int createModel(Model model);
     /**
      * 
@@ -196,4 +198,85 @@ public interface ModelDaoFront {
     * @throws
      */
 	int createHouselayout(int id, String name, int height, int foolr);
+
+	/**
+	 * 
+	 * @Method：getNeverModifiedModels
+	 * @Description：get never been modified models
+	 * @author：Snail
+	 * @date：2018年1月9日 下午3:14:06
+	 * @return：List<Model>
+	 */
+	List<Model> getNeverModifiedModels(int modifier,int page);
+	
+	/**
+	 * 
+	 * @Method：getNeverModifiedNumber
+	 * @Description：get never been modifierd models number
+	 * @author：Snail
+	 * @date：2018年1月9日 下午3:15:22
+	 * @return：int
+	 */
+	int getNeverModifiedNumber(int modifier);
+	
+	/**
+	 * 
+	 * @Method：getContinueModifiedModels
+	 * @Description：get continue modified models
+	 * @author：Snail
+	 * @date：2018年1月9日 下午3:16:13
+	 * @return：List<ModelRecord>
+	 */
+	List<ModelRecord> getContinueModifiedModels(int modifier,int page);
+	
+	/**
+	 * 
+	 * @Method：getcontinueModifiedNumber
+	 * @Description：get continue modified models number
+	 * @author：Snail
+	 * @date：2018年1月9日 下午3:17:00
+	 * @return：int
+	 */
+	int getContinueModifiedNumber(int modifier);
+	
+	/**
+	 * 
+	 * @Method：getCalcModels
+	 * @Description：get calc models
+	 * @author：Snail
+	 * @date：2018年1月10日 上午1:17:49
+	 * @return：List<ModelRecord>
+	 */
+	List<ModelRecord> getCalcModels(int auditor,int page);
+	
+	/**
+	 * 
+	 * @Method：getCalcModelNumber
+	 * @Description：get cala models number
+	 * @author：Snail
+	 * @date：2018年1月10日 上午1:18:35
+	 * @return：int
+	 */
+	int getCalcModelNumber(int auditor);
+	
+	/**
+	 * 
+	 * @Method：getAdminModels
+	 * @Description：get admin manager models
+	 * @author：Snail
+	 * @date：2018年1月10日 上午2:54:11
+	 * @return：List<Model>
+	 */
+	List<Model> getAdminModels(int page);
+	
+	/**
+	 * 
+	 * @Method：getAdminModels
+	 * @Description：get admin manager madels number
+	 * @author：Snail
+	 * @date：2018年1月10日 上午2:55:26
+	 * @return：int
+	 */
+	int getAdminModelNumber();
+
 }

@@ -2,8 +2,13 @@ package com.BuildingForHT.controller;
 
 import java.io.File;
 import java.sql.SQLException;
+
 import java.util.ArrayList;
+
+import java.util.HashMap;
+
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
@@ -24,7 +29,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.BuildingForHT.entity.Model;
 import com.BuildingForHT.entity.ModelComment;
+import com.BuildingForHT.entity.ModelRecord;
 import com.BuildingForHT.entity.User;
+import com.BuildingForHT.globle.Constants;
 import com.BuildingForHT.jsonFormat.Response;
 import com.BuildingForHT.service.ModelServiceFront;
 
@@ -269,6 +276,7 @@ public class ModelControllerFront {
 			return response;
 		}
 	}
+
 	/**
 	 * 
 	* @Title: createModel 
@@ -293,61 +301,155 @@ public class ModelControllerFront {
 		}
 		return response;
 	}
-	/*@RequestMapping(value = "/uploadPic" , method = RequestMethod.POST)
+	
+	
+	/**
+	 * 
+	 * @Method：getNeverModifiedModels
+	 * @Description：get never modified models
+	 * @author：Snail
+	 * @date：2018年1月9日 下午9:42:46
+	 * @return：Response
+	 */
+	@RequestMapping(value = "/neverModifiModels.final" , method = RequestMethod.GET)
 	@ResponseBody
-	public void uploadPic(HttpServletRequest request,HttpServletResponse response,String id){
-		//为解析类提供配置信息 
-				DiskFileItemFactory factory = new DiskFileItemFactory(); 
-				//创建解析类的实例 
-				ServletFileUpload sfu = new ServletFileUpload(factory); 
-				//开始解析 
-				sfu.setFileSizeMax(1024*1024*20); 
-				//每个表单域中数据会封装到一个对应的FileItem对象上 
-				try { 
-					List<FileItem> items = sfu.parseRequest(request); 
-					System.out.println("sdsadsdasdasdas"+items.size());
-					List<Model> routePicList = new ArrayList<Model>();             //所有图片（除封面）
-					
-					//区分表单域 
-					for (int i = 0; i < items.size(); i++) { 
-						
-						FileItem item = items.get(i); 
-						//isFormField为true，表示这不是文件上传表单域 
-						if(!item.isFormField()){ 
-							ServletContext sctx = request.getSession().getServletContext(); 
-							//获得存放文件的物理路径 
-							//upload下的某个文件夹 得到当前在线的用户 找到对应的文件夹 
-					
-							String path = sctx.getRealPath("/Common/Image"); 
-							System.out.println("路径："+path); 
-							//获得文件名 
-							String fileName = item.getName(); 
-							System.out.println("获得的图片名："+fileName); 
-							//该方法在某些平台(操作系统),会返回路径+文件名 
-							fileName = fileName.substring(fileName.lastIndexOf("/")+1); 
-							String trueName = System.currentTimeMillis()+fileName;
-							File file = new File(path+"\\"+ trueName); 
-							if(!file.exists()){ 
-								item.write(file);
-								
-								//将上传图片的名字记录到数据库中 
-								Model model = new Model();
-								model.setRoutePicture(trueName);
-								routePicList.add(routePic);
-							} 
-						} 
-					}
-					System.out.println("lalal");
-					
-					
-					
-					if( routePicList.size()!=0 ){
-						
-						                     //把图片存进数据库
-					}
-					
-				}catch (Exception e) { 
-					e.printStackTrace(); 
-				} 
-	}*/
+	public Response getNeverModifiedModels(int page,HttpSession session) {
+		
+		Response response = new Response();
+		Map userSession = (HashMap)session.getAttribute(Constants.ADMIN_USER_SESSION);
+		if( userSession == null ){
+			response.failure("用户未登录");
+			return response;
+		}
+		
+		User user = (User) userSession.get(Constants.LOGIN_MAP_USER);
+		if( user == null ){
+			response.failure("用户未登录");
+			return response;
+		}
+		
+		List<Model> models = null;
+		int number = 0;
+		
+		try {
+			models = modelInstance.getNeverModifiedModels(user.getUserId(), page);
+			number = modelInstance.getNeverModifiedNumber(user.getUserId());
+			response.success(models,number);
+		}catch (Exception e) {
+			response.failure("服务器错误");
+			e.printStackTrace();
+		}finally {
+			return response;
+		}
+	}
+	
+	/**
+	 * 
+	 * @Method：getContinueModifiedModels
+	 * @Description：get continue modified models
+	 * @author：Snail
+	 * @date：2018年1月9日 下午9:42:46
+	 * @return：Response
+	 */
+	@RequestMapping(value = "/continueModifiModels.final" , method = RequestMethod.GET)
+	@ResponseBody
+	public Response getContinueModifiedModels(int page,HttpSession session) {
+		
+		Response response = new Response();
+		Map userSession = (HashMap)session.getAttribute(Constants.ADMIN_USER_SESSION);
+		if( userSession == null ){
+			response.failure("用户未登录");
+			return response;
+		}
+		
+		User user = (User) userSession.get(Constants.LOGIN_MAP_USER);
+		if( user == null ){
+			response.failure("用户未登录");
+			return response;
+		}
+		
+		List<ModelRecord> models = null;
+		int number = 0;
+		
+		try {
+			models = modelInstance.getContinueModifiedModels(user.getUserId(), page);
+			number = modelInstance.getContinueModifiedNumber(user.getUserId());
+			response.success(models,number);
+		}catch (Exception e) {
+			response.failure("服务器错误");
+			e.printStackTrace();
+		}finally {
+			return response;
+		}
+	}
+	
+	/**
+	 * 
+	 * @Method：getCalcModels
+	 * @Description：get calc models
+	 * @author：Snail
+	 * @date：2018年1月10日 上午2:36:29
+	 * @return：Response
+	 */
+	@RequestMapping(value = "/calcModels.final" , method = RequestMethod.GET)
+	@ResponseBody
+	public Response getCalcModels(int page,HttpSession session) {
+		
+		Response response = new Response();
+		Map userSession = (HashMap)session.getAttribute(Constants.ADMIN_USER_SESSION);
+		if( userSession == null ){
+			response.failure("用户未登录");
+			return response;
+		}
+		
+		User user = (User) userSession.get(Constants.LOGIN_MAP_USER);
+		if( user == null ){
+			response.failure("用户未登录");
+			return response;
+		}
+		
+		List<ModelRecord> models = null;
+		int number = 0;
+		
+		try {
+			models = modelInstance.getCalcModels(user.getUserId(), page);
+			number = modelInstance.getCalcModelNumber(user.getUserId());
+			response.success(models,number);
+		}catch (Exception e) {
+			response.failure("服务器错误");
+			e.printStackTrace();
+		}finally {
+			return response;
+		}
+	}
+	
+	/**
+	 * 
+	 * @Method：getAdminModels
+	 * @Description：get admin models
+	 * @author：Snail
+	 * @date：2018年1月10日 上午3:00:01
+	 * @return：Response
+	 */
+	@RequestMapping(value = "/adminModels.final" , method = RequestMethod.GET)
+	@ResponseBody
+	public Response getAdminModels(int page) {
+		
+		Response response = new Response();
+		List<Model> models = null;
+		int number = 0;
+		
+		try {
+			models = modelInstance.getAdminModels(page);
+			number = modelInstance.getAdminModelNumber();
+			response.success(models,number);
+		}catch (Exception e) {
+			response.failure("服务器错误");
+			e.printStackTrace();
+		}finally {
+			return response;
+		}
+	}
+	
+
 }

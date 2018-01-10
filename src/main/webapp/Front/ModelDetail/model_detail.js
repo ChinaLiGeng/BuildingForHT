@@ -141,3 +141,8 @@ function showDiv(){
 function show(){
 	$("#sugg").fadeIn();
 }
+
+//show 3d model
+function show3D(){
+	
+}

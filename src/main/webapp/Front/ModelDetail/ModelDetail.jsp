@@ -40,14 +40,14 @@
 			<i class="icon-arrow-up"></i>
 		</a>
 
-		<div class="site-wrapper animsition">
+		<div class="site-wrapper animsition" >
 			<jsp:include page="../Head/head.jsp" flush="true" />
 
 			<div class="main-wrapper">
 
 				<div class="page-title-2">
 					<div class="container">
-						<div class="row">
+						<div class="row" >
 							<div class="col-sm-12">
 								<h2>${model.name}</h2>
 								<p>${model.introduction}</p>
@@ -62,57 +62,66 @@
 							<!-- Blog Content -->
 							<div class="col-md-8 col-sm-12">
 								<article class="post-entry">
-									<div class="post-image">
+									<div class="post-image" >
 										<img width="1100" height="630" src="../Pic/Main/${model.mainPic}" alt="">
 									</div>
-									<div class="post-content" style="background: #f7f7f7;height:60px;margin-bottom:25px;">
+									<div class="post-content" style="background: #f7f7f7;height:60px;margin-bottom:25px;" id="stylist">   <!--stylist用于本页面设计师的锚点跳转  -->
 										<ul class="clearfix" style="font-size: 18px;">
 					                        <li class="title-item plan fl active" style="float:left;line-height: 60px;background: rgba(62,130,247,.1);padding-right: 20px;padding-left: 20px">
-					                            <a href="#board-plan" style="color:#3e82f7">设计师</a>
+					                            <a href="javascript:void(0);" onclick="js_method()" style="color:#3e82f7">设计师</a>
 					                        </li>
 				                            <li class="title-item same-cell fl" style="float:left;margin-left:20px;line-height: 60px;padding-right: 20px;padding-left: 20px">
-				                                <a href="#board-same-cell" style="color:#666">轴测图</a>
+				                                <a href="javascript:void(0);" onclick="js_method1()" style="color:#666">轴测图</a>
 				                            </li>
 				                            <li class="title-item evaluation fl" style="float:left;margin-left:20px;line-height: 60px;padding-right: 20px;padding-left: 20px">
-					                            <a href="#board-evaluation" style="color:#666">户型图</a>
+					                            <a href="javascript:void(0);" onclick="js_method2()" style="color:#666">户型图</a>					                        
 					                        </li>
 					                        <li class="title-item evaluation fl" style="float:left;margin-left:20px;line-height: 60px;padding-right: 20px;padding-left: 20px">
-					                            <a href="#board-evaluation" style="color:#666">3d模型</a>
+					                            <a href="HT/3d_model.html" style="color:#666;cursor:pointer;" target="_blank">3d模型</a>
 					                        </li>
 					                        <li class="title-item evaluation fl" style="float:left;margin-left:20px;line-height: 60px;padding-right: 20px;padding-left: 20px">
-					                            <a href="#board-evaluation" style="color:#666">用户评价</a>
+					                            <a href="javascript:void(0);" onclick="js_method3()" style="color:#666">用户评价</a>
 					                        </li>
 					                    </ul>
-									</div>
-									<div class="author-description">
+									</div> 
+									<div class="author-description" >
 										<div class="author-avatar">
 											<img src="../Pic/User/${model.user.userPic}" alt="" height="150" width="250">
 										</div>
-										<div class="author-description-text">
+										<div class="author-description-text" >
 											<h4>${model.user.userName}</h4>
-											<span>Architect</span>
-											<p>${model.user.info}</p>
-											<div class="social">
+											<span>Architect</span >
+											<p  >${model.user.info}</p>
+											
+											
+											
+											<div class="social" >
+											<div id="axonometric-drawing"></div>  <!--axonometric-drawing相关轴测图锚点跳转  -->
 												<a href="#" class="fa fa-facebook"></a>
 												<a href="#" class="fa fa-twitter"></a>
 												<a href="#" class="fa fa-linkedin"></a>
 											</div>
 										</div>
 									</div>
-									<div class="post-content">
-										<h4 class="post-title" style="margin-bottom:30px">相关轴测图</h4>
+									<div class="post-content" >
+										<br>
+							
 										
-										<c:forEach items="${model.effectPic}" var="ele">
+										<div id="floor-plan"></div><!--floor-plan相关户型图锚点跳转  -->
+										<h4 class="post-title" style="margin-bottom:30px" >相关轴测图</h4>
+										
+										
+										<c:forEach items="${model.effectPic}" var="ele" >
 											<%-- <div class="post-image" style="width:49.7%;float: left;padding-left:15px;padding-right:15px">
 												<img width="1100px" height="430" src="../Pic/Side/${ele.pic}" alt="">
 											</div> --%>
-											<div class="col-md-6">
+											<div class="col-md-6"  >
 												<div class="image-holder" style="width:100%;float: left;padding-left:15px;padding-right:15px;margin-bottom:20px">
 													<a href="../Pic/Side/${ele.pic}" class="lightbox"  data-lightbox-gallery="gallery1">
 														<img src="../Pic/Side/${ele.pic}" alt="">
-														<div class="project-overlay">
+														<div class="project-overlay" >
 															<span class="link-holder">
-																<i class="icon-eye"></i>
+																<i class="icon-eye" ></i>
 															</span>
 														</div>
 													</a>
@@ -121,12 +130,12 @@
 										</c:forEach>
 									</div>
 									<div class="post-content">
-										<h4 class="post-title" style="margin-bottom:30px">相关户型图</h4>
+										<h4 class="post-title" style="margin-bottom:30px" >相关户型图</h4>
 										<c:forEach items="${model.houseLayout}" var="ele">
 											<%-- <div class="post-image" style="width:49.7%;float: left;padding-left:15px;padding-right:15px">
 												<img width="1100px" height="430" src="../Pic/Layout/${ele.pic}" alt="">
 											</div> --%>
-											<div class="col-md-6">
+											<div class="col-md-6" >
 												<div class="image-holder" style="width:100%;float: left;padding-left:15px;padding-right:15px;margin-bottom:20px">
 													<a href="../Pic/Layout/${ele.pic}" class="lightbox"  data-lightbox-gallery="gallery1">
 														<img src="../Pic/Layout/${ele.pic}" alt="">
@@ -146,7 +155,7 @@
 								<!-- author description -->
 								
 								<!-- blog-single-navigation -->
-								<div class="comments-wrapper" style="clear: both;">
+								<div class="comments-wrapper" style="clear: both;" id="user_evaluate"><!--user_evaluate用户评价锚点跳转  -->
 									<h4 class="comment-title" id="comm_number">4 条评论</h4>
 									<ul class="comment-list">
 										
@@ -323,6 +332,24 @@
 			var modelId = ${model.modelId};
 			var floorNumber = ${model.floorNumber};
 			var area = ${model.buildingArea};
+			
+			function js_method(){
+				location.href = "../F/Model/det.final?modelId="+modelId+"#stylist";
+			}
+			
+			function js_method1(){
+				location.href = "../F/Model/det.final?modelId="+modelId+"#axonometric-drawing";
+			}
+			
+			function js_method2(){
+				location.href = "../F/Model/det.final?modelId="+modelId+"#floor-plan";
+			}
+			
+			function js_method3(){
+				location.href = "../F/Model/det.final?modelId="+modelId+"#user_evaluate";
+			}
 		</script>
+		
+		
 	</body>
 </html>
