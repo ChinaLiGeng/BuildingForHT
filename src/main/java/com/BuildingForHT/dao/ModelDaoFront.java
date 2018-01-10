@@ -197,7 +197,7 @@ public interface ModelDaoFront {
     * @author Ligeng    
     * @throws
      */
-	int createHouselayout(int id, String name, int height, int foolr);
+	int createHouselayout(HouseLayout hy);
 
 	/**
 	 * 
@@ -278,5 +278,47 @@ public interface ModelDaoFront {
 	 * @return：int
 	 */
 	int getAdminModelNumber();
+    /**
+     * 
+    * @Title: createEffectPic 
+    * @Description: TODO
+    * @date 2018年1月10日 下午3:10:07 
+    * @return int 
+    * @author Ligeng    
+    * @throws
+     */
+	int createEffectPic(EffectPic ef);
+    /**
+     * 
+    * @Title: updateM 
+    * @Description: TODO
+    * @date 2018年1月10日 下午3:28:27 
+    * @return int 
+    * @author Ligeng    
+    * @throws
+     */
+	int updateM(int id, String pic);
+    /**
+     * 
+    * @Title: getModel 
+    * @Description: TODO
+    * @date 2018年1月10日 下午7:26:30 
+    * @return int 
+    * @author Ligeng    
+    * @throws
+     */
+	int getModel();
+    /**
+     * 
+    * @Title: updateMObj 
+    * @Description: TODO
+    * @date 2018年1月10日 下午10:31:22 
+    * @return int 
+    * @author Ligeng    
+    * @throws
+     */
+	int updateMObj(int id, String path, int type);
+
+	
 
 }

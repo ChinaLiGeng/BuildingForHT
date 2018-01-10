@@ -15,10 +15,13 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import com.BuildingForHT.entity.EffectPic;
 import com.BuildingForHT.entity.HouseLayout;
 import com.BuildingForHT.entity.Model;
+import com.BuildingForHT.service.ModelServiceFront;
+import com.BuildingForHT.serviceImpl.ModelServiceImplFront;
 
 /**
  * Servlet implementation class UploadPic
@@ -26,6 +29,11 @@ import com.BuildingForHT.entity.Model;
 @WebServlet("/UploadPic")
 public class UploadPic extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	
+//	private ModelServiceFront modelInstance = new ModelServiceImplFront();
+	
+	@Autowired
+	private ModelServiceFront modelInstance;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -45,14 +53,12 @@ public class UploadPic extends HttpServlet {
 		//创建解析类的实例 
 		ServletFileUpload sfu = new ServletFileUpload(factory); 
 		//开始解析 
-		sfu.setFileSizeMax(1024*1024*20); 
-		int id = Integer.parseInt(request.getParameter("id"));
+		
+		int id = modelInstance.getmodel();
+		System.out.println(id); 
 		//每个表单域中数据会封装到一个对应的FileItem对象上 
 		try { 
 			List<FileItem> items = sfu.parseRequest(request); 
-			
-			List<HouseLayout> houseLayouts = new ArrayList<HouseLayout>(); 
-			List<EffectPic> effectPics = new ArrayList<EffectPic>(); //所有图片（除封面）
 			
 			//区分表单域 
 			for (int i = 0; i < items.size(); i++) { 
@@ -63,35 +69,42 @@ public class UploadPic extends HttpServlet {
 					ServletContext sctx = request.getSession().getServletContext(); 
 					//获得存放文件的物理路径 
 					//upload下的某个文件夹 得到当前在线的用户 找到对应的文件夹 
-					String path = sctx.getRealPath("/Pic/effectPic"); 
-					System.out.println("路径："+path); 
+					
 					//获得文件名 
 					String fileName = item.getName(); 
-					if(i<4){
-						HouseLayout hl = new HouseLayout();
-						hl.setModelId(id);
-						hl.setPic(fileName);
-						
-					}else{
-						
-					}
-					System.out.println("获得的图片名："+fileName); 
+					 
+					String path = sctx.getRealPath("/Pic/effectPic"); 
+					System.out.println("路径："+path); 
 					//该方法在某些平台(操作系统),会返回路径+文件名 
 					fileName = fileName.substring(fileName.lastIndexOf("/")+1); 
 					String trueName = System.currentTimeMillis()+fileName;
+					System.out.println("获得的图片名："+fileName); 
 					File file = new File(path+"\\"+ trueName); 
 					if(!file.exists()){ 
 						item.write(file);
+						System.out.println(1);
+						if(fileName.charAt(0) == '1'){
+							EffectPic ef = new EffectPic();
+							ef.setModelId(id);
+							ef.setPic(trueName);
+							modelInstance.uploadEffectPic(ef);
+							if(fileName.charAt(0) == '0'){
+								modelInstance.updateM(id, fileName);
+							}
+						}else{
+							HouseLayout hl = new HouseLayout();
+							hl.setModelId(id);
+							hl.setPic(trueName);
+							modelInstance.uploadHouseLayout(hl);
+						}
 						
-						//将上传图片的名字记录到数据库中 
-						Model model = new Model();
-						/*model.setRoutePicture(trueName);
-						routePicList.add(routePic);*/
+						
+						
 					} 
 				} 
 			}
-			System.out.println("lalal");
-			
+			//System.out.println(houseLayouts);
+			//modelInstance.uploadPic(houseLayouts, effectPics);
 			
 			
 			/*if( .size()!=0 ){
