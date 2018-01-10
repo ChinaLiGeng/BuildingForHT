@@ -22,6 +22,7 @@ import com.BuildingForHT.entity.Model;
 import com.BuildingForHT.entity.ModelAssembly;
 import com.BuildingForHT.entity.ModelComment;
 import com.BuildingForHT.entity.ModelRecord;
+import com.BuildingForHT.entity.OrderTable;
 import com.BuildingForHT.entity.PriceList;
 import com.BuildingForHT.entity.User;
 
@@ -513,10 +514,10 @@ public class ModelDaoImplFront implements ModelDaoFront{
 	}
 
 	@Override
-	public int calcUpdateModel(int modelId) {
+	public int calcUpdateModel(int modelId,int designState) {
 		
 		String sql = "update model set designState = ? where modelId = ?";
-		Object []params = {3,modelId};
+		Object []params = {designState,modelId};
 		
 		return jdbcTemplate.update(sql,params);
 	}
@@ -528,6 +529,79 @@ public class ModelDaoImplFront implements ModelDaoFront{
 		Object []params = {price,modiId};
 		
 		return jdbcTemplate.update(sql,params);
+	}
+
+	@Override
+	public int createOrder(OrderTable order, int modelId ,int userId) {
+		
+		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		String time = df.format(new Date());
+		
+		String sql = "insert into ordertable(modelId,userId,userPhone,orderFee,state,address,createTime,trackState) values(?,?,?,?,?,?,?,?)";
+		Object []params = {modelId,userId,order.getUserPhone(),order.getOrderFee(),1,order.getAddress(),time,1};
+		
+		return jdbcTemplate.update(sql,params);
+	}
+
+	@Override
+	public int continueOrder(String suggestion,int modelId) {
+		
+		String sql = "update model_record set isSatisfy = ?,suggestion = ? where modiId = (select C.modiId from ( select mr.modiId from model m ,model_record mr," + 
+					"(select mr.modelId ,max(mr.version) as temp from model m ,model_record mr where m.modelId = mr.modelId and m.modelId = £¿ and mr.state = 1 group by mr.modelId) as B " + 
+					"where m.modelId = mr.modelId and m.modelId = £¿ and mr.state = 1 and mr.modelId = B.modelId and mr.version = B.temp ) as C )";
+		Object []params = {0,suggestion,modelId,modelId};
+		
+		return jdbcTemplate.update(sql,params);
+	}
+
+	@Override
+	public List<ModelRecord> getHistory(int modelId) {
+		
+		List<ModelRecord> models = null;
+		
+		String sql = "select mr.modiId,modiInfo,mr.createTime from model m,model_record mr where m.modelId = ? and m.modelId = mr.modelId and mr.state = 1 order by version desc";
+		Object []params = {modelId};
+		
+		try {
+			models = jdbcTemplate.query(sql, params, new BeanPropertyRowMapper(ModelRecord.class));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			return models;
+		}
+	}
+
+	@Override
+	public ModelRecord getHistoryDetail(int modiId) {
+		
+		ModelRecord model = null;
+		String sql = "select * from model_record where modiId = ?";
+		Object []params = {modiId};
+		
+		try {
+			model = jdbcTemplate.queryForObject(sql, params, new BeanPropertyRowMapper<ModelRecord>(ModelRecord.class));
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			return model;
+		}
+	}
+
+	@Override
+	public List<PriceList> getPriceLists(int modiId) {
+		
+		List<PriceList> lists = null;
+		
+		String sql = "select * from pricelist where modiId = ? and state = ?";
+		Object []params = {modiId,1};
+		
+		try {
+			lists = jdbcTemplate.query(sql, params, new BeanPropertyRowMapper(PriceList.class));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			return lists;
+		}
 	}
 
 }

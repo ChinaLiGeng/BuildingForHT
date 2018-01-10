@@ -9,6 +9,7 @@ import com.BuildingForHT.entity.Model;
 import com.BuildingForHT.entity.ModelAssembly;
 import com.BuildingForHT.entity.ModelComment;
 import com.BuildingForHT.entity.ModelRecord;
+import com.BuildingForHT.entity.OrderTable;
 import com.BuildingForHT.entity.PriceList;
 import com.BuildingForHT.entity.User;
 
@@ -309,7 +310,7 @@ public interface ModelDaoFront {
 	 * @date：2018年1月10日 下午3:30:56
 	 * @return：int
 	 */
-	int calcUpdateModel(int modelId);
+	int calcUpdateModel(int modelId,int designState);
 	
 	/**
 	 * 
@@ -320,4 +321,54 @@ public interface ModelDaoFront {
 	 * @return：int
 	 */
 	int calcUpdateAllPrice(int modiId,int price);
+	
+	/**
+	 * 
+	 * @Method：createOrder
+	 * @Description：create order
+	 * @author：Snail
+	 * @date：2018年1月10日 下午9:24:27
+	 * @return：int
+	 */
+	int createOrder(OrderTable order,int modelId,int userId);
+	
+	/**
+	 * 
+	 * @Method：continueOrder
+	 * @Description：continue to modify
+	 * @author：Snail
+	 * @date：2018年1月10日 下午9:46:58
+	 * @return：int
+	 */
+	int continueOrder(String suddestion,int modelId);
+	
+	/**
+	 * 
+	 * @Method：getHistory
+	 * @Description：get history
+	 * @author：Snail
+	 * @date：2018年1月10日 下午10:52:48
+	 * @return：List<ModelRecord>
+	 */
+	List<ModelRecord> getHistory(int modelId);
+	
+	/**
+	 * 
+	 * @Method：getHistoryDetail
+	 * @Description：get history detail
+	 * @author：Snail
+	 * @date：2018年1月10日 下午11:13:17
+	 * @return：ModelRecord
+	 */
+	ModelRecord getHistoryDetail(int modiId);
+	
+	/**
+	 * 
+	 * @Method：getPriceLists
+	 * @Description：get model's price list
+	 * @author：Snail
+	 * @date：2018年1月10日 下午11:16:03
+	 * @return：List<PriceList>
+	 */
+	List<PriceList> getPriceLists(int modiId);
 }

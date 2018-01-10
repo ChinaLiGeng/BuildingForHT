@@ -31,6 +31,7 @@ import com.BuildingForHT.entity.Model;
 import com.BuildingForHT.entity.ModelAssembly;
 import com.BuildingForHT.entity.ModelComment;
 import com.BuildingForHT.entity.ModelRecord;
+import com.BuildingForHT.entity.OrderTable;
 import com.BuildingForHT.entity.PriceList;
 import com.BuildingForHT.entity.User;
 import com.BuildingForHT.globle.Constants;
@@ -502,6 +503,130 @@ public class ModelControllerFront {
 			}else {
 				response.failure();
 			}
+		}catch (Exception e) {
+			response.failure("服务器错误");
+			e.printStackTrace();
+		}finally {
+			return response;
+		}
+	}
+	
+	/**
+	 * 
+	 * @Method：createOrder
+	 * @Description：craete order
+	 * @author：Snail
+	 * @date：2018年1月10日 下午9:42:58
+	 * @return：Response
+	 */
+	@RequestMapping(value = "/create_order.final" , method = RequestMethod.POST)
+	@ResponseBody
+	public Response createOrder(OrderTable order, int modelId ,HttpSession session) {
+		
+		Response response = new Response();
+		boolean result = false;
+		User user = (User) session.getAttribute("front_user");
+		if(user == null){
+			response.failure("未登录！");
+			return response;
+		}
+		
+		try {
+			result = modelInstance.createOrder(order, modelId, user.getUserId());
+			
+			if( result == true) {
+				response.success();
+			}else {
+				response.failure();
+			}
+		}catch (Exception e) {
+			response.failure("服务器错误");
+			e.printStackTrace();
+		}finally {
+			return response;
+		}
+	}
+	
+	/**
+	 * 
+	 * @Method：denyOrder
+	 * @Description：deny to order
+	 * @author：Snail
+	 * @date：2018年1月10日 下午9:43:06
+	 * @return：Response
+	 */
+	@RequestMapping(value = "/deny_order.final" , method = RequestMethod.POST)
+	@ResponseBody
+	public Response denyOrder(int modelId) {
+		
+		Response response = new Response();
+		boolean result = false;
+		
+		try {
+			result = modelInstance.calcUpdateModel(modelId, 5);
+			
+			if( result == true) {
+				response.success();
+			}else {
+				response.failure();
+			}
+		}catch (Exception e) {
+			response.failure("服务器错误");
+			e.printStackTrace();
+		}finally {
+			return response;
+		}
+	}
+	
+	/**
+	 * 
+	 * @Method：continueOrder
+	 * @Description：continue order
+	 * @author：Snail
+	 * @date：2018年1月10日 下午10:38:03
+	 * @return：Response
+	 */
+	@RequestMapping(value = "/continue_order.final" , method = RequestMethod.POST)
+	@ResponseBody
+	public Response continueOrder(String suddestion, int modelId ){
+		
+		Response response = new Response();
+		boolean result = false;
+		
+		try {
+			result = modelInstance.continueOrder(suddestion, modelId);
+			
+			if( result == true) {
+				response.success();
+			}else {
+				response.failure();
+			}
+		}catch (Exception e) {
+			response.failure("服务器错误");
+			e.printStackTrace();
+		}finally {
+			return response;
+		}
+	}
+	
+	/**
+	 * 
+	 * @Method：getHistory
+	 * @Description：get model history
+	 * @author：Snail
+	 * @date：2018年1月10日 下午11:06:49
+	 * @return：Response
+	 */
+	@RequestMapping(value = "/model_history.final" , method = RequestMethod.GET)
+	@ResponseBody
+	public Response getHistory(int modelId) {
+		
+		Response response = new Response();
+		List<ModelRecord> models = null;
+		
+		try {
+			models = modelInstance.getHistory(modelId);
+			response.success(models);
 		}catch (Exception e) {
 			response.failure("服务器错误");
 			e.printStackTrace();
