@@ -61,7 +61,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     	</div> -->
                     <div class="ibox-content">
 						<div class="col-sm-4">
-							<a href="Admin/Model/modelCreate.jsp"><button type="button" class="layui-btn layui-btn-lg" style="margin-bottom:25px;">模型创建</button></a>
+							<a href="Admin/Model/Add_Model.jsp"><button type="button" class="layui-btn layui-btn-lg" style="margin-bottom:25px;">模型创建</button></a>
 						</div>
 						
                          <table class="table table-striped table-bordered table-hover dataTables-example">

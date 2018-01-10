@@ -3,6 +3,8 @@ package com.BuildingForHT.service;
 import java.sql.SQLException;
 import java.util.List;
 
+import com.BuildingForHT.entity.EffectPic;
+import com.BuildingForHT.entity.HouseLayout;
 import com.BuildingForHT.entity.Model;
 import com.BuildingForHT.entity.ModelAssembly;
 import com.BuildingForHT.entity.ModelComment;
@@ -215,6 +217,60 @@ public interface ModelServiceFront {
 	 * @return：int
 	 */
 	int getAdminModelNumber();
+    /**
+     * 
+    * @Title: uploadPic 
+    * @Description: TODO
+    * @date 2018年1月10日 下午3:30:14 
+    * @return int 
+    * @author Ligeng    
+    * @throws
+     */
+	
+	int uploadHouseLayout(HouseLayout hl);
+	
+    /**
+     * 
+    * @Title: getmodel 
+    * @Description: TODO
+    * @date 2018年1月10日 下午7:27:27 
+    * @return int 
+    * @author Ligeng    
+    * @throws
+     */
+	int getmodel();
+    /**
+     * 
+    * @Title: uploadEffectPic 
+    * @Description: TODO
+    * @date 2018年1月10日 下午7:36:06 
+    * @return int 
+    * @author Ligeng    
+    * @throws
+     */
+	int uploadEffectPic(EffectPic ef);
+    /**
+     * 
+    * @Title: updateM 
+    * @Description: TODO
+    * @date 2018年1月10日 下午7:48:06 
+    * @return int 
+    * @author Ligeng    
+    * @throws
+     */
+	int updateM(int id, String pic);
+    /**
+     * 
+    * @Title: updateMObj 
+    * @Description: TODO
+    * @date 2018年1月10日 下午10:33:26 
+    * @return int 
+    * @author Ligeng    
+    * @throws
+     */
+	int updateMObj(int id, String path, int type);
+
+
 	
 	/**
 	 * 

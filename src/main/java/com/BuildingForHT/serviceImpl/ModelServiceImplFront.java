@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.BuildingForHT.dao.ModelDaoFront;
+import com.BuildingForHT.entity.EffectPic;
+import com.BuildingForHT.entity.HouseLayout;
 import com.BuildingForHT.entity.Model;
 import com.BuildingForHT.entity.ModelAssembly;
 import com.BuildingForHT.entity.ModelComment;
@@ -201,6 +203,30 @@ public class ModelServiceImplFront implements ModelServiceFront{
 		int number = modelInstance.getAdminModelNumber();
 		return number;
 	}
+	@Override
+	public int uploadHouseLayout(HouseLayout hl){
+	    	int result = 0;
+	    	modelInstance.createHouselayout(hl);
+	    	return result;
+	    }
+	@Override
+	public int uploadEffectPic(EffectPic ef){
+    	int result = 0;
+    	modelInstance.createEffectPic(ef);
+    	return result;
+    }
+	@Override
+    public int getmodel(){
+    	return modelInstance.getModel();
+    }
+	@Override
+	public int updateM(int id,String pic){
+		return modelInstance.updateM(id, pic);
+	}
+	@Override
+	public int updateMObj(int id,String path,int type){
+		return modelInstance.updateMObj(id, path, type);
+		}
 
 	@Override
 	public List<ModelAssembly> getAssembly(int modiId) {

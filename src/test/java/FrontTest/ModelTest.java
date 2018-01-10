@@ -17,6 +17,7 @@ import com.BuildingForHT.dao.ModelDaoFront;
 import com.BuildingForHT.entity.HouseLayout;
 import com.BuildingForHT.entity.Model;
 import com.BuildingForHT.service.ModelServiceFront;
+import com.BuildingForHT.serviceImpl.ModelServiceImplFront;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"classpath:SpringContext.xml"})
@@ -31,6 +32,8 @@ public class ModelTest {
 	
 	@Autowired
 	private ModelServiceFront serviceInstance;
+	
+	private ModelServiceFront modelInstance = new ModelServiceImplFront();
 
 	@Test
 	public void test() {
@@ -57,11 +60,10 @@ public class ModelTest {
 		
 		System.err.println(jdbcTemplate.update(sql,params));
 	}
-//    @Test
-//    public void test4() throws SQLException{
-//    	String s = "¹Ù·½";
-//    	int i= 1;
-//    	serviceInstance.updateModel(i, s);
-//    }
+    @Test
+    public void test4() throws SQLException{
+    	
+    	System.out.println(modelInstance.getmodel());
+    }
    
 }

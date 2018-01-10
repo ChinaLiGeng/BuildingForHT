@@ -338,15 +338,15 @@ public class ModelDaoImplFront implements ModelDaoFront{
 		//SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");  
 		//String dateNowStr = sdf.format(date);  
 		
-		String sql = "insert into model(userId,beType,designState,designFee,floorNumber,buildingArea,landArea,state,name,introduction)"
-				+" values(?,?,?,?,?,?,?,?,?,?)";
+		String sql = "insert into model(userId,beType,designState,designFee,floorNumber,buildingArea,landArea,state,name,introduction,quoteModel)"
+				+" values(?,?,?,?,?,?,?,?,?,?,?)";
 		
 		jdbcTemplate.update( new PreparedStatementCreator() {  
 			
 			@Override
 			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
 				PreparedStatement ps = jdbcTemplate.getDataSource()
-						.getConnection().prepareStatement(sql,new String[]{ "userId","beType","designState","designFee", "floorNumber","buildingArea","landArea","state","name","introduction"});
+						.getConnection().prepareStatement(sql,new String[]{ "userId","beType","designState","designFee", "floorNumber","buildingArea","landArea","state","name","introduction","quoteModel"});
 				ps.setInt(1,model.getUserId());
 				ps.setInt(2, 1);
 				ps.setInt(3, 0);
@@ -357,18 +357,24 @@ public class ModelDaoImplFront implements ModelDaoFront{
 				ps.setInt(8, 1);
 				ps.setString(9, model.getName());
 				ps.setString(10, model.getIntroduction());
+				ps.setInt(11, 0);
 				return ps;  
 			}  
         }, keyHolder);
 		return  keyHolder.getKey().intValue();
 	}
 	@Override
-    public int createHouselayout(int id,String name,int height,int foolr){
-    	String sql = "insert into houselayout(modelId,pic,floor,state,acreage,floorHeight) values(?,?,?,?,?,?)";
-		Object []params = {id,name,foolr,1,110,height};
+    public int createHouselayout(HouseLayout hl){
+    	String sql = "insert into houselayout(modelId,pic) values(?,?)";
+		Object []params = {hl.getModelId(),hl.getPic()};
 		return jdbcTemplate.update(sql,params);
     } 
-
+    @Override
+	public int createEffectPic(EffectPic ef){
+		String sql = "insert into houselayout(modelId,pic,state) values(?,?,?)";
+		Object []params = {ef.getModelId(),ef.getPic(),1};
+		return jdbcTemplate.update(sql,params);
+	}
 
 	@Override
 	public List<Model> getNeverModifiedModels(int modifier,int page) {
@@ -485,6 +491,32 @@ public class ModelDaoImplFront implements ModelDaoFront{
 		result = jdbcTemplate.queryForObject(sql,params,Integer.class);
 		return result;
 	}
+	@Override
+    public int updateM(int id,String pic){
+    	String sql = "update model set mainPic = '"+pic+"' where modelId ="+id+"";
+    	System.out.println(sql);
+    	return jdbcTemplate.update(sql);
+    }
+	@Override
+	public int getModel(){
+		try {
+			String sql = "select modelid from model order by modelid desc  LIMIT 1";
+			return jdbcTemplate.queryForObject(sql,Integer.class);		 
+		} catch (Exception e) {
+			e.printStackTrace();
+			return 0;
+		}
+	}
+	@Override
+    public int updateMObj(int id,String path,int type){
+		String sql;
+		if(type ==1){
+			 sql = "update model set objPath = '"+path+"' where modelId ="+id+"";
+		}else{
+			 sql = "update model set mtlPath = '"+path+"' where modelId ="+id+"";
+		}
+    	return jdbcTemplate.update(sql);
+    }
 
 	@Override
 	public List<ModelAssembly> getAssembly(int modiId) {
