@@ -18,6 +18,7 @@ function getCalcModles(page){
 	    	pageAll = Math.ceil(Number(data.number)/10);
 	
 	    	for(var i=0;i<json.length;i++){
+	    		var id = Number(json[i].modiId)
 	    		$("#modelList_id").append(
 	    				
 	    			'<tr class="gradeX" >'+
@@ -27,7 +28,7 @@ function getCalcModles(page){
 	                    '<td>'+json[i].landArea+'平方米</td>'+
 	                    '<th>'+json[i].createTime+'</th>'+
 	                    '<td>'+json[i].modifyInfo+'</td>'+
-	                    '<th style="cursor:pointer">点击查看</th>'+
+	                    '<th ><a style="cursor:pointer" href="Admin/Model/ModelAssemply.jsp?id='+id+'">点击查看</a></th>'+
 	                 '<td class="center" style="cursor:pointer">创建费用清单</td>'+
 	             '</tr>'
 	    		)
