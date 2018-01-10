@@ -33,8 +33,10 @@ import org.springframework.web.servlet.ModelAndView;
 import com.BuildingForHT.entity.EffectPic;
 import com.BuildingForHT.entity.HouseLayout;
 import com.BuildingForHT.entity.Model;
+import com.BuildingForHT.entity.ModelAssembly;
 import com.BuildingForHT.entity.ModelComment;
 import com.BuildingForHT.entity.ModelRecord;
+import com.BuildingForHT.entity.PriceList;
 import com.BuildingForHT.entity.User;
 import com.BuildingForHT.globle.Constants;
 import com.BuildingForHT.jsonFormat.Response;
@@ -608,4 +610,61 @@ public class ModelControllerFront {
         return ;
     }
 
+    /**
+	 * 
+	 * @Method：getModelAssembly
+	 * @Description：get model assembly
+	 * @author：Snail
+	 * @date：2018年1月10日 下午4:41:07
+	 * @return：Response
+	 */
+	@RequestMapping(value = "/model_assembly.final" , method = RequestMethod.GET)
+	@ResponseBody
+	public Response getModelAssembly(int modiId) {
+		
+		Response response = new Response();
+		List<ModelAssembly> models = null;
+		
+		try {
+			models = modelInstance.getAssembly(modiId);
+			response.success(models);
+		}catch (Exception e) {
+			response.failure("服务器错误");
+			e.printStackTrace();
+		}finally {
+			return response;
+		}
+	}
+	
+	/**
+	 * 
+	 * @Method：calcModels
+	 * @Description：calc model
+	 * @author：Snail
+	 * @date：2018年1月10日 下午4:45:57
+	 * @return：Response
+	 */
+	@RequestMapping(value = "/calc_update_model.final" , method = RequestMethod.POST)
+	@ResponseBody
+	public Response calcModels(int modiId,PriceList priceList,int modelId,int price) {
+		
+		Response response = new Response();
+		boolean result = false;
+		
+		try {
+			result = modelInstance.calcModel(modiId, priceList, modelId, price);
+			
+			if( result == true) {
+				response.success();
+			}else {
+				response.failure();
+			}
+		}catch (Exception e) {
+			response.failure("服务器错误");
+			e.printStackTrace();
+		}finally {
+			return response;
+		}
+	}
+	
 }

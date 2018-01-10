@@ -36,7 +36,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <div class="col-sm-12">
                 <div class="ibox float-e-margins">
                     <div class="ibox-title">
-                        <h5 id="userType">管理员模型列表</h5>
+                        <h5 id="userType">专业团队模型列表</h5>
                         <div class="ibox-tools">
                             <a class="collapse-link">
                                 <i class="fa fa-chevron-up"></i>
@@ -60,12 +60,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     		</div>
                     	</div> -->
                     <div class="ibox-content">
-						<div class="col-sm-4">
+						<!-- <div class="col-sm-4">
 							<a href="Admin/Model/modelCreate.jsp"><button type="button" class="layui-btn layui-btn-lg" style="margin-bottom:25px;">模型创建</button></a>
-						</div>
+						</div> -->
 						 <div class="form-group" style="margin-top: 10px；">
 							<div class="col-sm-10">
-								<select class="form-control required" name="floorNumber" onchange="changeModels()" id="model_select">
+								<select class="form-control required" name="floorNumber" onchange="changeModels()" id="model_select" style="width: 271px;">
 									<option value="1">还未有任何修改</option>
 									<option value="2">有新的意见了</option>
 								<select>

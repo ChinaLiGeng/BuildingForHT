@@ -6,8 +6,10 @@ import java.util.List;
 import com.BuildingForHT.entity.EffectPic;
 import com.BuildingForHT.entity.HouseLayout;
 import com.BuildingForHT.entity.Model;
+import com.BuildingForHT.entity.ModelAssembly;
 import com.BuildingForHT.entity.ModelComment;
 import com.BuildingForHT.entity.ModelRecord;
+import com.BuildingForHT.entity.PriceList;
 import com.BuildingForHT.entity.User;
 
 public interface ModelDaoFront {
@@ -278,6 +280,7 @@ public interface ModelDaoFront {
 	 * @return：int
 	 */
 	int getAdminModelNumber();
+	
     /**
      * 
     * @Title: createEffectPic 
@@ -318,7 +321,45 @@ public interface ModelDaoFront {
     * @throws
      */
 	int updateMObj(int id, String path, int type);
-
 	
+	/**
+	 * 
+	 * @Method：getAssembly
+	 * @Description：get assembly
+	 * @author：Snail
+	 * @date：2018年1月10日 下午3:27:13
+	 * @return：List<ModelAssembly>
+	 */
+	List<ModelAssembly> getAssembly(int modiId);
+	
+	/**
+	 * 
+	 * @Method：createPriceList
+	 * @Description：create price list
+	 * @author：Snail
+	 * @date：2018年1月10日 下午3:29:40
+	 * @return：int
+	 */
+	int createPriceList(int modiId,PriceList priceList);
+	
+	/**
+	 * 
+	 * @Method：calcUpdateModel
+	 * @Description：calc update model
+	 * @author：Snail
+	 * @date：2018年1月10日 下午3:30:56
+	 * @return：int
+	 */
+	int calcUpdateModel(int modelId);
+	
+	/**
+	 * 
+	 * @Method：calcUpdateAllPrice
+	 * @Description：calc update price
+	 * @author：Snail
+	 * @date：2018年1月10日 下午3:33:09
+	 * @return：int
+	 */
+	int calcUpdateAllPrice(int modiId,int price);
 
 }

@@ -12,8 +12,10 @@ import com.BuildingForHT.dao.ModelDaoFront;
 import com.BuildingForHT.entity.EffectPic;
 import com.BuildingForHT.entity.HouseLayout;
 import com.BuildingForHT.entity.Model;
+import com.BuildingForHT.entity.ModelAssembly;
 import com.BuildingForHT.entity.ModelComment;
 import com.BuildingForHT.entity.ModelRecord;
+import com.BuildingForHT.entity.PriceList;
 import com.BuildingForHT.entity.User;
 import com.BuildingForHT.globle.Constants;
 import com.BuildingForHT.service.ModelServiceFront;
@@ -223,5 +225,23 @@ public class ModelServiceImplFront implements ModelServiceFront{
 	@Override
 	public int updateMObj(int id,String path,int type){
 		return modelInstance.updateMObj(id, path, type);
+		}
+
+	@Override
+	public List<ModelAssembly> getAssembly(int modiId) {
+		
+		List<ModelAssembly> result = modelInstance.getAssembly(modiId);
+		return result;
+	}
+
+	@Override
+	public boolean calcModel(int modiId, PriceList priceList, int modelId, int price) {
+		
+		boolean result = false;
+		
+		if( modelInstance.createPriceList(modiId, priceList) > 0 & modelInstance.calcUpdateAllPrice(modiId, price) >0 & modelInstance.calcUpdateModel(modelId) >0) {
+			result = true;
+		}
+		return result;
 	}
 }
