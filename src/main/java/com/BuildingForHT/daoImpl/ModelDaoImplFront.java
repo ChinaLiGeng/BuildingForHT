@@ -327,6 +327,48 @@ public class ModelDaoImplFront implements ModelDaoFront{
 		return jdbcTemplate.update(sql,params);
 	}
 
+	
+	@Override
+	public int createModel(Model model){
+		//Date date = new Date();
+		System.out.println(model);
+		KeyHolder keyHolder = new GeneratedKeyHolder();  
+		
+		//SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");  
+		//String dateNowStr = sdf.format(date);  
+		
+		String sql = "insert into model(userId,beType,designState,designFee,floorNumber,buildingArea,landArea,state,name,introduction)"
+				+" values(?,?,?,?,?,?,?,?,?,?)";
+		
+		jdbcTemplate.update( new PreparedStatementCreator() {  
+			
+			@Override
+			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
+				PreparedStatement ps = jdbcTemplate.getDataSource()
+						.getConnection().prepareStatement(sql,new String[]{ "userId","beType","designState","designFee", "floorNumber","buildingArea","landArea","state","name","introduction"});
+				ps.setInt(1,model.getUserId());
+				ps.setInt(2, 1);
+				ps.setInt(3, 0);
+				ps.setInt(4, model.getDesignFee());
+				ps.setInt(5, model.getFloorNumber());
+				ps.setDouble(6, model.getBuildingArea());
+				ps.setDouble(7, model.getLandArea());
+				ps.setInt(8, 1);
+				ps.setString(9, model.getName());
+				ps.setString(10, model.getIntroduction());
+				return ps;  
+			}  
+        }, keyHolder);
+		return  keyHolder.getKey().intValue();
+	}
+	@Override
+    public int createHouselayout(int id,String name,int height,int foolr){
+    	String sql = "insert into houselayout(modelId,pic,floor,state,acreage,floorHeight) values(?,?,?,?,?,?)";
+		Object []params = {id,name,foolr,1,110,height};
+		return jdbcTemplate.update(sql,params);
+    } 
+
+
 	@Override
 	public List<Model> getNeverModifiedModels(int modifier,int page) {
 		

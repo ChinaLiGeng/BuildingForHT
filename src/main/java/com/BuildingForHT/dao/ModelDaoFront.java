@@ -187,7 +187,20 @@ public interface ModelDaoFront {
     * @throws
      */
 	int createMEP(int id, int modifier, int auditor);
-	
+
+
+	int createModel(Model model);
+    /**
+     * 
+    * @Title: createHouselayout 
+    * @Description: TODO
+    * @date 2018年1月10日 上午3:16:20 
+    * @return int 
+    * @author Ligeng    
+    * @throws
+     */
+	int createHouselayout(int id, String name, int height, int foolr);
+
 	/**
 	 * 
 	 * @Method：getNeverModifiedModels

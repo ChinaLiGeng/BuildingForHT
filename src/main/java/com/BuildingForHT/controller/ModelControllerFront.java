@@ -1,14 +1,27 @@
 package com.BuildingForHT.controller;
 
+import java.io.File;
 import java.sql.SQLException;
+
+import java.util.ArrayList;
+
 import java.util.HashMap;
+
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload.disk.DiskFileItemFactory;
+import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -265,6 +278,32 @@ public class ModelControllerFront {
 			return response;
 		}
 	}
+
+	/**
+	 * 
+	* @Title: createModel 
+	* @Description: TODO
+	* @date 2018年1月9日 下午11:39:27 
+	* @return void 
+	* @author Ligeng    
+	* @throws
+	 */
+	@RequestMapping(value = "/createModel" , method = RequestMethod.POST)
+	@ResponseBody
+	public Response createModel(@RequestBody Model m) {
+		
+		Response response = new Response();
+		try{
+			int id =  modelInstance.creteModelId(m);
+			 System.out.println(id);
+			 response.success(null, id);
+		}catch(Exception e){
+			e.printStackTrace();
+			response.failure();
+		}
+		return response;
+	}
+	
 	
 	/**
 	 * 

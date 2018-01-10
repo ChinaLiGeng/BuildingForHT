@@ -139,6 +139,13 @@ public class ModelServiceImplFront implements ModelServiceFront{
     }
 
 	@Override
+	public int creteModelId(Model model){
+		return modelInstance.createModel(model);
+	}
+	
+
+
+	@Override
 	public List<Model> getNeverModifiedModels(int modifier, int page) {
 		
 		List<Model> result = modelInstance.getNeverModifiedModels(modifier, page);

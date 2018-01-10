@@ -65,7 +65,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						</div> -->
 						 <div class="form-group" style="margin-top: 10px；">
 							<div class="col-sm-10">
-								<select class="form-control required" name="floorNumber" onchange="changeModels()" id="model_select">
+								<select class="form-control required" name="floorNumber" onchange="changeModels()" id="model_select" style="width: 271px;">
 									<option value="1">还未有任何修改</option>
 									<option value="2">有新的意见了</option>
 								<select>
