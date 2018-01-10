@@ -134,4 +134,9 @@ public class ModelServiceImplFront implements ModelServiceFront{
     	   }
     	return result;
     }
+	@Override
+	public int creteModelId(Model model){
+		return modelInstance.createModel(model);
+	}
+	
 }

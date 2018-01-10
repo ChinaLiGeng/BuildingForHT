@@ -121,5 +121,15 @@ public interface ModelServiceFront {
 	 * @return：int
 	 */
 	int getMyDesignNumbers(int userId,int state);
+    /**
+     * 
+    * @Title: creteModelId 
+    * @Description: TODO
+    * @date 2018年1月9日 下午11:13:16 
+    * @return int 
+    * @author Ligeng    
+    * @throws
+     */
+	int creteModelId(Model model);
 	
 }
