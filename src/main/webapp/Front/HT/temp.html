@@ -1,0 +1,113 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>无标题文档</title>
+	<style>
+            html, body {
+                padding: 0px;
+                margin: 0px;                
+            }            
+            .main {
+                margin: 0px;
+                padding: 0px;
+                position: absolute;
+                top: 0px;
+                bottom: 0px;
+                left: 0px;
+                right: 0px;                
+            }
+        </style>
+</head>
+<script src="lib/core/ht.js"></script>
+<script src="lib/plugin/ht-obj.js"></script>
+<script src="lib/plugin/ht-modeling.js"></script>
+<script src="lib/plugin/ht-form.js"></script>
+<script type="text/javascript">
+            function init(){ 
+                var dataModel = new ht.DataModel(),   
+                g3d = new ht.graph3d.Graph3dView(dataModel),                  
+                formPane = new ht.widget.FormPane();
+				main_view = new ht.widget.SplitView(formPane , g3d ,'h',200);
+				main_view.setDraggable(false);
+				
+                view = main_view.getView();  
+                view.className = 'main';
+                document.body.appendChild(view);
+                window.addEventListener('resize', function (e) {
+                    main_view.invalidate();
+                }, false);
+				
+				g3d.setGridVisible(true);
+				g3d.setEye([1000,1000,0]);
+				
+				//屋内视角，屋外视角功能键
+				formPane.addRow([
+					{
+						id:'inside_view',
+						button: {
+							label:'屋内视角',
+							onClicked: function(data){
+								var oldEye = g3d.getEye().slice(),
+									oldCenter = g3d.getCenter().slice(),      
+									newEye = [0, 0, 0];
+								ht.Default.startAnim({                               
+									duration: 1000,
+									action: function(t){ 
+										g3d.setEye([
+											oldEye[0] + (newEye[0] - oldEye[0])*t,
+											oldEye[1] + (newEye[1] - oldEye[1])*t,
+											oldEye[2] + (newEye[2] - oldEye[2])*t
+										]);  
+									}
+								}); 
+							}
+						}
+					},
+					{
+						id:'outside_view',
+						button:{
+							label:'屋外视角',
+							onClicked: function(data){
+								var oldEye = g3d.getEye().slice(),
+									oldCenter = g3d.getCenter().slice(),      
+									newEye = [1000, 1000, 0];
+								ht.Default.startAnim({                               
+									duration: 1000,
+									action: function(t){ 
+										g3d.setEye([
+											oldEye[0] + (newEye[0] - oldEye[0])*t,
+											oldEye[1] + (newEye[1] - oldEye[1])*t,
+											oldEye[2] + (newEye[2] - oldEye[2])*t
+										]);  
+									}
+								}); 
+							}
+						}
+					}
+				],[0.1,0.1]);
+				
+                ht.Default.loadObj('../../ModelFile/obj/180110.obj', '../../ModelFile/mtl/180110.mtl', {
+                    center: true,
+					cube: true,
+					sync:true,
+                    shape3d: 'file',
+                    finishFunc: function(modelMap, array, rawS3){
+                        if(modelMap){
+                            var node = new ht.Node();
+							/* node.setName('test'); */
+							node.s({
+								'shape3d':'file'
+							});
+							/* node.s3(rawS3[0]*0.005,rawS3[1]*0.005,rawS3[2]*0.005); */
+							node.s3(rawS3[0]*0.1,rawS3[1]*0.1,rawS3[2]*0.1);
+							node.p3(-300,0,0);
+							dataModel.add(node);
+                        } 
+                    }
+                });            
+            }
+</script>
+<body onload="init()">
+</body>
+</html>

@@ -2,7 +2,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%  
 String path = request.getContextPath();  
-String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";  
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/"; 
 %> 
 <!DOCTYPE html>
 <html>
@@ -25,18 +25,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <link href="Admin/Template/css/animate.min.css" rel="stylesheet">
     <link rel="stylesheet" href="Admin/Template/js/plugins/layui/css/layui.css" media="all" />
      <link href="Admin/Template/css/style.min862f.css?v=4.1.0" rel="stylesheet">
+     <script type="text/javascript">
+    		var modiId = ${param.id}
+    </script>
      
 </head>
 
 <body class="gray-bg">
-   
     <div class="wrapper wrapper-content">
         
         <div class="row">
             <div class="col-sm-12">
                 <div class="ibox float-e-margins">
                     <div class="ibox-title">
-                        <h5 id="userType">审计人员模型列表</h5>
+                        <h5 id="userType">构件列表</h5>
                         <div class="ibox-tools">
                             <a class="collapse-link">
                                 <i class="fa fa-chevron-up"></i>
@@ -67,14 +69,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                          <table class="table table-striped table-bordered table-hover dataTables-example">
                              <thead id="thead">
                             		<tr>
-	       							<th><input type="checkbox"></th>
-	        							<th>层数</th>
-	        							<th>建筑面积</th>
-	        							<th>用地面积</th>
-	        							<th>创建时间</th>
-	        							<th>修改反馈</th>
-	        							<th>构件列表</th>
-									<th>操作</th>
+	        							<th>构件种类</th>
+	        							<th>构件编号</th>
+	        							<th>构件属性</th>
+	        							<th>数量</th>
    								</tr>
 							</thead>
                              <tbody id="modelList_id">
@@ -95,10 +93,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <script src="Admin/Template/js/content.min.js?v=1.0.0"></script>
     <script src="Admin/Template/js/plugins/layer/layer.js"></script>
     <script src="Admin/Template/js/plugins/layui/layui.js"></script>
-     <script src="Admin/Model/js/CalcModel.js"></script>
+     <script src="Admin/Model/js/assembly.js"></script>
    <!-- <script src="Admin/Template/js/plugins/dataTables/jquery.dataTables.js"></script> 
     <script src="Admin/Template/js/plugins/dataTables/dataTables.bootstrap.js"></script> -->
     <script type="text/javascript" src="http://tajs.qq.com/stats?sId=9051096" charset="UTF-8"></script>
+    
    
 </body>
 

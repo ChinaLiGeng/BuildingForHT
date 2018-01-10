@@ -1,0 +1,86 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>无标题文档</title>
+	<style>
+            html, body {
+                padding: 0px;
+                margin: 0px;                
+            }            
+            .main {
+                margin: 0px;
+                padding: 0px;
+                position: absolute;
+                top: 0px;
+                bottom: 0px;
+                left: 0px;
+                right: 0px;                
+            }
+        </style>
+</head>
+<script src="lib/core/ht.js"></script>
+<script src="lib/plugin/ht-obj.js"></script>
+<script src="lib/plugin/ht-modeling.js"></script>
+<script type="text/javascript">
+            function init(){
+                items = [ 
+                        {
+                            label: '进房间',
+                            groupId: 'room',
+                            action: function(){
+
+                               // g3d.setCenter([1,1,1]);                          
+                                g3d.setEye([0,10759*0.04*0.5,0]);
+                            }
+                        },        
+                        {
+                            label: '出房间',
+                            groupId: 'room',
+                            action: function(){                             
+                                g3d.setEye([0,300,1000]);
+                            }
+                        },                     
+                ]; 
+				rawS3 = null;
+                borderPane = new ht.widget.BorderPane();
+                dataModel = new ht.DataModel();                
+                g3d = new ht.graph3d.Graph3dView(dataModel);
+                toolbar = new ht.widget.Toolbar(items);
+                borderPane.setTopView(toolbar);
+                borderPane.setCenterView(g3d);                  
+                g3d.getLabel=function(data){return null;};
+                view = borderPane.getView();  
+                view.className = 'main';
+                document.body.appendChild(view);
+                window.addEventListener('resize', function (e) {
+                    borderPane.invalidate();
+                }, false);
+				
+				//g3d.setGridVisible(true);                 
+				
+                ht.Default.loadObj('../../ModelFile/obj/180105.obj', '../../ModelFile/mtl/180105.mtl', {
+                    center: true,
+					cube: true,
+                    shape3d: 'file',
+                    finishFunc: function(modelMap, array, rawS3){
+						window.rawS3 = rawS3;
+                        if(modelMap){
+                            var node = new ht.Node();
+							node.setName('room');
+							node.s({
+								'shape3d':'file'
+							});
+                            console.log(rawS3);
+                            node.setElevation((rawS3[1]*0.04)*0.5);
+							node.s3(rawS3[0]*0.04,rawS3[1]*0.04,rawS3[2]*0.04);
+							//node.p3(-300,0,0);
+							dataModel.add(node);
+                        } 
+                    }
+                });            
+            }
+</script>
+<body onload="init()">
+</body>
+</html>

@@ -77,7 +77,7 @@
 					                            <a href="javascript:void(0);" onclick="js_method2()" style="color:#666">户型图</a>					                        
 					                        </li>
 					                        <li class="title-item evaluation fl" style="float:left;margin-left:20px;line-height: 60px;padding-right: 20px;padding-left: 20px">
-					                            <a href="HT/3d_model.html" style="color:#666;cursor:pointer;" target="_blank">3d模型</a>
+					                            <a href="HT/temp.html" style="color:#666;cursor:pointer;" target="_blank">3d模型</a>
 					                        </li>
 					                        <li class="title-item evaluation fl" style="float:left;margin-left:20px;line-height: 60px;padding-right: 20px;padding-left: 20px">
 					                            <a href="javascript:void(0);" onclick="js_method3()" style="color:#666">用户评价</a>

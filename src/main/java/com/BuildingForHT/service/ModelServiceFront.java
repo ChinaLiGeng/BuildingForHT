@@ -4,8 +4,10 @@ import java.sql.SQLException;
 import java.util.List;
 
 import com.BuildingForHT.entity.Model;
+import com.BuildingForHT.entity.ModelAssembly;
 import com.BuildingForHT.entity.ModelComment;
 import com.BuildingForHT.entity.ModelRecord;
+import com.BuildingForHT.entity.PriceList;
 import com.BuildingForHT.entity.User;
 
 public interface ModelServiceFront {
@@ -202,5 +204,25 @@ public interface ModelServiceFront {
 	 * @return：int
 	 */
 	int getAdminModelNumber();
+	
+	/**
+	 * 
+	 * @Method：getAssembly
+	 * @Description：get assembly
+	 * @author：Snail
+	 * @date：2018年1月10日 下午3:27:13
+	 * @return：List<ModelAssembly>
+	 */
+	List<ModelAssembly> getAssembly(int modiId);
+	
+	/**
+	 * 
+	 * @Method：calcModel
+	 * @Description：calc model
+	 * @author：Snail
+	 * @date：2018年1月10日 下午4:34:15
+	 * @return：boolean
+	 */
+	boolean calcModel(int modiId,PriceList priceList,int modelId,int price);
 	
 }

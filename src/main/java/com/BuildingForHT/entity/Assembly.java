@@ -5,7 +5,7 @@ public class Assembly {
 	private int assemblyId;
 	private int typeId;
 	private String assemblyJson;
-	private String number;
+	private String numberId;
 	private int state;    			//0表示删除；1表示存在说的话
 	private double width;
 	private double heigth;
@@ -37,12 +37,12 @@ public class Assembly {
 		this.assemblyJson = assemblyJson;
 	}
 
-	public String getNumber() {
-		return number;
+	public String getNumberId() {
+		return numberId;
 	}
 
-	public void setNumber(String number) {
-		this.number = number;
+	public void setNumber(String numberId) {
+		this.numberId = numberId;
 	}
 
 	public int getState() {
@@ -96,7 +96,7 @@ public class Assembly {
 	@Override
 	public String toString() {
 		return "Assembly [assemblyId=" + assemblyId + ", typeId=" + typeId + ", assemblyJson=" + assemblyJson
-				+ ", number=" + number + ", state=" + state + ", width=" + width + ", heigth=" + heigth + ", weight="
+				+ ", numberId=" + numberId + ", state=" + state + ", width=" + width + ", heigth=" + heigth + ", weight="
 				+ weight + ", reinforcingBars=" + reinforcingBars + ", length=" + length + "]";
 	}
 	

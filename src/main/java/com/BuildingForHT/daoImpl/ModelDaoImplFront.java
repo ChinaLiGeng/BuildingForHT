@@ -19,8 +19,10 @@ import com.BuildingForHT.dao.ModelDaoFront;
 import com.BuildingForHT.entity.EffectPic;
 import com.BuildingForHT.entity.HouseLayout;
 import com.BuildingForHT.entity.Model;
+import com.BuildingForHT.entity.ModelAssembly;
 import com.BuildingForHT.entity.ModelComment;
 import com.BuildingForHT.entity.ModelRecord;
+import com.BuildingForHT.entity.PriceList;
 import com.BuildingForHT.entity.User;
 
 @Repository
@@ -439,6 +441,51 @@ public class ModelDaoImplFront implements ModelDaoFront{
 	  
 		result = jdbcTemplate.queryForObject(sql,params,Integer.class);
 		return result;
+	}
+
+	@Override
+	public List<ModelAssembly> getAssembly(int modiId) {
+		
+		List<ModelAssembly> assemblys = null;
+		
+		String sql = "select at.name,a.numberId,length,width,heigth,reinforcingBars,ma.number from modelassembly ma,assembly a,assemblytype at "
+					+ "where ma.modiId = ? and ma.state = 1 and  ma.assemblyId = a.assemblyId and a.state = 1 and a.typeId = at.typeId and at.state = 1";
+		Object []params = {modiId};
+		
+		try {
+			assemblys = jdbcTemplate.query(sql, params, new BeanPropertyRowMapper(ModelAssembly.class));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			return assemblys;
+		}
+	}
+
+	@Override
+	public int createPriceList(int modiId, PriceList priceList) {
+		
+		String sql = "insert into pricelist(modiId,listEach,price,state) values(?,?,?,?)";
+		Object []params = {modiId,priceList.getListEach(),priceList.getPrice(),1};
+		
+		return jdbcTemplate.update(sql,params);
+	}
+
+	@Override
+	public int calcUpdateModel(int modelId) {
+		
+		String sql = "update model set designState = ? where modelId = ?";
+		Object []params = {3,modelId};
+		
+		return jdbcTemplate.update(sql,params);
+	}
+
+	@Override
+	public int calcUpdateAllPrice(int modiId,int price) {
+		
+		String sql = "update model_record set price = ? where modiId = ?";
+		Object []params = {price,modiId};
+		
+		return jdbcTemplate.update(sql,params);
 	}
 
 }
