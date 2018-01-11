@@ -126,16 +126,46 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	}
     
     function createList(){
+    	
+	   var jsonArray = new Array();
     		
     	 	var firstInfo = $("#modifyInfo0").val();
     	 	var firstPrice = $("#price0").val();
     	 	
+    	 	var firstJson = {
+    	 			"modiId":modiId,
+    	 			"modelId":modelId,
+    	 			"listEach":firstInfo,
+    	 			"price":firstPrice
+    	 	}
+    	 	jsonArray.push(firstJson)
+    	 	
     	 	for(var i = each_id ; i>0; i--){
     	 		var info = $("#modifyInfo"+i+"").val();
         	 	var price = $("#price"+i+"").val();
-        	 	alert(info)
-        	 	alert(price)
+        	 	var eachJson = {
+        	 			"listEach":info,
+        	 			"price":price
+        	 	}
+        	 	jsonArray.push(eachJson)
     	 	}
+    	 	
+    	 	alert(JSON.stringify(jsonArray))
+    	 	
+    	 	 $.ajax({ 
+		        url:"./F/Model/calc_update_model.final", 
+				type:"post",
+				contentType: 'application/json',
+				data:JSON.stringify(jsonArray),
+		        dataType:"json", 
+		        success:function(data){ 
+			        	if( data.meta.success ){
+			        		alert("上传成功")
+			        	}else{
+			        		alert("上传失败")
+			        	}
+				}
+    	 	 })
     }
     
     

@@ -291,7 +291,7 @@ public interface ModelServiceFront {
 	 * @date：2018年1月10日 下午4:34:15
 	 * @return：boolean
 	 */
-	boolean calcModel(int modiId,PriceList priceList,int modelId,int price);
+	boolean calcModel(int modiId,List<PriceList> priceList,int modelId,int price);
 	
 	
 	int create_fee_list(ModelRecord modelRecord);

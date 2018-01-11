@@ -236,15 +236,28 @@ public class ModelServiceImplFront implements ModelServiceFront{
 		return result;
 	}
 
+	@SuppressWarnings("finally")
 	@Override
-	public boolean calcModel(int modiId, PriceList priceList, int modelId, int price) {
+	public boolean calcModel(int modiId, List<PriceList> priceList, int modelId, int price) {
 		
 		boolean result = false;
+		int tag = 0;
 		
-		if( modelInstance.createPriceList(modiId, priceList) > 0 & modelInstance.calcUpdateAllPrice(modiId, price) >0 & modelInstance.calcUpdateModel(modelId,3) >0) {
-			result = true;
+		try {
+			for(PriceList each:priceList){
+				modelInstance.createPriceList(modiId, each);
+			}
+			tag = 1;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			tag =  0;
+		}finally {
+			if( tag > 0 & modelInstance.calcUpdateAllPrice(modiId, price) >0 & modelInstance.calcUpdateModel(modelId,3) >0) {
+				result = true;
+			}
+			return result;
 		}
-		return result;
 	}
 	
 	@Override

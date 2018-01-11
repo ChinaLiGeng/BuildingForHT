@@ -7,6 +7,7 @@ public class PriceList {
 	private String listEach;
 	private double price;
 	private int state;     			//0表示删除；1表示存在
+	private int modelId;
 	
 	public int getListId() {
 		return listId;
@@ -47,10 +48,18 @@ public class PriceList {
 	public void setState(int state) {
 		this.state = state;
 	}
+	
+	public int getModelId() {
+		return modelId;
+	}
+
+	public void setModelId(int modelId) {
+		this.modelId = modelId;
+	}
 
 	@Override
 	public String toString() {
 		return "PriceList [listId=" + listId + ", modiId=" + modiId + ", listEach=" + listEach + ", price=" + price
-				+ ", state=" + state + "]";
+				+ ", state=" + state + ", modelId=" + modelId + "]";
 	}
 }

@@ -26,6 +26,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
@@ -43,6 +44,7 @@ import com.BuildingForHT.entity.User;
 import com.BuildingForHT.globle.Constants;
 import com.BuildingForHT.jsonFormat.Response;
 import com.BuildingForHT.service.ModelServiceFront;
+import com.mysql.jdbc.StandardSocketFactory;
 
 @Controller
 @RequestMapping("/F/Model")
@@ -648,13 +650,21 @@ public class ModelControllerFront {
 	 */
 	@RequestMapping(value = "/calc_update_model.final" , method = RequestMethod.POST)
 	@ResponseBody
-	public Response calcModels(int modiId,PriceList priceList,int modelId,int price) {
+	public Response calcModels(@RequestBody List<PriceList> priceList) {
 		
+		int modiId = priceList.get(0).getModiId();
+		int modelId = priceList.get(0).getModelId();
+		int priceAll = 0;
+		
+		for (PriceList each : priceList) {
+			priceAll += each.getPrice();
+		}
+			
 		Response response = new Response();
 		boolean result = false;
 		
 		try {
-			result = modelInstance.calcModel(modiId, priceList, modelId, price);
+			result = modelInstance.calcModel(modiId, priceList, modelId, priceAll);
 			
 			if( result == true) {
 				response.success();
