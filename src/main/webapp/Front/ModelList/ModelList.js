@@ -7,10 +7,12 @@ var number = 0;
 var pageALL;
 function getArea(a){
 	area = a;
+	page = 1;
 	getList()
 }
 function getNumber(n){
 	number = n;
+	page=1;
 	getList()
 }
 function getPage(p){
@@ -65,9 +67,10 @@ function getList(){
     			'<li><a cursor="pointer" onclick="getPage(-1)" class="fa fa-angle-left" </a></li>'+
     			'<li class="active"><a cursor="pointer" onclick="getPage(1)">1</a></li>'
     			)
-    	for(var x=2;x < pageALL;x++){
+    	for(var x=2;x <= pageALL;x++){
+    		
     		$("#page").append(
-    				'<li><a cursor="pointer" onclick="getPage('+x+')">'+x+'</a></li>'
+    				'<li><a htef="#" cursor="pointer" onclick="getPage('+x+')">'+x+'</a></li>'
     				)
     	}
     	$("#page").append(
