@@ -16,6 +16,7 @@ import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 
 import com.BuildingForHT.dao.ModelDaoFront;
+import com.BuildingForHT.entity.Assembly;
 import com.BuildingForHT.entity.EffectPic;
 import com.BuildingForHT.entity.HouseLayout;
 import com.BuildingForHT.entity.Model;
@@ -644,5 +645,69 @@ public class ModelDaoImplFront implements ModelDaoFront{
 			return lists;
 		}
 	}
-
+	@Override
+	public int addMR(ModelRecord mr){
+		String sql = "insert into model_record(modelId,modifyInfo,floornumber,buildingArea,landArea,version) values(?,?,?,?,?,?)";
+		Object []params = {mr.getModelId(),mr.getModifyInfo(),mr.getFloorNumber(),mr.getBuildingArea(),mr.getLandArea(),mr.getVersion()+1};
+        KeyHolder keyHolder = new GeneratedKeyHolder();  
+		jdbcTemplate.update( new PreparedStatementCreator() {  
+			
+			@Override
+			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
+				PreparedStatement ps = jdbcTemplate.getDataSource()
+						.getConnection().prepareStatement(sql,new String[]{ "modelId","modifyInfo","floorNumber","buildingArea","landArea","version"});
+				ps.setInt(1,mr.getModelId());
+				ps.setString(2, mr.getModifyInfo());
+				ps.setInt(3, mr.getFloorNumber());
+				ps.setDouble(4, mr.getBuildingArea());
+				ps.setDouble(5, mr.getLandArea());
+				ps.setInt(6, mr.getVersion()+1);
+				return ps;  
+			}  
+        }, keyHolder);
+		return  keyHolder.getKey().intValue();
+		
+	}
+	@Override
+	public List<Assembly> getAssemblyAll() {
+		
+		List<Assembly> assemblys = null;
+		
+		String sql = "select * from assembly where state = 1";
+		try {
+			assemblys = jdbcTemplate.query(sql, new BeanPropertyRowMapper(Assembly.class));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			return assemblys;
+		}
+	}  
+	@Override
+	public int createMA(ModelAssembly ma){
+		String sql = "insert into ModelAssembly(assemblyId,number,modiid) values(?,?,?)";
+		Object []params = {ma.getAssemblyId(),ma.getNumber(),ma.getModiId()};
+		return jdbcTemplate.update(sql,params);
+		
+	}
+	@Override
+    public int updateMRObj(int id,String path,int type){
+		String sql;
+		if(type ==1){
+			 sql = "update model_record set objPath = '"+path+"' where modiId ="+id+"";
+		}else{
+			 sql = "update model_record set mtlPath = '"+path+"' where modiId ="+id+"";
+		}
+    	return jdbcTemplate.update(sql);
+    }
+	
+	@Override
+	public int getMR(){
+		try {
+			String sql = "select modiId from model_record order by modiid desc  LIMIT 1";
+			return jdbcTemplate.queryForObject(sql,Integer.class);		 
+		} catch (Exception e) {
+			e.printStackTrace();
+			return 0;
+		}
+	}
 }

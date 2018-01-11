@@ -3,6 +3,7 @@ package com.BuildingForHT.dao;
 import java.sql.SQLException;
 import java.util.List;
 
+import com.BuildingForHT.entity.Assembly;
 import com.BuildingForHT.entity.EffectPic;
 import com.BuildingForHT.entity.HouseLayout;
 import com.BuildingForHT.entity.Model;
@@ -414,4 +415,59 @@ public interface ModelDaoFront {
 	 * @return：List<PriceList>
 	 */
 	List<PriceList> getPriceLists(int modiId);
+    
+	/**
+	 * 
+	* @Title: addMR 
+	* @Description: TODO
+	* @date 2018年1月11日 上午12:34:17 
+	* @return int 
+	* @author Ligeng    
+	* @throws
+	 */
+	int addMR(ModelRecord mr);
+    
+	/**
+	 * 
+	* @Title: getAssemblyAll 
+	* @Description: TODO
+	* @date 2018年1月11日 上午12:53:58 
+	* @return List<ModelAssembly> 
+	* @author Ligeng    
+	* @throws
+	 */
+	List<Assembly> getAssemblyAll();
+    
+	/**
+	 * 
+	* @Title: createMA 
+	* @Description: TODO
+	* @date 2018年1月11日 上午1:02:58 
+	* @return int 
+	* @author Ligeng    
+	* @throws
+	 */
+	int createMA(ModelAssembly ma);
+    /**
+     * 
+    * @Title: updateMRObj 
+    * @Description: TODO
+    * @date 2018年1月11日 下午7:13:34 
+    * @return int 
+    * @author Ligeng    
+    * @throws
+     */
+	int updateMRObj(int id, String path, int type);
+    /**
+     * 
+    * @Title: getMR 
+    * @Description: TODO
+    * @date 2018年1月11日 下午7:30:53 
+    * @return int 
+    * @author Ligeng    
+    * @throws
+     */
+	int getMR();
+	
+	
 }

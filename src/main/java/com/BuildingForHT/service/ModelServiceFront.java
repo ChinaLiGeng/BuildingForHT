@@ -3,6 +3,7 @@ package com.BuildingForHT.service;
 import java.sql.SQLException;
 import java.util.List;
 
+import com.BuildingForHT.entity.Assembly;
 import com.BuildingForHT.entity.EffectPic;
 import com.BuildingForHT.entity.HouseLayout;
 import com.BuildingForHT.entity.Model;
@@ -353,5 +354,57 @@ public interface ModelServiceFront {
 	 * @return：List<PriceList>
 	 */
 	List<PriceList> getPriceLists(int modiId);
+    
+	/**
+	 * 
+	* @Title: addMR 
+	* @Description: TODO
+	* @date 2018年1月11日 上午12:36:45 
+	* @return int 
+	* @author Ligeng    
+	* @throws
+	 */
+	int addMR(ModelRecord mr);
+    
+	/**
+	 * 
+	* @Title: createMA 
+	* @Description: TODO
+	* @date 2018年1月11日 上午1:06:37 
+	* @return int 
+	* @author Ligeng    
+	* @throws
+	 */
+	int createMA(List<ModelAssembly> mas);
+   /**
+    * 
+   * @Title: uploadMR 
+   * @Description: TODO
+   * @date 2018年1月11日 下午7:15:15 
+   * @return int 
+   * @author Ligeng    
+   * @throws
+    */
+	int uploadMR(int id, String path, int type);
+    /**
+     * 
+    * @Title: getMR 
+    * @Description: TODO
+    * @date 2018年1月11日 下午7:32:11 
+    * @return int 
+    * @author Ligeng    
+    * @throws
+     */
+    int getMR();
+    /**
+     * 
+    * @Title: getAssemblyAll 
+    * @Description: TODO
+    * @date 2018年1月11日 下午9:17:49 
+    * @return List<Assembly> 
+    * @author Ligeng    
+    * @throws
+     */
+	List<Assembly> getAssemblyAll();
 	
 }
