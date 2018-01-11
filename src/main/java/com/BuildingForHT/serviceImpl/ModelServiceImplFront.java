@@ -245,7 +245,14 @@ public class ModelServiceImplFront implements ModelServiceFront{
 		}
 		return result;
 	}
+	
+	@Override
+	public int create_fee_list(ModelRecord modelRecord) {
+		// TODO Auto-generated method stub
+		return modelInstance.create_fee_list(modelRecord);
+	}
 
+	
 	@Override
 	public boolean createOrder(OrderTable order, int userId) {
 		

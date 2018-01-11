@@ -292,6 +292,8 @@ public interface ModelServiceFront {
 	 */
 	boolean calcModel(int modiId,PriceList priceList,int modelId,int price);
 	
+	
+	int create_fee_list(ModelRecord modelRecord);
 	/**
 	 * 
 	 * @Method£ºcreateOrder

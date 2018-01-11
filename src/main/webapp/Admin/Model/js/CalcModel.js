@@ -29,7 +29,7 @@ function getCalcModles(page){
 	                    '<th>'+json[i].createTime+'</th>'+
 	                    '<td>'+json[i].modifyInfo+'</td>'+
 	                    '<th ><a style="cursor:pointer" href="Admin/Model/ModelAssemply.jsp?id='+id+'">点击查看</a></th>'+
-	                 '<td class="center" style="cursor:pointer">创建费用清单</td>'+
+	                 '<td  class="center" style="cursor:pointer" onclick="Create();">创建费用清单</td>'+
 	             '</tr>'
 	    		)
 	    	}
@@ -72,4 +72,8 @@ function showPage(){
 			}
 		});
 	});
+}
+
+function Create(){
+	window.location.href="Admin/Model/form_test.jsp";
 }

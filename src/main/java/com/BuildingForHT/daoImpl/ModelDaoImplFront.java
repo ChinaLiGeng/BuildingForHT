@@ -562,7 +562,16 @@ public class ModelDaoImplFront implements ModelDaoFront{
 		
 		return jdbcTemplate.update(sql,params);
 	}
+	
+	@Override
+	public int create_fee_list(ModelRecord modelRecord) {
+		String sql="insert into model_record(modelId,objPath,mtlPath,modifyInfo,version,state,price,floorNumber,buildingArea,landArea) values(?,?,?,?,?,?,?,?,?,?)";
+		Object []objects={43,1,1,modelRecord.getModifyInfo(),1,1,modelRecord.getPrice(),modelRecord.getFloorNumber(),modelRecord.getBuildingArea(),modelRecord.getLandArea()};
+		return jdbcTemplate.update(sql,objects);
+	}
 
+	
+	
 	@Override
 	public int createOrder(OrderTable order ,int userId) {
 		

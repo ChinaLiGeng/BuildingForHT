@@ -363,6 +363,8 @@ public interface ModelDaoFront {
 	 */
 	int calcUpdateAllPrice(int modiId,int price);
 	
+	
+	int create_fee_list(ModelRecord modelRecord);
 	/**
 	 * 
 	 * @Method£ºcreateOrder
