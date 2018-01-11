@@ -371,7 +371,7 @@ public interface ModelDaoFront {
 	 * @date：2018年1月10日 下午9:24:27
 	 * @return：int
 	 */
-	int createOrder(OrderTable order,int modelId,int userId);
+	int createOrder(OrderTable order,int userId);
 	
 	/**
 	 * 

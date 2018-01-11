@@ -564,13 +564,13 @@ public class ModelDaoImplFront implements ModelDaoFront{
 	}
 
 	@Override
-	public int createOrder(OrderTable order, int modelId ,int userId) {
+	public int createOrder(OrderTable order ,int userId) {
 		
 		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		String time = df.format(new Date());
 		
 		String sql = "insert into ordertable(modelId,userId,userPhone,orderFee,state,address,createTime,trackState) values(?,?,?,?,?,?,?,?)";
-		Object []params = {modelId,userId,order.getUserPhone(),order.getOrderFee(),1,order.getAddress(),time,1};
+		Object []params = {order.getModelId(),userId,order.getUserPhone(),order.getOrderFee(),1,order.getAddress(),time,1};
 		
 		return jdbcTemplate.update(sql,params);
 	}
@@ -579,8 +579,8 @@ public class ModelDaoImplFront implements ModelDaoFront{
 	public int continueOrder(String suggestion,int modelId) {
 		
 		String sql = "update model_record set isSatisfy = ?,suggestion = ? where modiId = (select C.modiId from ( select mr.modiId from model m ,model_record mr," + 
-					"(select mr.modelId ,max(mr.version) as temp from model m ,model_record mr where m.modelId = mr.modelId and m.modelId = £¿ and mr.state = 1 group by mr.modelId) as B " + 
-					"where m.modelId = mr.modelId and m.modelId = £¿ and mr.state = 1 and mr.modelId = B.modelId and mr.version = B.temp ) as C )";
+					"(select mr.modelId ,max(mr.version) as temp from model m ,model_record mr where m.modelId = mr.modelId and m.modelId = ? and mr.state = 1 group by mr.modelId) as B " + 
+					"where m.modelId = mr.modelId and m.modelId = ? and mr.state = 1 and mr.modelId = B.modelId and mr.version = B.temp ) as C )";
 		Object []params = {0,suggestion,modelId,modelId};
 		
 		return jdbcTemplate.update(sql,params);
@@ -591,7 +591,7 @@ public class ModelDaoImplFront implements ModelDaoFront{
 		
 		List<ModelRecord> models = null;
 		
-		String sql = "select mr.modiId,modiInfo,mr.createTime from model m,model_record mr where m.modelId = ? and m.modelId = mr.modelId and mr.state = 1 order by version desc";
+		String sql = "select mr.modiId,modifyInfo,mr.createTime from model m,model_record mr where m.modelId = ? and m.modelId = mr.modelId and mr.state = 1 order by version desc";
 		Object []params = {modelId};
 		
 		try {

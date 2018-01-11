@@ -25,4 +25,11 @@ public class OrderServiceImpl implements OrderService {
 	public int getOrderNumber() throws SQLException{
 		return daoInstance.getOrderNumber();
 	}
+	
+	@Override
+	public List<OrderTable> getMyOrder(int userId) {
+		
+		List<OrderTable> orders = daoInstance.getMyOrder(userId);
+		return orders;
+	}
 }

@@ -31,6 +31,11 @@
 
 <link rel="stylesheet" type="text/css" href="User/Order/css/base.css">
 <link rel="stylesheet" type="text/css" href="User/Order/css/home.css">
+<script type="text/javascript">
+	var modelId = ${param.modelId}
+	var price = ${param.price}
+</script>
+
 
 <title>下订单</title>
 </head>
@@ -96,18 +101,18 @@
 <section>
     <div class="containers" style="margin-top:20px">
        <div class="pc-space">
-           <div class="pc-order-title clearfix"><h3 class="fl">收货人信息</h3> <a onclick="showBox()" class="fr pc-order-add btn1">新增收货地址</a> </div>
+           <div class="pc-order-title clearfix"><h3 class="fl">联系人地址</h3></div>
            <div class="pc-border">
                <div class="pc-order-text clearfix">
-                   <ul class=" clearfix">
-                       <li class="clearfix fl">
-                           <div class="fl pc-frame pc-frams"> <a href="#">默认地址</a></div>
-                           <div class="fl pc-address"><span>嘻哈杂货铺</span> <span>186****4832 </span> <span>北京北京市海淀区首享科技大厦9层</span></div>
-                       </li>
-                       <li class="fr">
-                           <div class="pc-click"><a href="#">设为默认地址</a> <a href="#">编辑</a> <a href="#">删除</a> </div>
-                       </li>
-                   </ul>
+                   <textarea style="width: 100%;border: none;" id="address"></textarea>
+               </div>
+           </div>
+       </div>
+       <div class="pc-space">
+           <div class="pc-order-title clearfix"><h3 class="fl">联系人电话</h3></div>
+           <div class="pc-border" style="height: 50px">
+               <div class="pc-order-text clearfix">
+                   <textarea style="width: 100%;border: none;margin-top: -15px;" id="phone"></textarea>
                </div>
            </div>
        </div>
@@ -117,82 +122,29 @@
                 <div class="pc-order-text clearfix">
                     <ul class=" clearfix">
                         <li class="clearfix fl">
-                            <div class="fl pc-frame pc-frams"> <a href="#"> 在线支付</a></div>
+                            <div class="fl pc-frame pc-frams" style="border: none;"> <a > 在线支付</a></div>
                         </li>
                     </ul>
                 </div>
             </div>
         </div>
-       <div class="pc-space clearfix">
-           <div class="fl ">
-               <div class="pc-order-title clearfix"><h3 class="fl">收货人信息</h3></div>
-               <div class="fr pc-border">
-                   <div class="pc-order-text pc-order-l clearfix">
-                       <ul id="H-table" class="clearfix H-table"  >
-                           <li class="cur">
-                               <a href="javascript:void(0);">百事汇通</a>
-                           </li>
-                           <li>
-                               <a href="javascript:void(0);">顺风快递</a>
-                           </li>
-                           <li>
-                              <a href="javascript:void(0);">中通快递</a>
-                           </li>
-                       </ul>
-                       <div class="" style="height:211px"></div>
-                       <div class="pc-line"></div>
-                       <div class="pc-freight"><p>运费：  8.00元</p></div>
-                   </div>
-               </div>
-           </div>
-           <div class="fr ">
-               <div class="pc-order-title clearfix"><h3 class="fl">商品信息</h3></div>
-               <div class="pc-border">
-                   <div class="pc-order-text clearfix">
-                       <div class="pc-wares-t"><h4>商家：  阿卡官方旗舰店</h4></div>
-                       <div class="clearfix pc-wares-p">
-                           <div class="fl pc-wares"><a href="#"><img src="theme/img/pd/pc1.png"></a></div>
-                           <div class="fl pc-wares-w"> <a href="#">小米（MI）小米USB插线板 3个USB充电口 支持2A快充 3重安全保护</a> <p class="clearfix"><span class="fl">颜色：白色</span><span class="fr">版本：联通高</span></p></div>
-                           <div class="fl pc-wares-s"><span class="reds">￥49.00</span><span>x1</span><span>有货</span></div>
-                       </div>
-                       <div class="clearfix pc-wares-p">
-                           <div class="fl pc-wares"><a href="#"><img src="theme/img/pd/pc1.png"></a></div>
-                           <div class="fl pc-wares-w"> <a href="#">小米（MI）小米USB插线板 3个USB充电口 支持2A快充 3重安全保护</a> <p class="clearfix"><span class="fl">颜色：白色</span><span class="fr">版本：联通高</span></p></div>
-                           <div class="fl pc-wares-s"><span class="reds">￥49.00</span><span>x1</span><span>有货</span></div>
-                       </div>
-                       <div class="pc-written"><p>订单留言</p></div>
-                   </div>
-               </div>
-           </div>
-       </div>
        <div class="pc-space">
             <div class="pc-order-title clearfix"><h3 class="fl">发票信息</h3></div>
             <div class="pc-border">
                 <div class="pc-order-text clearfix">
                     <ul class=" clearfix">
                         <li class="clearfix fl">
-                            <div class="fl pc-address pc-wares-l"><span>普通发票（纸质）</span> <span> 个人</span> <span>明细</span><span><a href="#">修改</a> </span></div>
+                            <div class="fl pc-address pc-wares-l"><span>普通发票（纸质）</span> <span> 个人</span> <span>明细</span><span><a style="cursor: pointer;">修改</a> </span></div>
                         </li>
                     </ul>
                 </div>
             </div>
         </div>
-       <div class="clearfix">
-           <div class="fr pc-list-t">
-               <ul>
-                   <li><span><b>2</b> 件商品，总商品金额：</span> <em>￥558.00</em></li>
-                   <li><span>减额：</span> <em>￥558.00</em></li>
-                   <li><span>运费：</span> <em>￥558.00</em></li>
-                   <li><span>应付总额：</span> <em>￥558.00</em></li>
-                   <li><span>减额：</span> <em>￥558.00</em></li>
-               </ul>
-           </div>
-       </div>
        <div class="pc-space-n"></div>
        <div class="clearfix" style="margin-bottom:20px">
            <div class="fr pc-space-j">
-               <spna>应付总额：<strong>￥558.00</strong></spna>
-               <button class="pc-submit">提交订单</button>
+               <!-- <spna>应付总额：<strong>￥558.00</strong></spna> -->
+               <button class="pc-submit" onclick="makeOrder()">提交订单</button>
            </div>
        </div>
     </div>
@@ -219,67 +171,6 @@
 		<script src="assets/js/main.js"></script>
 		<script type="text/javascript" src="User/Order/js/OrderPage.js"></script>
 		
-		<script type="text/javascript">
-		    $(function(){
-		
-		        $("#sjld").sjld("#shenfen","#chengshi","#quyu");
-		
-		    });
-		</script>
-		
-		
-		<script type="text/javascript">
-         (function(a){
-             a.fn.hoverClass=function(b){
-                 var a=this;
-                 a.each(function(c){
-                     a.eq(c).hover(function(){
-                         $(this).addClass(b)
-                     },function(){
-                         $(this).removeClass(b)
-                     })
-                 });
-                 return a
-             };
-         })(jQuery);
-
-         $(function(){
-             $("#pc-nav").hoverClass("current");
-         });
-
-
-
-
-         $(document).ready(function($){
-
-             $(".btn1").click(function(event){
-                 $(".hint").css({"display":"block"});
-                 $(".box").css({"display":"block"});
-             });
-
-             $(".hint-in3").click(function(event) {
-                 $(".hint").css({"display":"none"});
-                 $(".box").css({"display":"none"});
-             });
-
-             $(".hint3").click(function(event) {
-                 $(this).parent().parent().css({"display":"none"});
-                 $(".box").css({"display":"none"});
-             });
-
-             $("#H-table li").each(function(i){
-                 $(this).click((function(k){
-                     var _index = k;
-                     return function(){
-                         $(this).addClass("cur").siblings().removeClass("cur");
-                         $(".H-over").hide();
-                         $(".H-over:eq(" + _index + ")").show();
-                     }
-                 })(i));
-             });
-
-         });
-     </script>
 		
 
 </body>

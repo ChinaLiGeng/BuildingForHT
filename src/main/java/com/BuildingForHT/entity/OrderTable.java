@@ -13,7 +13,7 @@ public class OrderTable {
 	private int trackState;  			//施工状态，0表示默认未支付造价状态，1表示订单未分配；2表示订单已分配，构件生产阶段；3表示预约安装；4表示安装中；5表示安装完成，订单结束；6表示订单取消
 	private String userName;
 	private String mainPic;
-	
+	private String name;
 	
 	public String getUserName() {
 		return userName;
@@ -102,14 +102,21 @@ public class OrderTable {
 	public void setTrackState(int trackState) {
 		this.trackState = trackState;
 	}
+	
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
 
 	@Override
 	public String toString() {
 		return "OrderTable [orderId=" + orderId + ", modelId=" + modelId + ", userId=" + userId + ", userPhone="
 				+ userPhone + ", orderFee=" + orderFee + ", state=" + state + ", address=" + address + ", createTime="
-				+ createTime + ", trackState=" + trackState + ", userName=" + userName + ", mainPic=" + mainPic + "]";
+				+ createTime + ", trackState=" + trackState + ", userName=" + userName + ", mainPic=" + mainPic
+				+ ", name=" + name + "]";
 	}
-
-	
 	
 }

@@ -247,11 +247,11 @@ public class ModelServiceImplFront implements ModelServiceFront{
 	}
 
 	@Override
-	public boolean createOrder(OrderTable order, int modelId, int userId) {
+	public boolean createOrder(OrderTable order, int userId) {
 		
 		boolean result = false;
 		
-		if( modelInstance.createOrder(order, modelId, userId) > 0  & modelInstance.calcUpdateModel(modelId,4) >0) {
+		if( modelInstance.createOrder(order, userId) > 0  & modelInstance.calcUpdateModel(order.getModelId(),4) >0) {
 			result = true;
 		}
 		return result;
@@ -289,13 +289,14 @@ public class ModelServiceImplFront implements ModelServiceFront{
 	@Override
 	public ModelRecord getHistoryDetail(int modiId) {
 		
-//		ModelRecord 
-		return null;
+		ModelRecord result = modelInstance.getHistoryDetail(modiId);
+		return result;
 	}
 
 	@Override
 	public List<PriceList> getPriceLists(int modiId) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		List<PriceList> result = modelInstance.getPriceLists(modiId);
+		return result;
 	}
 }
