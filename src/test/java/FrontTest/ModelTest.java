@@ -16,6 +16,7 @@ import org.springframework.test.context.web.WebAppConfiguration;
 import com.BuildingForHT.dao.ModelDaoFront;
 import com.BuildingForHT.entity.HouseLayout;
 import com.BuildingForHT.entity.Model;
+import com.BuildingForHT.entity.ModelRecord;
 import com.BuildingForHT.service.ModelServiceFront;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -63,5 +64,27 @@ public class ModelTest {
 //    	int i= 1;
 //    	serviceInstance.updateModel(i, s);
 //    }
+	
+	@Test
+	public void test5(){
+		ModelRecord modelRecord=new ModelRecord();
+		modelRecord.setModelId(43);
+		modelRecord.setObjPath("1");
+		modelRecord.setMtlPath("1");
+		modelRecord.setModifyInfo("需要修改这个");
+		modelRecord.setVersion(1);
+		modelRecord.setState(1);
+		modelRecord.setPrice(100);
+		modelRecord.setFloorNumber(11);
+		modelRecord.setBuildingArea(30);
+		modelRecord.setLandArea(40);
+		try {
+			System.out.println("creata_fee_list-->"+serviceInstance.create_fee_list(modelRecord));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}		
+		
+		
+	}
    
 }

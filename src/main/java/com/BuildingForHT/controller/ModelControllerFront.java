@@ -510,4 +510,20 @@ public class ModelControllerFront {
 		}
 	}
 	
+	@RequestMapping(value = "/create_fee_list" , method = RequestMethod.POST)
+	@ResponseBody
+	public Response Create_Fee_List(@RequestBody ModelRecord modelRecord){
+		Response response=new Response();
+		try {
+			int ok=modelInstance.create_fee_list(modelRecord);
+			System.out.println(ok);
+			response.success("请求成功");
+		} catch (Exception e) {
+			response.failure("没有请求到数据");
+			e.printStackTrace();
+		}
+		
+		return response;
+	}
+	
 }
