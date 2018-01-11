@@ -25,7 +25,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <link href="Admin/Template/css/animate.min.css" rel="stylesheet">
     <link rel="stylesheet" href="Admin/Template/js/plugins/layui/css/layui.css" media="all" />
      <link href="Admin/Template/css/style.min862f.css?v=4.1.0" rel="stylesheet">
-     
+     <script type="text/javascript">
+     	var modiId = ${param.modiId}
+     	var modelId = ${param.modelId}
+     </script>
 </head>
 
 <body class="gray-bg">
@@ -55,21 +58,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             </a>
                         </div>
                     </div>
-                    <div class="ibox-content">
+                    <div class="ibox-content" id="big_div">
                         <div id="add" class="row" style="position:relative;">
                             <div class="col-sm-6 b-r" style="width:40%">
-                                
-                                
                                     <div class="form-group">
                                         <label>请输入创建内容</label>
-                                        <input id="modifyInfo1" type="text" placeholder="" class="form-control">
+                                        <input id="modifyInfo0" type="text" placeholder="" class="form-control">
                                     </div>        	
                             </div>
                              
                              <div class="col-sm-6 b-r" style="width:40%">                               
                                     <div class="form-group">
                                         <label>单价</label>
-                                        <input id="unit_price1" type="text" placeholder="" class="form-control">
+                                        <input id="price0" type="text" placeholder="" class="form-control">
                                     </div>           
                             </div>
                              
@@ -80,32 +81,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             </div>
                         </div>
                         
-                          <div class="row" id="hiddened" style="display:none; position:relative;">
-                            <div class="col-sm-6 b-r" style="width:40%">
-                                
-                                
-                                    <div class="form-group">
-                                        <label>请输入创建内容</label>
-                                        <input id="modifyInfo1" type="text" placeholder="" class="form-control">
-                                    </div>        	
-                            </div>
-                             
-                             <div class="col-sm-6 b-r" style="width:40%">                               
-                                    <div class="form-group">
-                                        <label>单价</label>
-                                        <input id="unit_price1" type="text" placeholder="" class="form-control">
-                                    </div>           
-                            </div>
-                             
-                            <div class="col-sm-6 b-r" style="width:15%;position:absolute;top:20%;left:82%;right:3%;">
-                             
-                            </div>
-                        </div>
+                         
                         
                          <div class="row" id="hiddened" style=" position:relative;">
                             <div class="col-sm-6 b-r" style="float:right; width:20%;height:40px;">
                                     <div class="form-group" style="">
-                                        <input  type="button" value="提交" placeholder="" class="form-control">
+                                        <input  type="button" value="提交" placeholder="" class="form-control" onclick="createList()">
                                     </div>        	
                             </div>
    
@@ -122,73 +103,50 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     </div>
     
     <script type="text/javascript">
-    
+     var each_id = 0;
 
     function add_fee_list(){
     	
+		each_id ++;
     		$("#add").after('<div class="row" id="hiddened" style=" position:relative;">'
     			+'<div class="col-sm-6 b-r" style="width:40%">'
     			+'<div class="form-group">'
     			+'<label>请输入创建内容</label>'
-    			+'<input id="modifyInfo1" type="text" placeholder=""class="form-control">'
+    			+'<input id="modifyInfo'+each_id+'" type="text" placeholder=""class="form-control">'
     			+'</div>'
     			+'</div>'
     			+'<div class="col-sm-6 b-r" style="width:40%">'
     			+'<div class="form-group">'
     			+'<label>单价</label>'
-    			+'<input id="unit_price1" type="text" placeholder="" class="form-control">'
+    			+'<input id="price'+each_id+'" type="text" placeholder="" class="form-control">'
     			+'</div>'
     			+'</div>'
     			+'<div class="col-sm-6 b-r" style="width:15%;position:absolute;top:20%;left:82%;right:3%;"></div>'
     			+'</div>');
     	}
     
+    function createList(){
+    		
+    	 	var firstInfo = $("#modifyInfo0").val();
+    	 	var firstPrice = $("#price0").val();
+    	 	
+    	 	for(var i = each_id ; i>0; i--){
+    	 		var info = $("#modifyInfo"+i+"").val();
+        	 	var price = $("#price"+i+"").val();
+        	 	alert(info)
+        	 	alert(price)
+    	 	}
+    }
+    
     
     </script>
       
-    <script type="text/javascript">
-      
-        function img_skip(){
-        	window.location.href="Admin/Model/calcu_model.jsp";
-        	
-        	
-        	
-        }
-        
-        function create_fee_list(){
-        	var json={
-        		"modifyInfo":$("#modifyInfo").val(),
-        		"price":$("#price").val(),
-        		"floorNumber":$("#floorNumber").val(),
-        		"buildingArea":$("#buildingArea").val(),
-        		"landArea":$("#landArea").val(),
-        	};
-        	
-        	$.ajax({
-        		type:"post",
-        		url:"./F/Model/create_fee_list",
-        		data:JSON.stringify(json),
-        		contentType:"application/json",
-        		dataType:"json",
-        		success:function(data){
-        			if(data){
-        				alert("创建成功");
-        				
-        			}else{
-        				alert("创建失败，请重新创建");
-        			}
-        		}
-        	});
-        }
-   
-    </script>
     
     <script src="Admin/Template/js/jquery.min.js?v=2.1.4"></script>
     <script src="Admin/Template/js/bootstrap.min.js?v=3.3.6"></script>
     <script src="Admin/Template/js/content.min.js?v=1.0.0"></script>
     <script src="Admin/Template/js/plugins/layer/layer.js"></script>
     <script src="Admin/Template/js/plugins/layui/layui.js"></script>
-     <script src="Admin/Model/js/ModelList.js"></script>
    <!-- <script src="Admin/Template/js/plugins/dataTables/jquery.dataTables.js"></script> 
     <script src="Admin/Template/js/plugins/dataTables/dataTables.bootstrap.js"></script> -->
     <script type="text/javascript" src="http://tajs.qq.com/stats?sId=9051096" charset="UTF-8"></script>

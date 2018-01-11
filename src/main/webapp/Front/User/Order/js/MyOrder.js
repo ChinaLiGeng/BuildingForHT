@@ -1,7 +1,6 @@
 $(document).ready(function(){
 	
 	getMyAllDesign(1)        //get all
-	getMyOrder();
 })
 
 var pageNow = 1;
@@ -315,6 +314,7 @@ function returnHistory(){
 
 //show my order
 function show_my_order(){
+	getMyOrder();
 	$("#history_detail").hide();
 	$("#history").hide();
 	$("#my_design_id").hide()

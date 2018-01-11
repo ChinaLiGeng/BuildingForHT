@@ -17,7 +17,6 @@ function makeOrder(){
 			"orderFee":price,
 			"address":address
 	}
-	alert(JSON.stringify(json))
 	
 	$.ajax({ 
         url:"../F/Model/create_order.final", 
