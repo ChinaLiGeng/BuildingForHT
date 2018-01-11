@@ -157,17 +157,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								</div>
 							</div>
 							<div class="ibox-content">
-							    <input style="display:none" type="text" id="Mid"/>
-							    <div class="form-group " style="margin-top: 10px">
-											<label class="col-sm-2 control-label">图片类型:</label>
-											<div class="col-sm-10">
-												<select class="form-control required" id="userId">
-													<option value="1">效果图</option>
-													<option value="2">户型图</option>
-													
-												</select>
-								</div>
-								</div>
+							    
+							
 								<div class="page-container">
 									<p>您可以尝试文件拖拽，使用QQ截屏工具，然后激活窗口后粘贴，或者点击添加图片按钮，来体验此demo.</p>
 									<div id="uploader" class="wu-example">

@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.BuildingForHT.dao.ModelDaoFront;
+import com.BuildingForHT.entity.Assembly;
 import com.BuildingForHT.entity.EffectPic;
 import com.BuildingForHT.entity.HouseLayout;
 import com.BuildingForHT.entity.Model;
@@ -297,5 +298,37 @@ public class ModelServiceImplFront implements ModelServiceFront{
 	public List<PriceList> getPriceLists(int modiId) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	@Override
+	public int addMR(ModelRecord mr){
+		return modelInstance.addMR(mr);
+	}
+	@Override
+	public int createMA(List<ModelAssembly> mas){
+		try {
+			System.out.println(mas);
+			for(ModelAssembly e:mas){
+				modelInstance.createMA(e);
+			}
+			return 1;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			return 0;
+		}
+		
+	}
+	@Override
+	public int uploadMR(int id,String path,int type){
+		return modelInstance.updateMRObj(id, path, type);
+	}
+	@Override
+	public int getMR(){
+		return modelInstance.getMR();
+	}
+	@Override
+	public List<Assembly> getAssemblyAll() {
+		List<Assembly> result = modelInstance.getAssemblyAll();
+		return result;
 	}
 }

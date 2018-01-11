@@ -27,27 +27,47 @@ function base(data){
 	
 	var json =data.data;
 	pageAll = Math.ceil(Number(data.number)/10);
-
-	for(var i=0;i<json.length;i++){
-		$("#modelList_id").append(
-				
-			'<tr class="gradeX" >'+
-				'<th><input type="checkbox"></th>'+
-                '<td>'+json[i].floorNumber+'层</td>'+
-                '<td>'+json[i].buildingArea+'平方米</td>'+
-                '<td>'+json[i].landArea+'平方米</td>'+
-                '<th>'+json[i].createTime+'</th>'+
-                '<td>'+json[i].suggestion+'</td>'+
-                '<th style="cursor:pointer">点击下载</th>'+
-             '<td class="center">上传</td>'+
-         '</tr>'
-		)
+    
+	if(isTag == 0){
+		for(var i=0;i<json.length;i++){
+			$("#modelList_id").append(
+					
+				'<tr class="gradeX" >'+
+					'<th><input type="checkbox"></th>'+
+	                '<td>'+json[i].floorNumber+'层</td>'+
+	                '<td>'+json[i].buildingArea+'平方米</td>'+
+	                '<td>'+json[i].landArea+'平方米</td>'+
+	                '<th>'+json[i].createTime+'</th>'+
+	                '<td>'+json[i].suggestion+'</td>'+
+	                '<th style="cursor:pointer">点击下载</th>'+
+	             '<td class="center"><a cursor="pointer" onclick="goRecord('+json[i].modelId+')">上传</a></td>'+
+	         '</tr>'
+			)
+		}
+	}else{
+		for(var i=0;i<json.length;i++){
+			$("#modelList_id").append(
+				'<tr class="gradeX" >'+
+					'<th><input type="checkbox"></th>'+
+	                '<td>'+json[i].floorNumber+'层</td>'+
+	                '<td>'+json[i].buildingArea+'平方米</td>'+
+	                '<td>'+json[i].landArea+'平方米</td>'+
+	                '<th>'+json[i].createTime+'</th>'+
+	                '<td>'+json[i].suggestion+'</td>'+
+	                '<th style="cursor:pointer">点击下载</th>'+
+	             '<td class="center"><a cursor="pointer" onclick="goRecord1('+json[i].modelId+','+json[i].version+')">上传</a></td>'+
+	         '</tr>'
+			)
+		}
 	}
+	
 	
 	if( tag == 0 ){
 		showPage();
 		tag = 1;
 	}
+	
+	
 }
 
 //show continue models
@@ -115,4 +135,16 @@ function changeModels(){
 		isTag = 1;
 		getContinueModified(1)
 	}
+}
+/*function goRecord(){
+	if(isTag == 0){
+		window.location.href="model_record.jsp?";
+	}
+}*/
+
+function goRecord(obj){
+		window.location.href="model_record.jsp?id="+obj+"&&version=0";
+}
+function goRecord1(obj,obj1){
+	window.location.href="model_record.jsp?id="+obj+"&&version="+obj1;
 }

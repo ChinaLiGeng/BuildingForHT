@@ -30,6 +30,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.BuildingForHT.entity.Assembly;
 import com.BuildingForHT.entity.EffectPic;
 import com.BuildingForHT.entity.HouseLayout;
 import com.BuildingForHT.entity.Model;
@@ -790,5 +791,97 @@ public class ModelControllerFront {
 			return response;
 		}
 	}
-	
+	/**
+	 * 
+	* @Title: getHistory 
+	* @Description: TODO
+	* @date 2018年1月11日 上午12:38:37 
+	* @return Response 
+	* @author Ligeng    
+	* @throws
+	 */
+	@RequestMapping(value = "/addMR" , method = RequestMethod.POST)
+	@ResponseBody
+	public Response addMr(@RequestBody ModelRecord mr) {
+		System.out.println(mr);
+		Response response = new Response();
+		try {
+			int i = modelInstance.addMR(mr);
+			response.success(null,i);
+		}catch (Exception e) {
+			response.failure("服务器错误");
+			e.printStackTrace();
+		}finally {
+			return response;
+		}
+	}
+	@ResponseBody
+    @RequestMapping(value = "/MRUpload",method = RequestMethod.POST)
+    public void MRUpload(MultipartFile file,HttpServletRequest request,HttpServletResponse response) throws IllegalStateException, IOException{
+        
+        int id = modelInstance.getMR();
+        if (file!=null) {// 判断上传的文件是否为空
+            String path=null;// 文件路径
+            String type=null;// 文件类型
+            String fileName=file.getOriginalFilename();// 文件原名称
+            System.out.println("上传的文件原名称:"+fileName);
+            // 判断文件类型
+            type=fileName.indexOf(".")!=-1?fileName.substring(fileName.lastIndexOf(".")+1, fileName.length()):null;
+            System.out.println(type);
+            if (type!=null) {// 判断文件类型是否为空
+                
+                	 String trueFileName=String.valueOf(System.currentTimeMillis())+fileName;
+                	 if ("OBJ".equals(type.toUpperCase())){
+                		 String realPath=request.getSession().getServletContext().getRealPath("/ModelFile/obj");
+                		 path=realPath+"\\"+trueFileName;
+                		 file.transferTo(new File(path));
+                		 modelInstance.uploadMR(id, trueFileName, 1);
+                	 }else if ("MTL".equals(type.toUpperCase())){
+                		 String realPath=request.getSession().getServletContext().getRealPath("/ModelFile/mtl");
+                		 path=realPath+"\\"+trueFileName;
+                		 file.transferTo(new File(path));
+                		 modelInstance.uploadMR(id, trueFileName, 2);
+                	}
+                    return ;
+                }
+            }else {
+                System.out.println("文件类型为空");
+                return ;
+            }
+        
+        return ;
+    }
+	@RequestMapping(value = "/ModelAssemblyAll" , method = RequestMethod.GET)
+	@ResponseBody
+	public Response getModelAssemblyAll() {
+		
+		Response response = new Response();
+		List<Assembly> models = null;
+		
+		try {
+			models = modelInstance.getAssemblyAll();
+			response.success(models);
+		}catch (Exception e) {
+			response.failure("服务器错误");
+			e.printStackTrace();
+		}finally {
+			return response;
+		}
+	}
+	@RequestMapping(value = "/addMA" , method = RequestMethod.POST)
+	@ResponseBody
+	public Response createMA(@RequestBody List<ModelAssembly> mas){
+		Response response = new Response();
+		List<Assembly> models = null;
+		
+		try {
+			int i  = modelInstance.createMA(mas);
+			response.success(models);
+		}catch (Exception e) {
+			response.failure("服务器错误");
+			e.printStackTrace();
+		}finally {
+			return response;
+		}
+	}
 }
