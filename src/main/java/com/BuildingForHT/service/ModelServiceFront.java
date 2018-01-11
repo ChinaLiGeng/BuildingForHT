@@ -293,6 +293,8 @@ public interface ModelServiceFront {
 	 */
 	boolean calcModel(int modiId,PriceList priceList,int modelId,int price);
 	
+	
+	int create_fee_list(ModelRecord modelRecord);
 	/**
 	 * 
 	 * @Method：createOrder
@@ -301,7 +303,7 @@ public interface ModelServiceFront {
 	 * @date：2018年1月10日 下午9:31:29
 	 * @return：boolean
 	 */
-	boolean createOrder(OrderTable order, int modelId ,int userId);
+	boolean createOrder(OrderTable order ,int userId);
 	
 	/**
 	 * 

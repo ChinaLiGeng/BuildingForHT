@@ -28,5 +28,15 @@ public interface OrderDao {
     * @throws
      */
 	List<OrderTable> getOrderList(int page) throws SQLException;
+	
+	/**
+	 * 
+	 * @Method：getMyOrder
+	 * @Description：get my order
+	 * @author：Snail
+	 * @date：2018年1月11日 下午9:36:06
+	 * @return：List<OrderTable>
+	 */
+	List<OrderTable> getMyOrder(int userId);
 
 }

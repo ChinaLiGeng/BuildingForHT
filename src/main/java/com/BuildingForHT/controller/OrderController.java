@@ -2,6 +2,8 @@ package com.BuildingForHT.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -9,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.BuildingForHT.entity.OrderTable;
+import com.BuildingForHT.entity.User;
 import com.BuildingForHT.jsonFormat.Response;
 import com.BuildingForHT.service.OrderService;
 
@@ -64,5 +67,35 @@ public class OrderController {
 		}
 		return response;
 		
+	}
+	
+	/**
+	 * 
+	 * @Method：getMyOrder
+	 * @Description：get my order
+	 * @author：Snail
+	 * @date：2018年1月11日 下午9:44:24
+	 * @return：Response
+	 */
+	@RequestMapping(value = "/my_order.final" , method = RequestMethod.GET)
+	@ResponseBody
+	public Response getMyOrder(HttpSession session){
+		
+		Response response = new Response();
+		
+		User user = (User) session.getAttribute("front_user");
+		if(user == null){
+			response.failure("未登录！");
+			return response;
+		}
+		
+		try {
+			List<OrderTable> orders = serviceInstance.getMyOrder(user.getUserId());
+			response.success(orders);
+		} catch (Exception e) {
+			e.printStackTrace();
+			response.failure("数据异常!");
+		}
+		return response;
 	}
 }

@@ -64,30 +64,27 @@
     <div class="member-center clearfix" style="margin-top:20px">
         <div class="member-left fl">
             <div class="member-apart clearfix">
-                <div class="fl"><a href="#"><img src="theme/img/bg/mem.png"></a></div>
+                <div class="fl"><a ><img src="../Pic/User/profile-1.jpg"></a></div>
                 <div class="fl">
                     <p>用户名：</p>
                     <p><a href="#">亚里士多德</a></p>
-                    <p>搜悦号：</p>
-                    <p>389323080</p>
                 </div>
             </div>
             <div class="member-lists">
                 <dl>
                     <dt>我的信息</dt>
-                    <dd ><a href="#">我的设计</a></dd>
-                    <dd><a href="#">我的订单</a></dd>
-                    <dd><a href="#">我的收藏</a></dd>
+                    <dd ><a style="cursor: pointer;" onclick="show_my_design()">我的设计</a></dd>
+                    <dd><a style="cursor: pointer;" onclick="show_my_order()">我的订单</a></dd>
+                    <dd><a style="cursor: pointer;">我的收藏</a></dd>
                 </dl>
                 <dl>
                     <dt>客户服务</dt>
-                    <dd><a href="#">退货申请</a></dd>
-                    <dd><a href="#">退货/退款记录</a></dd>
+                    <dd><a style="cursor: pointer;">维修申请</a></dd>
                 </dl>
                 <dl>
                     <dt>我的消息</dt>
-                    <dd><a href="#">商城快讯</a></dd>
-                    <dd><a href="#">帮助中心</a></dd>
+                    <dd><a style="cursor: pointer;">商城快讯</a></dd>
+                    <dd><a style="cursor: pointer;">帮助中心</a></dd>
                 </dl>
             </div>
         </div>
@@ -115,129 +112,10 @@
                    </div>
                    <div class="member-sheet clearfix">
                        <ul id="my_design_ul">
-                           <!-- <li>
-                               <div class="member-minute clearfix">
-                                   <span>2015-09-22 18:22:33</span>
-                                   <span>订单号：<em>98653056821</em></span>
-                                   <span class="member-custom">客服电话：<em>010-6544-0986</em></span>
-                               </div>
-                               <div class="member-circle clearfix">
-                                   <div class="ci1">
-                                       <div class="ci7 clearfix" style="height:147px">
-                                           <span class="gr1" style="margin-top: 20px"><a href="#"><img src="User/Order/icon/m1.png" width="60" height="60" title="" about=""></a></span>
-                                           <span class="gr2" style="margin-top: 20px"><a href="#">红米Note2 标准版 白色 移动4G手机 双卡双待是</a></span>
-                                       </div>
-                                   </div>
-                                   <div class="ci2" >张子琪</div>
-                                   <div class="ci3"><b>￥120.00</b><p>货到付款</p><p class="iphone">手机订单</p></div>
-                                   <div class="ci4"><p>2015-09-22</p></div>
-                                   <div class="ci5"><p>等待付款</p> <p><a href="#">历史版本</a></p><p><a href="#">构件列表</a></p> <p><a href="#">价格清单</a></p></div>
-                                   <div class="ci5 ci8"><p>剩余15时20分</p> <p><a href="#" class="member-touch">立即支付</a> </p> <p><a href="#">取消订单</a> </p></div>
-                               </div>
-                           </li> -->
                            
                        </ul>
                    </div>
                </div>
-              <!--  <div class="member-return H-over" style="display:none;">
-                   <div class="member-cancel clearfix">
-                       <span class="be1">订单信息</span>
-                       <span class="be2">收货人</span>
-                       <span class="be2">订单金额</span>
-                       <span class="be2">订单时间</span>
-                       <span class="be2">订单状态</span>
-                       <span class="be2">订单操作</span>
-                   </div>
-                   <div class="member-sheet clearfix">
-                       <ul>
-                           <li>
-                               <div class="member-minute clearfix">
-                                   <span>2015-09-22 18:22:33</span>
-                                   <span>订单号：<em>98653056821</em></span>
-                                   <span><a href="#">以纯甲醇旗舰店</a></span>
-                                   <span class="member-custom">客服电话：<em>010-6544-0986</em></span>
-                               </div>
-                               <div class="member-circle clearfix">
-                                   <div class="ci1">
-                                       <div class="ci7 clearfix">
-                                           <span class="gr1"><a href="#"><img src="theme/img/pd/m1.png" width="60" height="60" title="" about=""></a></span>
-                                           <span class="gr2"><a href="#">红米Note2 标准版 白色 移动4G手机 双卡双待</a></span>
-                                           <span class="gr3">X1</span>
-                                       </div>
-                                       <div class="ci7 clearfix">
-                                           <span class="gr1"><a href="#"><img src="theme/img/pd/m2.png" width="60" height="60" title="" about=""></a></span>
-                                           <span class="gr2"><a href="#">AXON天机mini NBA限量版</a></span>
-                                           <span class="gr3">X9</span>
-                                       </div>
-                                   </div>
-                                   <div class="ci2" >张子琪</div>
-                                   <div class="ci3"><b>￥120.00</b><p>货到付款</p><p class="iphone">手机订单</p></div>
-                                   <div class="ci4"><p>2015-09-22</p></div>
-                                   <div class="ci5"><p>已申请退货</p> <p><a href="#">退货日志</a></p></div>
-                                   <div class="ci6"><p><a href="#">取消退货</a> </p></div>
-                               </div>
-                           </li>
-                           <li>
-                               <div class="member-minute clearfix">
-                                   <span>2015-09-22 18:22:33</span>
-                                   <span>订单号：<em>98653056821</em></span>
-                                   <span><a href="#">以纯甲醇旗舰店</a></span>
-                                   <span class="member-custom">客服电话：<em>010-6544-0986</em></span>
-                               </div>
-                               <div class="member-circle clearfix">
-                                   <div class="ci1">
-                                       <div class="ci7 clearfix">
-                                           <span class="gr1"><a href="#"><img src="theme/img/pd/m1.png" width="60" height="60" title="" about=""></a></span>
-                                           <span class="gr2"><a href="#">红米Note2 标准版 白色 移动4G手机 双卡双待</a></span>
-                                           <span class="gr3">X1</span>
-                                       </div>
-                                       <div class="ci7 clearfix">
-                                           <span class="gr1"><a href="#"><img src="theme/img/pd/m2.png" width="60" height="60" title="" about=""></a></span>
-                                           <span class="gr2"><a href="#">AXON天机mini NBA限量版</a></span>
-                                           <span class="gr3">X9</span>
-                                       </div>
-                                   </div>
-                                   <div class="ci2" >张子琪</div>
-                                   <div class="ci3"><b>￥120.00</b><p>货到付款</p><p class="iphone">手机订单</p></div>
-                                   <div class="ci4"><p>2015-09-22</p></div>
-                                   <div class="ci5"><p>已完成</p> <p><a href="#">订单详情</a></p></div>
-                                   <div class="ci6"><p><a href="#">取消退货</a> </p></div>
-                               </div>
-                           </li>
-                           <li>
-                               <div class="member-minute clearfix">
-                                   <span>2015-09-22 18:22:33</span>
-                                   <span>订单号：<em>98653056821</em></span>
-                                   <span><a href="#">以纯甲醇旗舰店</a></span>
-                                   <span class="member-custom">客服电话：<em>010-6544-0986</em></span>
-                               </div>
-                               <div class="member-circle clearfix">
-                                   <div class="ci1">
-                                       <div class="ci7 clearfix">
-                                           <span class="gr1"><a href="#"><img src="theme/img/pd/m1.png" width="60" height="60" title="" about=""></a></span>
-                                           <span class="gr2"><a href="#">红米Note2 标准版 白色 移动4G手机 双卡双待</a></span>
-                                           <span class="gr3">X1</span>
-                                       </div>
-                                       <div class="ci7 clearfix">
-                                           <span class="gr1"><a href="#"><img src="theme/img/pd/m2.png" width="60" height="60" title="" about=""></a></span>
-                                           <span class="gr2"><a href="#">AXON天机mini NBA限量版</a></span>
-                                           <span class="gr3">X9</span>
-                                       </div>
-                                   </div>
-                                   <div class="ci2" >张子琪</div>
-                                   <div class="ci3"><b>￥120.00</b><p>货到付款</p><p class="iphone">手机订单</p></div>
-                                   <div class="ci4"><p>2015-09-22</p></div>
-                                   <div class="ci5"><p>已完成</p> <p><a href="#">订单详情</a></p></div>
-                                   <div class="ci6"><p><a href="#">取消退货</a> </p></div>
-                               </div>
-                           </li>
-                       </ul>
-                   </div>
-               </div> -->
-              <!--  <div class="H-over member-over" style="display:none;"><h2>待发货</h2></div>
-               <div class="H-over member-over" style="display:none;"><h2>待收货</h2></div>
-               <div class="H-over member-over" style="display:none;"><h2>交易完成</h2></div>
-               <div class="H-over member-over" style="display:none;"><h2>订单信息</h2></div> -->
 
                 <div class="clearfix" style="padding:30px 20px;">
                     <div class="fr pc-search-g pc-search-gs" id="design_pages">
@@ -268,29 +146,9 @@
                         <span style="font-size:16px;color:black;">版本</span>
                         <span style="font-size:16px;color:black;">发布时间</span>
                     </div>
-                    <ul>
-                        <li class="clearfix"><div><a onclick="showHistoryDetail()" style="cursor: pointer;">在一层加了门窗，在二层北面加了卫生间<a style="font-weight: bolder;color:red;font-size:15px">（最新版）</a></a></div><div>2015-03-31 17:23:20</div></li>
-                        <li class="clearfix"><div><a href="#">买JBL耳机送上古世纪游戏炫酷时装礼包 </a></div><div>2015-03-31 17:23:20</div></li>
-                        <li class="clearfix"><div><a href="#">日韩美妆爆品低至1折起,不做女汉字换季护肤保卫战</a></div><div>2015-03-31 17:23:20</div></li>
-                        <li class="clearfix"><div><a href="#">愚人节整蛊玩具低至19</a></div><div>2015-03-31 17:23:20</div></li>
-                        <li class="clearfix"><div><a href="#">文艺蓝牙音箱 火热众筹中 </a></div><div>2015-03-31 17:23:20</div></li>
-                        <li class="clearfix"><div><a href="#">金秋献礼，热销投影送激光笔，指定机型送安装！ </a></div><div>2015-03-31 17:23:20</div></li>
-                        <li class="clearfix"><div><a href="#">男装跨店满299减60,赶快行动吧～！～～～</a></div><div>2015-03-31 17:23:20</div></li>
-                        <li class="clearfix"><div><a href="#">愚人节整蛊玩具低至19</a></div><div>2015-03-31 17:23:20</div></li>
-                        <li class="clearfix"><div><a href="#">文艺蓝牙音箱 火热众筹中 </a></div><div>2015-03-31 17:23:20</div></li>
-                        <li class="clearfix"><div><a href="#">金秋献礼，热销投影送激光笔，指定机型送安装！ </a></div><div>2015-03-31 17:23:20</div></li>
-                        <li class="clearfix"><div><a href="#">男装跨店满299减60,赶快行动吧～！～～～</a></div><div>2015-03-31 17:23:20</div></li>
-                        <li class="clearfix"><div><a href="#">无线立式吸尘器仅￥399 ！</a></div><div>2015-03-31 17:23:20</div></li>
-                        <li class="clearfix"><div><a href="#">无线立式吸尘器仅￥399 ！</a></div><div>2015-03-31 17:23:20</div></li>
-                        <li class="clearfix"><div><a href="#">赏春盛宴 大牌春装1折起 </a></div><div>2015-03-31 17:23:20</div></li>
-                        <li class="clearfix"><div><a href="#">放价旅游 红包免费领，点到你手软！</a></div><div>2015-03-31 17:23:20</div></li>
-                        <li class="clearfix"><div><a href="#">1元加价购台湾高粱美酒热销中 ！</a></div><div>2015-03-31 17:23:20</div></li>
-                        <li class="clearfix"><div><a href="#">1元加价购台湾高粱美酒热销中</a></div><div>2015-03-31 17:23:20</div></li>
-                        <li class="clearfix"><div><a href="#">愚人节整蛊玩具低至19</a></div><div>2015-03-31 17:23:20</div></li>
-                        <li class="clearfix"><div><a href="#">文艺蓝牙音箱 火热众筹中 </a></div><div>2015-03-31 17:23:20</div></li>
-                        <li class="clearfix"><div><a href="#">金秋献礼，热销投影送激光笔，指定机型送安装！ </a></div><div>2015-03-31 17:23:20</div></li>
-                        <li class="clearfix"><div><a href="#">男装跨店满299减60,赶快行动吧～！～～～</a></div><div>2015-03-31 17:23:20</div></li>
-                        <li class="clearfix"><div><a href="#">无线立式吸尘器仅￥399 ！</a></div><div>2015-03-31 17:23:20</div></li>
+                    <ul id="history_id">
+                       
+                       
                     </ul>
                 </div>
             </div>
@@ -305,38 +163,18 @@
             </div>
             <div class="member-border">
                <div class="member-order">
-                   <dl>
-                       <dt>修改反馈</dt>
-                       <dd class="member-seller">改了这个那个，你加不加钱啊 </dd>
+                   <dl id="return_info">
+                      
                    </dl>
-                   <dl class="member-custom clearfix ">
-                       <dt>3d模型</dt>
-                       <dd><a style="cursor: pointer;">点击查看</a></dd>
+                   <dl class="member-custom clearfix " id="3d_model">
                    </dl>
                    <dl>
                        <dt>构件列表</dt>
                       <!--  <dd class="member-seller">本订单是由 “以纯甲醇旗舰店” 发货并且提高售后服务，商品在下单后会尽快给您发货。 </dd> -->
                    </dl>
                    <div class="member-serial">
-	                   <ul>
-	                       <li class="clearfix">
-	                           <div class="No1" style="width:10%">构件种类</div>
-	                           <div class="No3" style="width:10%">构件编号</div>
-	                           <div class="No2" style="width:70%">构件属性</div>
-	                           <div class="No4" style="width:10%">数量</div>
-	                       </li>
-	                       <li class="clearfix">
-	                      	   <div class="No1" style="width:10%">梁柱</div>
-	                           <div class="No3" style="width:10%">x5001239</div>
-	                           <div class="No2" style="width:70%">长12306；宽230；高44；配筋22</div>
-	                           <div class="No4" style="width:10%">50</div>
-	                       </li>
-	                        <li class="clearfix">
-	                      	   <div class="No1" style="width:10%">梁柱</div>
-	                           <div class="No3" style="width:10%">x5001239</div>
-	                           <div class="No2" style="width:70%">长12306；宽230；高44；配筋22</div>
-	                           <div class="No4" style="width:10%">50</div>
-	                       </li>
+	                   <ul id="asse_id">
+	                       
 	                   </ul>
                	    </div>
                	    <dl>
@@ -344,31 +182,57 @@
                       <!--  <dd class="member-seller">本订单是由 “以纯甲醇旗舰店” 发货并且提高售后服务，商品在下单后会尽快给您发货。 </dd> -->
 	                </dl>
 	                <div class="member-serial">
-	                   <ul>
-	                       <li class="clearfix">
-	                           <div class="No2" style="width:70%">每一项费用详细说明</div>
-	                           <div class="No1" style="width:30%">价格</div>
-	                       </li>
-	                       <li class="clearfix">
-	                      	   <div class="No2" style="width:70%">构件费用</div>
-	                           <div class="No1" style="width:30%">¥20000</div>
-	                       </li>
-	                        <li class="clearfix">
-	                      	   <div class="No2" style="width:70%">构件费用</div>
-	                           <div class="No1" style="width:30%">¥20000</div>
-	                       </li>
+	                   <ul id="price_id">
+	                      
 	                   </ul>
                	    </div>
                </div>
             </div>
             <div class="member-settle clearfix">
-                <div class="fr">
-                    <div class="member-line"></div>
-                    <div><span>共需支付：</span><em style="color: red;font-size: 17px">￥280.00</em></div>
+                <div class="fr" id="all_price">
+                  
                 </div>
             </div>
         </div>
         <!-- history detail end -->
+        
+        <!-- my order begin-->
+        <div class="member-right fr" id="my_order_id" style="display: none">
+            <div class="member-head">
+                <div class="member-heels fl" style="font-size: 18px">我的订单</div>
+            </div>
+            <div class="member-border">
+               <div class="member-return H-over">
+                   <div class="member-cancel clearfix">
+                       <span class="be1" style="color:black;font-size: 15px">模型信息</span>
+                       <span class="be2" style="color:black;font-size: 15px">联系人电话</span>
+                       <span class="be2" style="color:black;font-size: 15px">订单价格</span>
+                       <span class="be2" style="color:black;font-size: 15px">下单时间</span>
+                       <span class="be2" style="color:black;font-size: 15px">施工状态</span>
+                       <span class="be2" style="color:black;font-size: 15px">操作</span>
+                   </div>
+                   <div class="member-sheet clearfix">
+                       <ul id="my_order_ul">
+                           
+                       </ul>
+                   </div>
+               </div>
+
+                <div class="clearfix" style="padding:30px 20px;">
+                    <div class="fr pc-search-g pc-search-gs" id="design_pages">
+                       <!--  <a href="javascript:;">3</a>
+                        <a href="javascript:;">4</a>
+                        <a href="javascript:;">5</a>
+                        <a href="javascript:;">6</a>
+                        <a href="javascript:;">7</a>
+                        <span class="pc-search-di">…</span>
+                        <a href="javascript:;">1088</a> -->
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!-- my order end -->
     </div>
 </section>
 <!-- 商城快讯 End -->

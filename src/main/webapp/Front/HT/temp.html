@@ -24,7 +24,22 @@
 <script src="lib/plugin/ht-modeling.js"></script>
 <script src="lib/plugin/ht-form.js"></script>
 <script type="text/javascript">
+
+var url=location.search;
+var Request = new Object();
+if(url.indexOf("?")!=-1)
+{
+ 　　var str = url.substr(1)　//去掉?号
+ 　　strs = str.split("&");
+ 　　for(var i=0;i<strs.length;i++)
+ 　　{
+  　　　 Request[strs[i ].split("=")[0]]=unescape(strs[ i].split("=")[1]);
+ 　　}
+ }
+
             function init(){ 
+            	
+            		//设置主面板
                 var dataModel = new ht.DataModel(),   
                 g3d = new ht.graph3d.Graph3dView(dataModel),                  
                 formPane = new ht.widget.FormPane();
@@ -38,6 +53,7 @@
                     main_view.invalidate();
                 }, false);
 				
+                //设置网格线和初始视角
 				g3d.setGridVisible(true);
 				g3d.setEye([1000,1000,0]);
 				
@@ -87,7 +103,8 @@
 					}
 				],[0.1,0.1]);
 				
-                ht.Default.loadObj('../../ModelFile/obj/180110.obj', '../../ModelFile/mtl/180110.mtl', {
+				//读取obj和mtl文件
+                ht.Default.loadObj('../../ModelFile/obj/'+Request["obj"]+'', '../../ModelFile/mtl/'+Request["mtl"]+'', {
                     center: true,
 					cube: true,
 					sync:true,

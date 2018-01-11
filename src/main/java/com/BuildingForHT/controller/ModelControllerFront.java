@@ -668,6 +668,23 @@ public class ModelControllerFront {
 			return response;
 		}
 	}
+	
+	@RequestMapping(value = "/create_fee_list" , method = RequestMethod.POST)
+	@ResponseBody
+	public Response Create_Fee_List(@RequestBody ModelRecord modelRecord){
+		Response response=new Response();
+		try {
+			int ok=modelInstance.create_fee_list(modelRecord);
+			System.out.println(ok);
+			response.success("请求成功");
+		} catch (Exception e) {
+			response.failure("没有请求到数据");
+			e.printStackTrace();
+		}
+		
+		return response;
+	}
+	
 	/**
 	 * 
 	 * @Method：createOrder
@@ -678,8 +695,9 @@ public class ModelControllerFront {
 	 */
 	@RequestMapping(value = "/create_order.final" , method = RequestMethod.POST)
 	@ResponseBody
-	public Response createOrder(OrderTable order, int modelId ,HttpSession session) {
+	public Response createOrder(@RequestBody OrderTable order,HttpSession session) {
 		
+		System.out.println(order);
 		Response response = new Response();
 		boolean result = false;
 		User user = (User) session.getAttribute("front_user");
@@ -689,7 +707,7 @@ public class ModelControllerFront {
 		}
 		
 		try {
-			result = modelInstance.createOrder(order, modelId, user.getUserId());
+			result = modelInstance.createOrder(order, user.getUserId());
 			
 			if( result == true) {
 				response.success();
@@ -725,7 +743,7 @@ public class ModelControllerFront {
 			if( result == true) {
 				response.success();
 			}else {
-				response.failure();
+				response.failure("提交失败");
 			}
 		}catch (Exception e) {
 			response.failure("服务器错误");
@@ -877,6 +895,56 @@ public class ModelControllerFront {
 		try {
 			int i  = modelInstance.createMA(mas);
 			response.success(models);
+		}catch (Exception e){
+			response.failure();
+		}
+		return response;
+		}
+	
+	/**
+	 * 
+	 * @Method：getHistoryDetail
+	 * @Description：get model history detail
+	 * @author：Snail
+	 * @date：2018年1月11日 上午12:34:43
+	 * @return：Response
+	 */
+	@RequestMapping(value = "/history_detail.final" , method = RequestMethod.GET)
+	@ResponseBody
+	public Response getHistoryDetail(int modiId) {
+		
+		Response response = new Response();
+		ModelRecord model = null;
+		
+		try {
+			model = modelInstance.getHistoryDetail(modiId);
+			response.success(model);
+		}catch (Exception e) {
+			response.failure("服务器错误");
+			e.printStackTrace();
+		}finally {
+			return response;
+		}
+	}
+	
+	/**
+	 * 
+	 * @Method：getPriceLists
+	 * @Description：get model price lists
+	 * @author：Snail
+	 * @date：2018年1月11日 上午12:35:48
+	 * @return：Response
+	 */
+	@RequestMapping(value = "/price_list.final" , method = RequestMethod.GET)
+	@ResponseBody
+	public Response getPriceLists(int modiId) {
+		
+		Response response = new Response();
+		List<PriceList> lists = null;
+		
+		try {
+			lists = modelInstance.getPriceLists(modiId);
+			response.success(lists);
 		}catch (Exception e) {
 			response.failure("服务器错误");
 			e.printStackTrace();
