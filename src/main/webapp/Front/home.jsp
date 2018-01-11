@@ -223,10 +223,10 @@
 					</div>
 				</div> <!-- /.rev_slider_wrapper -->
 				
-				<div class="grey-section section-block">
+				<!-- <div class="grey-section section-block">
 					<div class="section-bg" style="background-image: url('assets/images/s-icons-bg.jpg');"></div>
 					<div class="container">
-						<!-- Service Title Only -->
+						Service Title Only
 						<div class="row">
 							<div class="col-md-3 col-sm-6">
 								<div class="service-title-only">
@@ -248,7 +248,7 @@
 									<a href="service-single.html">Isolation</a>
 								</div>
 							</div>
-						</div> <!-- /.row -->
+						</div> /.row
 						<div class="row">
 							<div class="mid-space"></div>
 							<div class="col-lg-4">
@@ -262,7 +262,7 @@
 									</div>
 								</div>
 								<div class="small-space"></div>
-							</div> <!-- /.col-lg-4 -->
+							</div> /.col-lg-4
 							<div class="col-lg-4">
 								<div class="service-icon wow flipInX" data-wow-duration="0.7s" data-wow-delay="0.6s">
 									<div class="icon-box">
@@ -274,7 +274,7 @@
 									</div>
 								</div>
 								<div class="small-space"></div>
-							</div> <!-- /.col-lg-4 -->
+							</div> /.col-lg-4
 							<div class="col-lg-4">
 								<div class="service-icon wow flipInX" data-wow-duration="0.7s" data-wow-delay="1s">
 									<div class="icon-box">
@@ -286,11 +286,11 @@
 									</div>
 								</div>
 								<div class="small-space"></div>
-							</div> <!-- /.col-lg-4 -->
-						</div> <!-- /.row -->
+							</div> /.col-lg-4
+						</div> /.row
 						<div class="mid-space"></div>
-					</div> <!-- /.container -->
-				</div> <!-- /.grey-section -->
+					</div> /.container
+				</div> /.grey-section -->
                 
                 <!-- 列表 -->
           <div class="page-content">
@@ -309,7 +309,7 @@
 							
 			        </div>
 						
-					<div class="row"><div class="col-sm-12 text-center"><a href="#" class="button big default">更多....</a> </div>
+					<div class="row"><div class="col-sm-12 text-center"><a href="../Front/ModelList/ModelList.jsp" class="button big default">更多....</a> </div>
 				     </div>
 						
 					<div class="mid-space"></div>
@@ -317,14 +317,14 @@
             </div>
                 <!--列表结束  -->
                 
-				<div class="white-section section-block">
+				<!-- <div class="white-section section-block">
 					<div class="container">
 						<div class="row">
 							<div class="col-md-offset-2 col-md-8 text-center section-title-wrapper wow fadeIn" data-wow-duration="0.7s" data-wow-delay="0.4s">
 								<h2 class="section-title style-1">Our Dedicated Team</h2>
 								<p>Nunc in ornare urna. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac<br>turpis egestas. Curabitur rhoncus volutpat eros, vestibulum dapibus.</p>
 							</div>
-						</div> <!-- /.row -->
+						</div> /.row
 						<div class="row">
 							<div class="col-lg-3 col-sm-6">
 								<article class="team-entry wow fadeIn" data-wow-duration="0.7s" data-wow-delay="0.2s">
@@ -336,7 +336,7 @@
 										<p class="small">Best Constructor</p>
 									</div>
 								</article>
-							</div> <!-- /.col-lg-3 -->
+							</div> /.col-lg-3
 							<div class="col-lg-3 col-sm-6">
 								<article class="team-entry wow fadeIn" data-wow-duration="0.7s" data-wow-delay="0.5s">
 									<div class="team-thumb">
@@ -347,7 +347,7 @@
 										<p class="small">Best Constructor</p>
 									</div>
 								</article>
-							</div> <!-- /.col-lg-3 -->
+							</div> /.col-lg-3
 							<div class="col-lg-3 col-sm-6">
 								<article class="team-entry wow fadeIn" data-wow-duration="0.7s" data-wow-delay="0.8s">
 									<div class="team-thumb">
@@ -358,7 +358,7 @@
 										<p class="small">Best Constructor</p>
 									</div>
 								</article>
-							</div> <!-- /.col-lg-3 -->
+							</div> /.col-lg-3
 							<div class="col-lg-3 col-sm-6">
 								<article class="team-entry wow fadeIn" data-wow-duration="0.7s" data-wow-delay="1.1s">
 									<div class="team-thumb">
@@ -369,13 +369,13 @@
 										<p class="small">Best Constructor</p>
 									</div>
 								</article>
-							</div> <!-- /.col-lg-3 -->
-						</div> <!-- /.row -->
+							</div> /.col-lg-3
+						</div> /.row
 						<div class="small-space"></div>
-					</div> <!-- /.container -->
-				</div> <!-- /.white-section -->
+					</div> /.container
+				</div> /.white-section -->
 
-				<div class="dark-section section-block">
+				<!-- <div class="dark-section section-block">
 					<div class="section-bg" style="background-image: url('assets/images/projects.jpg');"></div>
 					<div class="container">
 						<div class="row">
@@ -383,8 +383,8 @@
 								<h2 class="section-title style-1">Latest Projects</h2>
 								<p>Nunc in ornare urna. Pellentesque habitant morbi tristique<br> senectus et netus et malesuada fames acturpis egestas vestibulum dapibus.</p>
 							</div>
-						</div> <!-- /.row -->
-					</div> <!-- /.container -->
+						</div> /.row
+					</div> /.container
 					<div class="projects-full-holder clearfix wow fadeIn" data-wow-duration="0.7s" data-wow-delay="0.5s">
 						<article class="project-entry-1">
 							<div class="image-holder">
@@ -395,7 +395,7 @@
 									<span class="overlay-triangle"></span>
 								</a>
 							</div>
-						</article> <!-- /.project-entry-1 -->
+						</article> /.project-entry-1
 						<article class="project-entry-1">
 							<div class="image-holder">
 								<a href="project-single.html">
@@ -405,7 +405,7 @@
 									<span class="overlay-triangle"></span>
 								</a>
 							</div>
-						</article> <!-- /.project-entry-1 -->
+						</article> /.project-entry-1
 						<article class="project-entry-1">
 							<div class="image-holder">
 								<a href="project-single.html">
@@ -415,7 +415,7 @@
 									<span class="overlay-triangle"></span>
 								</a>
 							</div>
-						</article> <!-- /.project-entry-1 -->
+						</article> /.project-entry-1
 						<article class="project-entry-1">
 							<div class="image-holder">
 								<a href="project-single.html">
@@ -425,9 +425,9 @@
 									<span class="overlay-triangle"></span>
 								</a>
 							</div>
-						</article> <!-- /.project-entry-1 -->
-					</div> <!-- /.projects-full-holder -->
-				</div> <!-- /.dark-section -->
+						</article> /.project-entry-1
+					</div> /.projects-full-holder
+				</div> /.dark-section
 
 				<div class="call-to-action light">
 					<div class="container">
@@ -447,7 +447,7 @@
 					</div>
 					<div class="shadow-gradient"></div>
 				</div>
-
+ -->
 				<!-- <div class="white-section section-block" style="display:none">
 					<div class="container">
 						<div class="row">
