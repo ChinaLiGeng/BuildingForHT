@@ -9,6 +9,7 @@ import com.BuildingForHT.entity.Model;
 import com.BuildingForHT.entity.ModelAssembly;
 import com.BuildingForHT.entity.ModelComment;
 import com.BuildingForHT.entity.ModelRecord;
+import com.BuildingForHT.entity.OrderTable;
 import com.BuildingForHT.entity.PriceList;
 import com.BuildingForHT.entity.User;
 
@@ -199,7 +200,7 @@ public interface ModelDaoFront {
     * @author Ligeng    
     * @throws
      */
-	int createHouselayout(int id, String name, int height, int foolr);
+	int createHouselayout(HouseLayout hy);
 
 	/**
 	 * 
@@ -281,6 +282,47 @@ public interface ModelDaoFront {
 	 */
 	int getAdminModelNumber();
 	
+    /**
+     * 
+    * @Title: createEffectPic 
+    * @Description: TODO
+    * @date 2018年1月10日 下午3:10:07 
+    * @return int 
+    * @author Ligeng    
+    * @throws
+     */
+	int createEffectPic(EffectPic ef);
+    /**
+     * 
+    * @Title: updateM 
+    * @Description: TODO
+    * @date 2018年1月10日 下午3:28:27 
+    * @return int 
+    * @author Ligeng    
+    * @throws
+     */
+	int updateM(int id, String pic);
+    /**
+     * 
+    * @Title: getModel 
+    * @Description: TODO
+    * @date 2018年1月10日 下午7:26:30 
+    * @return int 
+    * @author Ligeng    
+    * @throws
+     */
+	int getModel();
+    /**
+     * 
+    * @Title: updateMObj 
+    * @Description: TODO
+    * @date 2018年1月10日 下午10:31:22 
+    * @return int 
+    * @author Ligeng    
+    * @throws
+     */
+	int updateMObj(int id, String path, int type);
+	
 	/**
 	 * 
 	 * @Method：getAssembly
@@ -309,7 +351,7 @@ public interface ModelDaoFront {
 	 * @date：2018年1月10日 下午3:30:56
 	 * @return：int
 	 */
-	int calcUpdateModel(int modelId);
+	int calcUpdateModel(int modelId,int designState);
 	
 	/**
 	 * 
@@ -323,4 +365,53 @@ public interface ModelDaoFront {
 	
 	
 	int create_fee_list(ModelRecord modelRecord);
+	/**
+	 * 
+	 * @Method：createOrder
+	 * @Description：create order
+	 * @author：Snail
+	 * @date：2018年1月10日 下午9:24:27
+	 * @return：int
+	 */
+	int createOrder(OrderTable order,int modelId,int userId);
+	
+	/**
+	 * 
+	 * @Method：continueOrder
+	 * @Description：continue to modify
+	 * @author：Snail
+	 * @date：2018年1月10日 下午9:46:58
+	 * @return：int
+	 */
+	int continueOrder(String suddestion,int modelId);
+	
+	/**
+	 * 
+	 * @Method：getHistory
+	 * @Description：get history
+	 * @author：Snail
+	 * @date：2018年1月10日 下午10:52:48
+	 * @return：List<ModelRecord>
+	 */
+	List<ModelRecord> getHistory(int modelId);
+	
+	/**
+	 * 
+	 * @Method：getHistoryDetail
+	 * @Description：get history detail
+	 * @author：Snail
+	 * @date：2018年1月10日 下午11:13:17
+	 * @return：ModelRecord
+	 */
+	ModelRecord getHistoryDetail(int modiId);
+	
+	/**
+	 * 
+	 * @Method：getPriceLists
+	 * @Description：get model's price list
+	 * @author：Snail
+	 * @date：2018年1月10日 下午11:16:03
+	 * @return：List<PriceList>
+	 */
+	List<PriceList> getPriceLists(int modiId);
 }

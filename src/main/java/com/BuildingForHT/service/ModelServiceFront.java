@@ -3,10 +3,13 @@ package com.BuildingForHT.service;
 import java.sql.SQLException;
 import java.util.List;
 
+import com.BuildingForHT.entity.EffectPic;
+import com.BuildingForHT.entity.HouseLayout;
 import com.BuildingForHT.entity.Model;
 import com.BuildingForHT.entity.ModelAssembly;
 import com.BuildingForHT.entity.ModelComment;
 import com.BuildingForHT.entity.ModelRecord;
+import com.BuildingForHT.entity.OrderTable;
 import com.BuildingForHT.entity.PriceList;
 import com.BuildingForHT.entity.User;
 
@@ -214,6 +217,60 @@ public interface ModelServiceFront {
 	 * @return：int
 	 */
 	int getAdminModelNumber();
+    /**
+     * 
+    * @Title: uploadPic 
+    * @Description: TODO
+    * @date 2018年1月10日 下午3:30:14 
+    * @return int 
+    * @author Ligeng    
+    * @throws
+     */
+	
+	int uploadHouseLayout(HouseLayout hl);
+	
+    /**
+     * 
+    * @Title: getmodel 
+    * @Description: TODO
+    * @date 2018年1月10日 下午7:27:27 
+    * @return int 
+    * @author Ligeng    
+    * @throws
+     */
+	int getmodel();
+    /**
+     * 
+    * @Title: uploadEffectPic 
+    * @Description: TODO
+    * @date 2018年1月10日 下午7:36:06 
+    * @return int 
+    * @author Ligeng    
+    * @throws
+     */
+	int uploadEffectPic(EffectPic ef);
+    /**
+     * 
+    * @Title: updateM 
+    * @Description: TODO
+    * @date 2018年1月10日 下午7:48:06 
+    * @return int 
+    * @author Ligeng    
+    * @throws
+     */
+	int updateM(int id, String pic);
+    /**
+     * 
+    * @Title: updateMObj 
+    * @Description: TODO
+    * @date 2018年1月10日 下午10:33:26 
+    * @return int 
+    * @author Ligeng    
+    * @throws
+     */
+	int updateMObj(int id, String path, int type);
+
+
 	
 	/**
 	 * 
@@ -237,5 +294,64 @@ public interface ModelServiceFront {
 	
 	
 	int create_fee_list(ModelRecord modelRecord);
+	/**
+	 * 
+	 * @Method：createOrder
+	 * @Description：create order
+	 * @author：Snail
+	 * @date：2018年1月10日 下午9:31:29
+	 * @return：boolean
+	 */
+	boolean createOrder(OrderTable order, int modelId ,int userId);
+	
+	/**
+	 * 
+	 * @Method：calcUpdateModel
+	 * @Description：calc update model
+	 * @author：Snail
+	 * @date：2018年1月10日 下午3:30:56
+	 * @return：boolean
+	 */
+	boolean calcUpdateModel(int modelId,int designState);
+	
+	/**
+	 * 
+	 * @Method：continueOrder
+	 * @Description：continue to modify
+	 * @author：Snail
+	 * @date：2018年1月10日 下午9:46:58
+	 * @return：boolean
+	 */
+	boolean continueOrder(String suddestion,int modelId);
+	
+	/**
+	 * 
+	 * @Method：getHistory
+	 * @Description：get history
+	 * @author：Snail
+	 * @date：2018年1月10日 下午10:52:48
+	 * @return：List<ModelRecord>
+	 */
+	List<ModelRecord> getHistory(int modelId);
+	
+	/**
+	 * 
+	 * @Method：getHistoryDetail
+	 * @Description：get history detail
+	 * @author：Snail
+	 * @date：2018年1月10日 下午11:13:17
+	 * @return：ModelRecord
+	 */
+	ModelRecord getHistoryDetail(int modiId);
+	
+	/**
+	 * 
+	 * @Method：getPriceLists
+	 * @Description：get model's price list
+	 * @author：Snail
+	 * @date：2018年1月10日 下午11:16:03
+	 * @return：List<PriceList>
+	 */
+	List<PriceList> getPriceLists(int modiId);
 	
 }

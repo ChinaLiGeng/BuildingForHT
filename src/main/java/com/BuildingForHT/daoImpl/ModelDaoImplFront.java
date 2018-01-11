@@ -22,6 +22,7 @@ import com.BuildingForHT.entity.Model;
 import com.BuildingForHT.entity.ModelAssembly;
 import com.BuildingForHT.entity.ModelComment;
 import com.BuildingForHT.entity.ModelRecord;
+import com.BuildingForHT.entity.OrderTable;
 import com.BuildingForHT.entity.PriceList;
 import com.BuildingForHT.entity.User;
 
@@ -337,15 +338,15 @@ public class ModelDaoImplFront implements ModelDaoFront{
 		//SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");  
 		//String dateNowStr = sdf.format(date);  
 		
-		String sql = "insert into model(userId,beType,designState,designFee,floorNumber,buildingArea,landArea,state,name,introduction)"
-				+" values(?,?,?,?,?,?,?,?,?,?)";
+		String sql = "insert into model(userId,beType,designState,designFee,floorNumber,buildingArea,landArea,state,name,introduction,quoteModel)"
+				+" values(?,?,?,?,?,?,?,?,?,?,?)";
 		
 		jdbcTemplate.update( new PreparedStatementCreator() {  
 			
 			@Override
 			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
 				PreparedStatement ps = jdbcTemplate.getDataSource()
-						.getConnection().prepareStatement(sql,new String[]{ "userId","beType","designState","designFee", "floorNumber","buildingArea","landArea","state","name","introduction"});
+						.getConnection().prepareStatement(sql,new String[]{ "userId","beType","designState","designFee", "floorNumber","buildingArea","landArea","state","name","introduction","quoteModel"});
 				ps.setInt(1,model.getUserId());
 				ps.setInt(2, 1);
 				ps.setInt(3, 0);
@@ -356,18 +357,24 @@ public class ModelDaoImplFront implements ModelDaoFront{
 				ps.setInt(8, 1);
 				ps.setString(9, model.getName());
 				ps.setString(10, model.getIntroduction());
+				ps.setInt(11, 0);
 				return ps;  
 			}  
         }, keyHolder);
 		return  keyHolder.getKey().intValue();
 	}
 	@Override
-    public int createHouselayout(int id,String name,int height,int foolr){
-    	String sql = "insert into houselayout(modelId,pic,floor,state,acreage,floorHeight) values(?,?,?,?,?,?)";
-		Object []params = {id,name,foolr,1,110,height};
+    public int createHouselayout(HouseLayout hl){
+    	String sql = "insert into houselayout(modelId,pic) values(?,?)";
+		Object []params = {hl.getModelId(),hl.getPic()};
 		return jdbcTemplate.update(sql,params);
     } 
-
+    @Override
+	public int createEffectPic(EffectPic ef){
+		String sql = "insert into houselayout(modelId,pic,state) values(?,?,?)";
+		Object []params = {ef.getModelId(),ef.getPic(),1};
+		return jdbcTemplate.update(sql,params);
+	}
 
 	@Override
 	public List<Model> getNeverModifiedModels(int modifier,int page) {
@@ -484,6 +491,32 @@ public class ModelDaoImplFront implements ModelDaoFront{
 		result = jdbcTemplate.queryForObject(sql,params,Integer.class);
 		return result;
 	}
+	@Override
+    public int updateM(int id,String pic){
+    	String sql = "update model set mainPic = '"+pic+"' where modelId ="+id+"";
+    	System.out.println(sql);
+    	return jdbcTemplate.update(sql);
+    }
+	@Override
+	public int getModel(){
+		try {
+			String sql = "select modelid from model order by modelid desc  LIMIT 1";
+			return jdbcTemplate.queryForObject(sql,Integer.class);		 
+		} catch (Exception e) {
+			e.printStackTrace();
+			return 0;
+		}
+	}
+	@Override
+    public int updateMObj(int id,String path,int type){
+		String sql;
+		if(type ==1){
+			 sql = "update model set objPath = '"+path+"' where modelId ="+id+"";
+		}else{
+			 sql = "update model set mtlPath = '"+path+"' where modelId ="+id+"";
+		}
+    	return jdbcTemplate.update(sql);
+    }
 
 	@Override
 	public List<ModelAssembly> getAssembly(int modiId) {
@@ -513,10 +546,10 @@ public class ModelDaoImplFront implements ModelDaoFront{
 	}
 
 	@Override
-	public int calcUpdateModel(int modelId) {
+	public int calcUpdateModel(int modelId,int designState) {
 		
 		String sql = "update model set designState = ? where modelId = ?";
-		Object []params = {3,modelId};
+		Object []params = {designState,modelId};
 		
 		return jdbcTemplate.update(sql,params);
 	}
@@ -535,6 +568,78 @@ public class ModelDaoImplFront implements ModelDaoFront{
 		String sql="insert into model_record(modelId,objPath,mtlPath,modifyInfo,version,state,price,floorNumber,buildingArea,landArea) values(?,?,?,?,?,?,?,?,?,?)";
 		Object []objects={43,1,1,modelRecord.getModifyInfo(),1,1,modelRecord.getPrice(),modelRecord.getFloorNumber(),modelRecord.getBuildingArea(),modelRecord.getLandArea()};
 		return jdbcTemplate.update(sql,objects);
+	}
+	@Override
+	public int createOrder(OrderTable order, int modelId ,int userId) {
+		
+		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		String time = df.format(new Date());
+		
+		String sql = "insert into ordertable(modelId,userId,userPhone,orderFee,state,address,createTime,trackState) values(?,?,?,?,?,?,?,?)";
+		Object []params = {modelId,userId,order.getUserPhone(),order.getOrderFee(),1,order.getAddress(),time,1};
+		
+		return jdbcTemplate.update(sql,params);
+	}
+
+	@Override
+	public int continueOrder(String suggestion,int modelId) {
+		
+		String sql = "update model_record set isSatisfy = ?,suggestion = ? where modiId = (select C.modiId from ( select mr.modiId from model m ,model_record mr," + 
+					"(select mr.modelId ,max(mr.version) as temp from model m ,model_record mr where m.modelId = mr.modelId and m.modelId = £¿ and mr.state = 1 group by mr.modelId) as B " + 
+					"where m.modelId = mr.modelId and m.modelId = £¿ and mr.state = 1 and mr.modelId = B.modelId and mr.version = B.temp ) as C )";
+		Object []params = {0,suggestion,modelId,modelId};
+		
+		return jdbcTemplate.update(sql,params);
+	}
+
+	@Override
+	public List<ModelRecord> getHistory(int modelId) {
+		
+		List<ModelRecord> models = null;
+		
+		String sql = "select mr.modiId,modiInfo,mr.createTime from model m,model_record mr where m.modelId = ? and m.modelId = mr.modelId and mr.state = 1 order by version desc";
+		Object []params = {modelId};
+		
+		try {
+			models = jdbcTemplate.query(sql, params, new BeanPropertyRowMapper(ModelRecord.class));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			return models;
+		}
+	}
+
+	@Override
+	public ModelRecord getHistoryDetail(int modiId) {
+		
+		ModelRecord model = null;
+		String sql = "select * from model_record where modiId = ?";
+		Object []params = {modiId};
+		
+		try {
+			model = jdbcTemplate.queryForObject(sql, params, new BeanPropertyRowMapper<ModelRecord>(ModelRecord.class));
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			return model;
+		}
+	}
+
+	@Override
+	public List<PriceList> getPriceLists(int modiId) {
+		
+		List<PriceList> lists = null;
+		
+		String sql = "select * from pricelist where modiId = ? and state = ?";
+		Object []params = {modiId,1};
+		
+		try {
+			lists = jdbcTemplate.query(sql, params, new BeanPropertyRowMapper(PriceList.class));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			return lists;
+		}
 	}
 
 }

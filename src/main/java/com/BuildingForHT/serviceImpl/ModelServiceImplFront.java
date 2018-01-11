@@ -9,10 +9,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.BuildingForHT.dao.ModelDaoFront;
+import com.BuildingForHT.entity.EffectPic;
+import com.BuildingForHT.entity.HouseLayout;
 import com.BuildingForHT.entity.Model;
 import com.BuildingForHT.entity.ModelAssembly;
 import com.BuildingForHT.entity.ModelComment;
 import com.BuildingForHT.entity.ModelRecord;
+import com.BuildingForHT.entity.OrderTable;
 import com.BuildingForHT.entity.PriceList;
 import com.BuildingForHT.entity.User;
 import com.BuildingForHT.globle.Constants;
@@ -200,6 +203,30 @@ public class ModelServiceImplFront implements ModelServiceFront{
 		int number = modelInstance.getAdminModelNumber();
 		return number;
 	}
+	@Override
+	public int uploadHouseLayout(HouseLayout hl){
+	    	int result = 0;
+	    	modelInstance.createHouselayout(hl);
+	    	return result;
+	    }
+	@Override
+	public int uploadEffectPic(EffectPic ef){
+    	int result = 0;
+    	modelInstance.createEffectPic(ef);
+    	return result;
+    }
+	@Override
+    public int getmodel(){
+    	return modelInstance.getModel();
+    }
+	@Override
+	public int updateM(int id,String pic){
+		return modelInstance.updateM(id, pic);
+	}
+	@Override
+	public int updateMObj(int id,String path,int type){
+		return modelInstance.updateMObj(id, path, type);
+		}
 
 	@Override
 	public List<ModelAssembly> getAssembly(int modiId) {
@@ -213,7 +240,7 @@ public class ModelServiceImplFront implements ModelServiceFront{
 		
 		boolean result = false;
 		
-		if( modelInstance.createPriceList(modiId, priceList) > 0 & modelInstance.calcUpdateAllPrice(modiId, price) >0 & modelInstance.calcUpdateModel(modelId) >0) {
+		if( modelInstance.createPriceList(modiId, priceList) > 0 & modelInstance.calcUpdateAllPrice(modiId, price) >0 & modelInstance.calcUpdateModel(modelId,3) >0) {
 			result = true;
 		}
 		return result;
@@ -223,5 +250,57 @@ public class ModelServiceImplFront implements ModelServiceFront{
 	public int create_fee_list(ModelRecord modelRecord) {
 		// TODO Auto-generated method stub
 		return modelInstance.create_fee_list(modelRecord);
+	}
+	@Override
+	public boolean createOrder(OrderTable order, int modelId, int userId) {
+		
+		boolean result = false;
+		
+		if( modelInstance.createOrder(order, modelId, userId) > 0  & modelInstance.calcUpdateModel(modelId,4) >0) {
+			result = true;
+		}
+		return result;
+	}
+
+	@Override
+	public boolean calcUpdateModel(int modelId, int designState) {
+		
+		boolean result = false;
+		
+		if( modelInstance.calcUpdateModel(modelId,designState) >0) {
+			result = true;
+		}
+		return result;
+	}
+
+	@Override
+	public boolean continueOrder(String suddestion, int modelId) {
+		
+		boolean result = false;
+		
+		if( modelInstance.continueOrder(suddestion, modelId) > 0  & modelInstance.calcUpdateModel(modelId,6) >0) {
+			result = true;
+		}
+		return result;
+	}
+
+	@Override
+	public List<ModelRecord> getHistory(int modelId) {
+
+		List<ModelRecord> result = modelInstance.getHistory(modelId);
+		return result;
+	}
+
+	@Override
+	public ModelRecord getHistoryDetail(int modiId) {
+		
+//		ModelRecord 
+		return null;
+	}
+
+	@Override
+	public List<PriceList> getPriceLists(int modiId) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
